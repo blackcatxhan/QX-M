@@ -3,4 +3,4 @@
 [MITM]
 hostname = %APPEND% api.pacer.cc
 [Script]
-Pacer = type=http-response,pattern=^https:\/\/api\.pacer\.cc\/pacer\/ios\/api\/.+\/accounts\/.+\/subscriptions$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/Scripts/Pacer.js
+Pacer = type=http-response,pattern=^https:\/\/api\.pacer\.cc\/pacer\/ios\/api\/.+\/accounts\/.+\/subscriptions$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Pacer.js
