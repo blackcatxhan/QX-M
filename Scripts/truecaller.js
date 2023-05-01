@@ -37,19 +37,19 @@ var obj;
 switch ($request.url) {
   case findUrl(/subscriptions\/status/):
       obj = {
-        expire: "2099-09-06T11:20:25Z",
+        expire: "2099-07-07T11:20:25Z",
         start: "2022-09-03T11:20:25Z",
         paymentProvider: "Apple",
         isExpired: false,
         isGracePeriodExpired: false,
-        subscriptionStatus: "INITIAL_BUY",
+        subscriptionStatus: "SUBSCRIBED",
         inAppPurchaseAllowed: true,
         product: {
-          id: "renewable.gold.annual",
-          sku: "renewable.gold.annual",
+          id: "renewable.premiumgold.annual",
+          sku: "renewable.premiumgold.annual",
           contentType: "subscription",
           productType: "GoldYearly",
-          isFreeTrial: true
+          isFreeTrial: false
         },
         tier: { id: "gold", feature: features_sub }
       }
