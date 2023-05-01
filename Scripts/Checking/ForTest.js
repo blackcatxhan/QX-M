@@ -1,6 +1,6 @@
 var obj = JSON.parse($response.body); 
 obj['subscriber']['subscriptions'] = {
-      "blocker.ios.subscription.yearly" : {
+      "remotetv.weekly.02" : {
         "original_purchase_date" : "2023-05-01T11:27:02Z",
         "expires_date" : "2099-07-07T11:27:01Z",
         "is_sandbox" : false,
