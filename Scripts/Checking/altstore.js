@@ -1,10 +1,10 @@
-let obj = JSON.parse($response.body);
-obj ={
-        "data" : {
+{
+  "errorMsg" : "Success",
+  "data" : {
     "status" : 0,
     "activeAtDay" : "",
     "lifetimeType" : 0,
-    "inviteMax" : 100,
+    "inviteMax" : 105,
     "invitedNum" : "5",
     "coupons" : [
 
@@ -12,6 +12,6 @@ obj ={
     "expireAtDay" : "",
     "sn" : "EU01705A0001700",
     "remainDays" : 0
-  }
-    }
-$done({body: JSON.stringify(obj)});
+  },
+  "errorCode" : 0
+}
