@@ -4,8 +4,8 @@
     "status" : 0,
     "activeAtDay" : "",
     "lifetimeType" : 0,
-    "inviteMax" : 105,
-    "invitedNum" : "5",
+    "inviteMax" : 5,
+    "invitedNum" : "1",
     "coupons" : [
 
     ],
