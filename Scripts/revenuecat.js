@@ -10,8 +10,8 @@ const list = {
 	'ipTV': { name: 'ipTV +', id: 'iptv_9.99_1y_7d_free' },
 	'APTV': { name: 'pro', id: 'com.kimen.aptvpro.lifetime' },
 	'Blink': { name: 'pro', id: 'blink_shell_plus_1y_1999' },
-        'mizframa': { name: 'premium', id: 'mf_20_lifetime2' },
-        'CallRecorder': { name: 'subscriptions', id: 'com.prettyboa.CallRecorder.MonthlySubscription2999' }
+	'mizframa': { name: 'premium', id: 'mf_20_lifetime2' },
+	'CallRecorder': { name: 'subscriptions', id: 'com.prettyboa.CallRecorder.MonthlySubscription2999' }
 };
 const data = {
 	"expires_date": "2099-02-18T07:52:54Z",
