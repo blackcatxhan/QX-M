@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% api.tusachthanhnien.vn
 [Script]
-1Blocker = type=http-response,pattern=^https:\/\/api\.tusachthanhnien\.vn\/loginViaVegaIDAccount*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest.js,script-update-interval=-1
+1Blocker = type=http-response,pattern=^https:\/\/api\.tusachthanhnien\.vn\/loginViaVegaIDAccount*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest3.js,script-update-interval=-1
 
 
