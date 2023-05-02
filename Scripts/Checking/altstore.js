@@ -1,31 +1,36 @@
-let obj = JSON.parse($response.body);
-obj ={
-        "data": {
-            "attributes": {
-                "first_name": "Lang",
-                "full_name": "Lang Khach"
-            },
-            "id": "30618536",
-            "relationships": {
-                "memberships": {
-                    "data": [{
-                        "id": "e3a5c718-d930-4b92-a8b9-677f4699c9a4",
-                        "type": "tier"
-                    }]
-                }
-            },
-            "type": "member"
+{
+  "offerings" : [
+    {
+      "identifier" : "remotetv.yearly.02",
+      "packages" : [
+        {
+          "platform_product_identifier" : "remotetv.weekly.01",
+          "identifier" : "week 01"
         },
-        "included": [{
-            "attributes": {
-                "full_name": "Lang Khach",
-                "patron_status": "active_patron"
-            },
-            "id": "e3a5c718-d930-4b92-a8b9-677f4699c9a4",
-            "type": "member"
-        }],
-        "links": {
-            "self":"https://www.patreon.com/api/oauth2/v2/user/30618536"
+        {
+          "platform_product_identifier" : "remotetv.yearly.01",
+          "identifier" : "year 01"
+        },
+        {
+          "platform_product_identifier" : "remotetv.3months.01",
+          "identifier" : "3 months 01"
+        },
+        {
+          "platform_product_identifier" : "remotetv.month.01",
+          "identifier" : "month 01"
+        },
+        {
+          "platform_product_identifier" : "remotetv.yearly.02",
+          "identifier" : "year 02"
+        },
+        {
+          "platform_product_identifier" : "remotetv.weekly.02",
+          "identifier" : "week 02"
         }
+      ],
+      "description" : "default (all products)"
     }
-$done({body: JSON.stringify(obj)});
+  ],
+  "current_offering_id" : "remotetv.yearly.02"
+}
+
