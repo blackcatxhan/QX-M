@@ -1,7 +1,7 @@
-#!name=Unlock 1Blocker
-#!desc=1Blocker
+#!name=Unlock EPIK
+#!desc=EPIK
 [MITM]
-hostname= %APPEND% api.revenuecat.com
+hostname= %APPEND% purchase-epik-api.snow.me
 [Script]
-1Blocker = type=http-response,pattern=^https:\/\/api\.revenuecat\.com\/v1\/receipts$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest.js,script-update-interval=-1
+1Blocker = type=http-response,pattern=^https:\/\/purchase-epik-api.snow.me\/v1\/purchase\/subscription\/subscriber\/status$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest2.js,script-update-interval=-1
 
