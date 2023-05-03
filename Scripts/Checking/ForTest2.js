@@ -1,4 +1,5 @@
 let obj = JSON.parse($response.body);
+let time = new Date();
 obj.result.products.managed = false;
 obj.result.products.status = "ACTIVE";
 obj.result.products.productId = "com.snowcorp.epik.subscribe.plan.oneyear";
