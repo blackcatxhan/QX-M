@@ -1,5 +1,5 @@
 let obj = JSON.parse($response.body);
-obj["result"]["products"]={
+obj["result"]["products"][]={
   "managed" : false,
         "status" : "ACTIVE",
         "startDate" : 1683153619000,
