@@ -1,5 +1,14 @@
-var obj = JSON.parse($response.body); 
-obj['is_admin'] = 1; 
-obj['is_netplus'] = 1; 
-obj['first_vip_login'] = 1; 
-$done({body: JSON.stringify(obj)});
+{
+  "result" : {
+    "products" : [
+      {
+        "managed" : false,
+        "status" : "ACTIVE",
+        "startDate" : 1683153619000,
+        "productId" : "com.snowcorp.epik.subscribe.plan.oneyear",
+        "expireDate" : 4087126586000
+      }
+    ],
+    "activated" : true
+  }
+}
