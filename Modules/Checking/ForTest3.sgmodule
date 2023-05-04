@@ -1,8 +1,8 @@
-#!name=Unlock 1Blocker
-#!desc=1Blocker
+#!name=Unlock EPIK
+#!desc=EPIK
 [MITM]
-hostname= %APPEND% api.tusachthanhnien.vn
+hostname= %APPEND% purchase-epik-api.snow.me
 [Script]
-1Blocker = type=http-response,pattern=^https:\/\/api\.tusachthanhnien\.vn\/loginViaVegaIDAccount*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest3.js,script-update-interval=-1
+EPIK = type=script-echo-response,pattern=^https:\/\/purchase-epik-api.snow.me\/v1\/purchase\/subscription\/subscriber\/status$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest3.js,script-update-interval=-1
 
 
