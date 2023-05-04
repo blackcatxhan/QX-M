@@ -1,10 +1,14 @@
 let obj = JSON.parse($response.body);
-let time = new Date();
-obj.result.products.managed = false;
-obj.result.products.status = "ACTIVE";
-obj.result.products.productId = "com.snowcorp.epik.subscribe.plan.oneyear";
-obj.result.products.startDate = Math.floor(time);
-time.setFullYear(time.getFullYear() + 1);
-obj.result.products.expireDate = Math.floor(time);
-obj.result.activated = true;
+
+if ($request.url.includes('https://beebook.cloud/api/api_user_item')) {
+  obj.data.beecoin = 99999;
+  obj.data.gem = 99999;
+} else if ($request.url.includes('https://beebook.cloud/api/api_user_data')) {
+  let obj = JSON.parse($response.body);
+  if (obj.data.level) {
+    obj.data.level.num = 999;
+    obj.data.level.exp = 9999;
+  }
+}
+
 $done({body: JSON.stringify(obj)});
