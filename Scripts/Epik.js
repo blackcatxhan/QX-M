@@ -1,3 +1,6 @@
+// hostname= %APPEND% purchase-epik-api.snow.me
+// pattern=^https:\/\/purchase-epik-api.snow.me\/v1\/purchase\/subscription\/subscriber\/status$
+
 let obj = JSON.parse($response.body);
 obj = {
 	  "result" : {
