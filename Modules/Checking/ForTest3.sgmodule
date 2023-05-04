@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% simpler.vyzn.io
 [Script]
-simpler = type=http-response,pattern=^https:\/\/simpler\.vyzn\.io\/api\/v5\/(user|profile)\/get?$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest3.js,script-update-interval=-1
+simpler = type=http-response,pattern=^https:\/\/simpler\.vyzn\.io\/api\/v5\/(user|profile)\/get*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest3.js,script-update-interval=-1
 
 
