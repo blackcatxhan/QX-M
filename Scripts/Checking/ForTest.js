@@ -1,8 +1,3 @@
-const now = new Date();
-const futureDate = new Date("2099-07-07T07:07:00");
-const timeDiff = futureDate.getTime() - now.getTime();
-const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
 var obj = JSON.parse($response.body);
 
 obj.data.plan_subscriptions[0].remaining_day = 7;
