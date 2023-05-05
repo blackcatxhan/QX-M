@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% apis.littlefox.com
 [Script]
-littlefox = type=http-response,pattern=^https:\/\/apis\.littlefox\.com\/api\/v1\/contents\/(story|.*)\/(.*|player?.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest.js,script-update-interval=-1
+littlefox = type=http-response,pattern=^https:\/\/apis\.littlefox\.com\/api\/v1\/contents\/(story|song|.*)\/(.*|player?.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest.js,script-update-interval=-1
 
 
