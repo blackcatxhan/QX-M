@@ -9,7 +9,7 @@ function replaceYWithF(obj) {
 }
 let url=$request.url;
 var obj = JSON.parse($response.body);
-if(url.indexOf('story')!=-1){
+if(url.indexOf('story')!=-1 || url.indexOf('song')!=-1){
 	replaceYWithF(obj);
 }
 if(url.indexOf('player?')!=-1){
