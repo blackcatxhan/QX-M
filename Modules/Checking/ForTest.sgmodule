@@ -1,8 +1,8 @@
-#!name=Unlock 1Blocker
-#!desc=1Blocker
+#!name=Unlock littlefox
+#!desc=littlefox
 [MITM]
-hostname= %APPEND% api.hanzii.net
+hostname= %APPEND% apis.littlefox.com
 [Script]
-1Blocker = type=http-response,pattern=^https:\/\/api\.hanzii\.net\/api\/account\/init-login*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest.js,script-update-interval=-1
+littlefox = type=http-response,pattern=^https:\/\/apis\.littlefox\.com\/api\/v\d\/auth\/me$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ForTest.js,script-update-interval=-1
 
 
