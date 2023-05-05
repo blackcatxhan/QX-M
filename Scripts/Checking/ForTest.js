@@ -7,6 +7,7 @@ function replaceYWithF(obj) {
     }
   }
 }
+let url=$request.url;
 var obj = JSON.parse($response.body);
 if(url.indexOf('story')!=-1){
 	replaceYWithF(obj);
