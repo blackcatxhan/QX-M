@@ -1,0 +1,8 @@
+#!name=Unlock Little Fox English
+#!desc=Little Fox English
+[MITM]
+hostname= %APPEND% apis.littlefox.com
+[Script]
+LittleFoxEnglish = type=http-response,pattern=^https:\/\/apis\.littlefox\.com\/api\/v1\/contents\/(story|song|.*)\/(.*|player?.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/LittleFoxEnglish.js,script-update-interval=-1
+
+
