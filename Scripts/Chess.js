@@ -1,5 +1,6 @@
 let obj = JSON.parse($response.body);
 let time = new Date();
+let currenttime = time.setDate(time.getDate() + 6);
 obj.data.is_apple_auto_renewable = false;
 obj.data.is_trial_eligible = true;
 obj.data.will_renew = true;
@@ -8,6 +9,6 @@ obj.data.type = "diamond";
 obj.data.sku = "diamond_yearly_032022";
 obj.data.is_apple_subscriber = false;
 //obj.data.date.start = time.setHours(time.getHours() - 1);
-obj.data.date.start = time.setDate(time.getDate() + 6);
-obj.data.date.expires = time.setDate(time.getDate() + 6);
+obj.data.date.start = currenttime;
+obj.data.date.expires = currenttime;
 $done({body: JSON.stringify(obj)});
