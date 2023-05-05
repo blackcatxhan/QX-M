@@ -5,6 +5,7 @@ obj.data.is_apple_auto_renewable = false;
 obj.data.is_trial_eligible = true;
 obj.data.will_renew = true;
 obj.data.is_premium = 1;
+obj.data.level = 3;
 obj.data.type = "diamond";
 obj.data.sku = "diamond_yearly_032022";
 obj.data.is_apple_subscriber = false;
