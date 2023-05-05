@@ -5,7 +5,7 @@ const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
 var obj = JSON.parse($response.body);
 
-obj.data.plan_subscriptions[0].remaining_day = daysLeft;
+obj.data.plan_subscriptions[0].remaining_day = 7;
 obj.data.plan_subscriptions[0].promotion = "vip_reward";
 obj.data.plan_subscriptions[0].end_at = "07:07 07-07-2099";
 obj.data.plan_subscriptions[0].start_at = "07:07 05-05-2023"";
