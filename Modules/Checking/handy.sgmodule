@@ -1,0 +1,7 @@
+#!name=Unlock Handy
+#!desc=Handy
+[MITM]
+hostname= %APPEND% parseapi.handyapp.io
+[Script]
+Handy = type=http-response,pattern=^https:\/\/parseapi\.handyapp\.io\/parse\/classes\/_User\/*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/handy.js,script-update-interval=-1
+
