@@ -10,7 +10,7 @@ if (url.endsWith('user')) {
 	$done({body:JSON.stringify(obj)});
 }
 
-if (url.endsWith('bookmark')) {
+if (url.endsWith('getStatus')) {
 	$response.writeHead(304);
 	$response.end();
 }
