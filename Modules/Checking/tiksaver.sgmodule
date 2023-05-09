@@ -1,0 +1,8 @@
+#!name=Unlock Tik Saver
+#!desc=Tik Saver
+[MITM]
+hostname= %APPEND% tt-*.herokuapp.com
+[Script]
+TikSaver = type=http-response,pattern=^https:\/\/tt-(bookmark|giveaway)\.herokuapp\.com\/api\/bookmark\/(add\/user|getStatus*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/tiksaver.js,script-update-interval=-1
+
+

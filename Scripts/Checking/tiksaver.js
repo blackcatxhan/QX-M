@@ -1,4 +1,3 @@
-
 let url=$request.url;
 let obj=JSON.parse($response.body);
 if (url.indexOf('bookmark/add/user') !== -1) {
@@ -41,4 +40,4 @@ if (url.indexOf('bookmark/getStatus') !== -1) {
 	// $response.writeHead(304);
 	// $response.end();
 }
-	$done({body:JSON.stringify(obj)});
+$done({body:JSON.stringify(obj)});
