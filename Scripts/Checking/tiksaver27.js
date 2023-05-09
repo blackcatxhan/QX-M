@@ -1,11 +1,7 @@
-function findUrl(_reg) {
-  if (_reg.test($request.url)) {
-    return $request.url;
-  }
-}
+
 let url=$request.url;
 let obj=JSON.parse($response.body);
-if (findUrl(/add\/user/)) {
+if (url.indexOf('bookmark/add/user') !== -1) {
 	obj = {
 		"code" : 8000,
 		"ok" : 0,
@@ -14,7 +10,7 @@ if (findUrl(/add\/user/)) {
 	};
 }
 
-if (findUrl(/bookmark\/getStatus/)) {
+if (url.indexOf('bookmark/getStatus') !== -1) {
 	obj = {
 	  "features": [
 		"Remove Watermark",
