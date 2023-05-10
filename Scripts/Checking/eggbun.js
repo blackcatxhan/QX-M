@@ -7,6 +7,8 @@ function replaceLockedWithFalse(obj) {
     }
   }
 }
+
+let url=$request.url;
 let obj=JSON.parse($response.body);
 if (url.indexOf('v3/accounts/sign-in') !== -1) {
 	obj.isLifetimePremium = true;
