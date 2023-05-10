@@ -19,7 +19,7 @@ if (url.indexOf('v3/accounts/sign-in') !== -1) {
 	obj.isSchoolPremium = true;
 }
 
-if (url.indexOf('v1/chapters/progress/enumerate') !== -1 && $response.status === 200) {
+if (url.indexOf('v1/chapters/progress/enumerate') !== -1) {
 	replaceLockedWithFalse(obj);
 }
 $done({body:JSON.stringify(obj)});
