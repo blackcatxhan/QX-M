@@ -6,7 +6,7 @@ obj.me = {
 
     ],
     "active_subscriptions_ids" : [
-      "fontskeyboard.font.1y_t70_1w"
+      "fontskeyboard.font.1y_t160"
     ],
     "privacy_notice" : {
       "required_consents" : [
@@ -18,8 +18,8 @@ obj.me = {
     "unique_id" : unique_id,
     "active_bundle_subscriptions" : [
       {
-        "expiry" : "2023-07-07T07:07:07+00:00",
-        "product_id" : "fontskeyboard.font.1y_t70_1w",
+        "expiry" : "2099-07-07T07:07:07+00:00",
+        "product_id" : "fontskeyboard.font.1y_t160",
         "features" : [
           "unlock"
         ]
