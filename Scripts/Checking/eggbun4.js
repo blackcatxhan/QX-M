@@ -8,6 +8,9 @@ function replaceLockedWithFalse(obj) {
   }
 }
 
+let headers = $request.headers;
+delete headers['If-None-Match'];
+
 let url=$request.url;
 let obj=JSON.parse($response.body);
 if (url.indexOf('v3/accounts/sign-in') !== -1) {
