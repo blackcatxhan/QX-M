@@ -1,3 +1,13 @@
+function replaceStatus(obj, key, value) {
+  for (var prop in obj) {
+    if (typeof obj[prop] === 'object') {
+      replaceStatus(obj[prop]);
+    } else if (prop === key) {
+      obj[prop] = value;
+    }
+  }
+}
+
 let url = $request.url;
 let obj = JSON.parse($response.body);
 
@@ -18,12 +28,12 @@ if (url.indexOf('app/account/myinfo') !== -1) {
     };
 	obj.data.vip_type = 1;
 	obj.data.sign = "BlackCatX - LK Team";
-	obj.badge = {
+	obj.data.badge = {
 		"name": "Premium",
 		"color": "#F26183",
 		"uri": "bstar://pgc/vip_zone?page_id=360009"
 	  };
-	obj.bg_accessory = {
+	obj.data.bg_accessory = {
 	  "show_guide": true,
 	  "landscape_img": "https://pic.bstarstatic.com/management/6b683b14c768b3ccccda6c93daf6ea90.png",
 	  "portrait_img": "https://pic.bstarstatic.com/management/b46a1310684e48948e52bc3b9cbb7349.png",
@@ -57,6 +67,32 @@ if (url.indexOf('app/account/mine') !== -1) {
 		"status_bar_mode": 1
 	  }
 	};
+}
+
+if (url.indexOf('ogv/app/season/download') !== -1) {
+	replaceStatus(obj, 'pay_status', 0);
+}
+
+if (url.indexOf('ogv/view/app/season2') !== -1) {
+	obj.data.status = 2;
+	obj.data.sections.section.forEach(ep => {
+	  ep.ep_details.forEach(details => {
+		details.status = 2;
+		details.badge = null;
+		delete details.dialog;
+	  });
+	});
+	delete obj.data.vip_benefits;
+	obj.data.user_status.vip = 1;
+}
+
+if (url.indexOf('ogv/view/app/episode') !== -1) {
+	obj.data.watermark.text = "LK Team";
+}
+
+if (url.indexOf('ogv/playurl') !== -1) {
+	replaceStatus(obj, 'need_vip', false);
+	replaceStatus(obj, 'need_login', false);
 }
 	
 $done({body: JSON.stringify(obj)});
