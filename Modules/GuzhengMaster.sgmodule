@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% a2.gistap.com
 [Script]
-GuzhengMaster = type=http-response,pattern=^https:\/\/a2\.gistap\.com\/api\/guzhengunity\/index.php?(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/GuzhengMaster.js,script-update-interval=-1
+GuzhengMaster = type=http-response,pattern=^https:\/\/a2\.gistap\.com\/api\/guzhengunity\/index.php?(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/GuzhengMaster.js,script-update-interval=-1
 
 

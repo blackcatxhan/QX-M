@@ -1,0 +1,8 @@
+#!name=Unlock Ink
+#!desc=Ink
+[MITM]
+hostname= %APPEND% api.adapty.io
+[Script]
+Ink = type=http-response,pattern=^https:\/\/api\.adapty\.io\/api\/v1\/sdk\/analytics\/profiles\/(.*)\/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/ink.js,script-update-interval=-1
+
+
