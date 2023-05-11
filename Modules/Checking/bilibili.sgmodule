@@ -1,0 +1,8 @@
+#!name=Unlock bilibili
+#!desc=bilibili
+[MITM]
+hostname= %APPEND% app.biliintl.com
+[Script]
+bilibili = type=http-response,pattern=^https:\/\/app\.biliintl\.com\/intl\/gateway\/v2\/(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/bilibili.js,script-update-interval=-1
+
+
