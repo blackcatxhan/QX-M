@@ -1,0 +1,8 @@
+#!name=Unlock The Coach
+#!desc=The Coach
+[MITM]
+hostname= %APPEND% tofu.stepup.edu.vn
+[Script]
+Coach = type=http-response,pattern=^https:\/\/tofu\.stepup\.edu\.vn\/(tofu|usersv)\/api\/v1\/(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/theCoach.js,script-update-interval=-1
+
+
