@@ -65,7 +65,7 @@ if (url.indexOf('v1/gym/course/listening/lesson?') !== -1) {
 }
 
 if (url.indexOf('v1/product-user') !== -1) {
-	obj.data.is_trial = true;
+	// obj.data.is_trial = true;
 	// obj.data.is_trial_x_day = true;
 	obj.data.day = 77777;
 	obj.data.hour = 7;
