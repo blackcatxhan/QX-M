@@ -12,7 +12,7 @@ let obj = JSON.parse($response.body);
 let url = $request.url;
 
 if (url.indexOf('tofu-open/trial_day') !== -1) {
-	obj.data.trial_day = 7777;
+	obj.data.trial_day = 77777;
 }
 
 if (url.indexOf('v1/user?') !== -1) {
