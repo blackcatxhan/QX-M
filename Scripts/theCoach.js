@@ -17,7 +17,7 @@ if (url.indexOf('tofu-open/trial_day') !== -1) {
 
 if (url.indexOf('v1/user?') !== -1) {
 	obj.data.is_premium = true;
-	obj.data.product_expired_time = 4087091227;
+	obj.data.product_expired_time = '2099-07-07T07:07:07.799';
 }
 
 if (url.indexOf('v1/learnfeed/level?') !== -1) {
