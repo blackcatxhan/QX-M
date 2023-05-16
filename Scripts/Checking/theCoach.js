@@ -1,10 +1,9 @@
-function replaceLockedWithFalse(obj, key) {
-  var keyString = key;
+function replaceValueToAny(obj, key, value) {
   for (var prop in obj) {
     if (typeof obj[prop] === 'object') {
-      replaceLockedWithFalse(obj[prop]);
-    } else if (prop === keyString) {
-      obj[prop] = false;
+      replaceValueToAny(obj[prop], key, value);
+    } else if (prop === key) {
+      obj[prop] = value;
     }
   }
 }
@@ -22,22 +21,26 @@ if (url.indexOf('v1/user?') !== -1) {
 }
 
 if (url.indexOf('v1/learnfeed/level?') !== -1) {
-	replaceLockedWithFalse(obj, 'is_lock');
-	replaceLockedWithFalse(obj, 'is_prize');
+	replaceValueToAny(obj, 'is_lock', false);
+	replaceValueToAny(obj, 'is_prize', false);
 }
 
 if (url.indexOf('v1/learnfeed/level/') !== -1) {
-	replaceLockedWithFalse(obj, 'is_prize');
+	replaceValueToAny(obj, 'is_prize', false);
 }
 
 if (url.indexOf('v1/learnfeed/stage') !== -1) {
-	replaceLockedWithFalse(obj, 'is_lock');
-	replaceLockedWithFalse(obj, 'is_lock_on_board');
-	replaceLockedWithFalse(obj, 'is_lock_register');
+	replaceValueToAny(obj, 'is_lock', false);
+	replaceValueToAny(obj, 'is_lock_on_board', false);
+	replaceValueToAny(obj, 'is_lock_register', false);
 }
 
 if (url.indexOf('v1/communicate/topics') !== -1) {
-	replaceLockedWithFalse(obj, 'is_pro');
+	replaceValueToAny(obj, 'is_pro', false);
+}
+
+if (url.indexOf('v1/communicate/lessons') !== -1) {
+	replaceValueToAny(obj, 'is_trial', true);
 }
 
 $done({body: JSON.stringify(obj)});
