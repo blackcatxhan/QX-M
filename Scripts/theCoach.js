@@ -42,7 +42,8 @@ if (url.indexOf('v1/communicate/topics') !== -1) {
 
 if (url.indexOf('v1/communicate/lessons') !== -1) {
 	replaceValueToAny(obj, 'is_trial', true);
-	replaceValueToAny(obj, 'access_type', 'USER');
+	// replaceValueToAny(obj, 'access_type', 'USER');
+	replaceValueToAny(obj, 'access_type', 'DEVICE');
 }
 
 if (url.indexOf('v1/ai_conversation/topics?') !== -1) {
