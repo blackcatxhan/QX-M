@@ -83,8 +83,8 @@ obj = {
 };
 
 switch ($request.url) {
-    case findUrl(/analytics\/profiles\//):
-        break;
+    // case findUrl(/analytics\/profiles\//):
+        // break;
 	case findUrl(/in-apps\/apple\/receipt\/validate/):
         obj.data.attributes.apple_validation_result = {
 			"environment" : "Production",
