@@ -1,8 +1,0 @@
-#!name=Unlock Fonts
-#!desc=Fonts
-[MITM]
-hostname= %APPEND% fonts.oracle.bendingspoonsapps.com
-[Script]
-Fonts = type=http-response,pattern=^https:\/\/fonts\.oracle\.bendingspoonsapps\.com\/v2\/users\/setup$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/fonts.js,script-update-interval=-1
-
-
