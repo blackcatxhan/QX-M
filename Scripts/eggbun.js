@@ -15,7 +15,6 @@ function findUrl(_reg) {
 }
 
 let obj = JSON.parse($response.body);
-let url = $request.url;
 
 switch ($request.url) {
 	case findUrl(/v3\/accounts\/sign-in/):
