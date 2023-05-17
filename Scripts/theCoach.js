@@ -61,14 +61,14 @@ switch ($request.url) {
         replaceValueToAny(obj, 'is_lock_product', false);
         replaceValueToAny(obj, 'is_lock_login', false);
         break;
-    case findUrl(/v1\/product-user/):
+    // case findUrl(/v1\/product-user/):
         // obj.data.is_trial = true;
         // obj.data.is_trial_x_day = true;
-        obj.data.day = 77777;
-        obj.data.hour = 7;
-        obj.data.second = 7;
-        obj.data.minute = 7;
-        break;
+        // obj.data.day = 77777;
+        // obj.data.hour = 7;
+        // obj.data.second = 7;
+        // obj.data.minute = 7;
+        // break;
 }
 
 $done({
