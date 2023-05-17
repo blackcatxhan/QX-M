@@ -10,9 +10,9 @@ function replaceDiamondWithNull(obj) {
 
 let obj = JSON.parse($response.body);
 
-if(obj.action == "get_data_state")
-{
-	obj.data.isShowSubscribeChannel = true;
+switch (obj.action) {
+  case "get_data_state":
+    obj.data.isShowSubscribeChannel = true;
 	obj.data.numJewels = 999999999;
 	obj.data.inAppPurchase = {
       "isUnlockSong" : true,
@@ -35,11 +35,11 @@ if(obj.action == "get_data_state")
 	  delete instrument.isVip;
 	  return instrument;
 	});
-}
+    break;
 
-if(obj.action == "get_songs_tab_album")
-{
-	replaceDiamondWithNull(obj);
+  case "get_songs_tab_album":
+    replaceDiamondWithNull(obj);
+    break;
 }
 	
 $done({body: JSON.stringify(obj)});

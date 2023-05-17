@@ -1,19 +1,33 @@
 function replaceYWithF(obj) {
-  for (var prop in obj) {
-    if (obj[prop] === 'Y') {
-      obj[prop] = 'F';
-    } else if (typeof obj[prop] === 'object') {
-      replaceYWithF(obj[prop]);
+    for (var prop in obj) {
+        if (obj[prop] === 'Y') {
+            obj[prop] = 'F';
+        } else if (typeof obj[prop] === 'object') {
+            replaceYWithF(obj[prop]);
+        }
     }
-  }
 }
-let url=$request.url;
-var obj = JSON.parse($response.body);
-if(url.indexOf('story')!=-1 || url.indexOf('song')!=-1){
-	replaceYWithF(obj);
+
+function findUrl(_reg) {
+    if (_reg.test($request.url)) {
+        return $request.url;
+    }
 }
-if(url.indexOf('player?')!=-1){
-	delete obj.data.preview_time;
-	replaceYWithF(obj);
+
+let obj = JSON.parse($response.body);
+let url = $request.url;
+
+switch ($request.url) {
+    case findUrl(/story/):
+        replaceYWithF(obj);
+        break;
+    case findUrl(/song/):
+        replaceYWithF(obj);
+        break;
+    case findUrl(/player?/):
+        delete obj.data.preview_time;
+        replaceYWithF(obj);
+        break;
 }
+
 $done({body: JSON.stringify(obj)});

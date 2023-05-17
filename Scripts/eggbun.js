@@ -8,19 +8,27 @@ function replaceLockedWithFalse(obj) {
   }
 }
 
-let url=$request.url;
-let obj=JSON.parse($response.body);
-if (url.indexOf('v3/accounts/sign-in') !== -1) {
-	obj.isLifetimePremium = true;
-	obj.isAdmin = true;
-	obj.isGptChat = true;
-	obj.expired = false;
-	obj.isAlumni = true;
-	obj.isSchoolPremium = true;
+function findUrl(_reg) {
+    if (_reg.test($request.url)) {
+        return $request.url;
+    }
 }
 
-if (url.indexOf('/chapters/') !== -1) {
-	replaceLockedWithFalse(obj);
+let obj = JSON.parse($response.body);
+let url = $request.url;
+
+switch ($request.url) {
+	case findUrl(/v3\/accounts\/sign-in/):
+        obj.isLifetimePremium = true;
+		obj.isAdmin = true;
+		obj.isGptChat = true;
+		obj.expired = false;
+		obj.isAlumni = true;
+		obj.isSchoolPremium = true;
+        break;
+    case findUrl(/chapters/):
+        replaceLockedWithFalse(obj);
+        break;
 }
 
 $done({body:JSON.stringify(obj)});
