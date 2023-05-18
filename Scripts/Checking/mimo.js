@@ -3,8 +3,25 @@ function findUrl(_reg) {
         return $request.url;
     }
 }
-
+function replaceValueToAny(obj, key, value) {
+    for (var prop in obj) {
+        if (typeof obj[prop] === 'object') {
+            replaceValueToAny(obj[prop], key, value);
+        } else if (prop === key) {
+            obj[prop] = value;
+        }
+    }
+}
 let obj = JSON.parse($response.body);
+const currentDate = new Date();
+const year = currentDate.getUTCFullYear();
+const month = String(currentDate.getUTCMonth() + 1).padStart(2, '0');
+const day = String(currentDate.getUTCDate()).padStart(2, '0');
+const hours = String(currentDate.getUTCHours()).padStart(2, '0');
+const minutes = String(currentDate.getUTCMinutes()).padStart(2, '0');
+const seconds = String(currentDate.getUTCSeconds()).padStart(2, '0');
+const milliseconds = String(currentDate.getUTCMilliseconds()).padStart(3, '0');
+const formattedTime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}+00:00`;
 
 switch ($request.url) {
     case findUrl(/subscriptions\/receipt/):
@@ -62,23 +79,27 @@ switch ($request.url) {
 		};
         break;
     case findUrl(/products\/user/):
-        const purchasedProducts = [];
+        const purchasedProductss = [];
 		obj.productsAvailableForPurchase.forEach(product => {
 		  const newProduct = {
 			buyMode: "once",
 			id: (2548000 + Math.floor(Math.random() * 1000)),
-			boughtAt: new Date().toISOString(),
+			boughtAt: formattedTime,
 			productType: product.productType,
 			price: product.price,
 			coinPrice: product.coinPrice
 		  };
 
-		  purchasedProducts.push(newProduct);
+		  purchasedProductss.push(newProduct);
 		});
-		obj.purchasedProducts = purchasedProducts;
+		obj.purchasedProducts = purchasedProductss;
+		replaceValueToAny(obj, 'coinPrice', 0);
         break;
     case findUrl(/users\//):
         obj.isPremium = true;
+        break;
+	case findUrl(/user\/coins\//):
+        obj.coins = 7777777;
         break;
 }
 
