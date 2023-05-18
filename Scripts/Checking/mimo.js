@@ -3,16 +3,8 @@ function findUrl(_reg) {
         return $request.url;
     }
 }
-function replaceValueToAny(obj, key, value) {
-    for (var prop in obj) {
-        if (typeof obj[prop] === 'object') {
-            replaceValueToAny(obj[prop], key, value);
-        } else if (prop === key) {
-            obj[prop] = value;
-        }
-    }
-}
 let obj = JSON.parse($response.body);
+
 const currentDate = new Date();
 const year = currentDate.getUTCFullYear();
 const month = String(currentDate.getUTCMonth() + 1).padStart(2, '0');
@@ -93,13 +85,9 @@ switch ($request.url) {
 		  purchasedProductss.push(newProduct);
 		});
 		obj.purchasedProducts = purchasedProductss;
-		replaceValueToAny(obj, 'coinPrice', 0);
         break;
     case findUrl(/users\//):
         obj.isPremium = true;
-        break;
-	case findUrl(/user\/coins\//):
-        obj.coins = 7777777;
         break;
 }
 
