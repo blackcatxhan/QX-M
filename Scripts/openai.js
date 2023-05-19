@@ -162,7 +162,7 @@ $done({
        obj = $response.body;
 var result;
 
-if (obj.includes("davinci-002-render-sha-mobile")) {
+if (/davinci-002-render-sha-mobile/.test(obj)) {
   result = obj;
 } else {
   result = obj.replace(/text-davinci-002-render-sha/g, "gpt-4-mobile");
