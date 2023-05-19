@@ -4,11 +4,10 @@ function findUrl(_reg) {
     }
 }
 
-
+let obj;
 
 switch ($request.url) {
     case findUrl(/models/):
-    let obj = JSON.parse($response.body);
         obj = {
   "categories" : [
     {
@@ -160,14 +159,14 @@ $done({
 });
         break;
     case findUrl(/conversation/):
-        let obj = $response.body;
+        obj = $response.body;
 var result = obj.replace(/text-davinci-002-render-sha-mobile/g, "gpt-4-mobile");
 $done({
     body: result
 });
         break;
     case findUrl(/accounts\/check\//):
-    let obj = JSON.parse($response.body);
+        obj = JSON.parse($response.body);
 obj.accounts.default.account.has_previously_paid_subscription = true
 obj.accounts.default.account.processor = {
     "a001": {
