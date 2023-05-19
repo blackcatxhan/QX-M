@@ -1,8 +1,8 @@
 #!name=Unlock OpenAI
 #!desc=OpenAI
 [MITM]
-hostname= %APPEND% api.chat.openai.com
+hostname= %APPEND% ios.chat.openai.com
 [Script]
-OpenAI = type=http-response,pattern=^https:\/\/api\.chat\.openai\.com\/backend-api\/accounts\/check\/(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/openai.js,script-update-interval=-1
+OpenAI = type=http-response,pattern=^https:\/\/ios\.chat\.openai\.com\/backend-api\/accounts\/check\/(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/openai.js,script-update-interval=-1
 
 
