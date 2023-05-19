@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% mochien3.1-api.mochidemy.com
 [Script]
-Mochidemy = type=http-response,pattern=^https:\/\/mochien3.1-api.mochidemy.com/v3.0/profile?(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/mochidemy.js,script-update-interval=-1
+Mochidemy = type=http-response,pattern=^https:\/\/mochien3.1-api.mochidemy.com/(v3.0|v3.1)/(profile?(.*)|words\/summary-ios?(.*)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/mochidemy.js,script-update-interval=-1
 
 
