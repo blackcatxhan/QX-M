@@ -4,10 +4,11 @@ function findUrl(_reg) {
     }
 }
 
-let obj = JSON.parse($response.body);
+
 
 switch ($request.url) {
     case findUrl(/models/):
+    let obj = JSON.parse($response.body);
         obj = {
   "categories" : [
     {
@@ -154,8 +155,19 @@ switch ($request.url) {
     }
   ]
 };
+$done({
+    body: JSON.stringify(obj)
+});
+        break;
+    case findUrl(/conversation/):
+        let obj = $response.body;
+var result = obj.replace(/text-davinci-002-render-sha-mobile/g, "gpt-4-mobile");
+$done({
+    body: result
+});
         break;
     case findUrl(/accounts\/check\//):
+    let obj = JSON.parse($response.body);
 obj.accounts.default.account.has_previously_paid_subscription = true
 obj.accounts.default.account.processor = {
     "a001": {
@@ -176,9 +188,10 @@ obj.accounts.default.last_active_subscription = {
 	"will_renew": true,
 	"purchase_origin_platform": "openai"
 };
-        break;
-}
-
 $done({
     body: JSON.stringify(obj)
 });
+        break;
+}
+
+
