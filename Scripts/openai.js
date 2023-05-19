@@ -159,11 +159,14 @@ $done({
 });
         break;
     case findUrl(/conversation/):
-        obj = $response.body;
-var result = obj.replace(/text-davinci-002-render-sha/g, "gpt-4-mobile");
-$done({
-    body: result
-});
+       obj = $response.body;
+var result;
+
+if (obj.includes("davinci-002-render-sha-mobile")) {
+  result = obj;
+} else {
+  result = obj.replace(/text-davinci-002-render-sha/g, "gpt-4-mobile");
+}
         break;
     case findUrl(/accounts\/check\//):
         obj = JSON.parse($response.body);
