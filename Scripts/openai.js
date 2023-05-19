@@ -160,7 +160,7 @@ $done({
         break;
     case findUrl(/conversation/):
         obj = $response.body;
-var result = obj.replace(/text-davinci-002-render-sha-mobile/g, "gpt-4-mobile");
+var result = obj.replace(/text-davinci-002-render-sha/g, "gpt-4-mobile");
 $done({
     body: result
 });
