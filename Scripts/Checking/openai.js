@@ -1,3 +1,11 @@
+// #!name=Unlock OpenAI
+// #!desc=OpenAI
+// [MITM]
+// hostname= %APPEND% ios.chat.openai.com
+// [Script]
+// OpenAI = type=http-response,pattern=^https:\/\/ios\.chat\.openai\.com\/backend-api\/accounts\/check\/(.*),requires-body=1,max-size=0,script-path=SCRIPT_PATH,script-update-interval=-1
+
+
 var body = $response.body;
 var obj = JSON.parse(body);
 obj.accounts.default.account.has_previously_paid_subscription = true
@@ -10,7 +18,7 @@ obj.accounts.default.account.processor = {
     }
 };
 obj.accounts.default.entitlement = {
-	"expires_at": "2029-05-26T05:05:04Z",
+	"expires_at": "2099-07-07T07:07:07Z",
 	"subscription_id": null,
 	"subscription_plan": "chatgptplusplan",
 	"has_active_subscription": true
