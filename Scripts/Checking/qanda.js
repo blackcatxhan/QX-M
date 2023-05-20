@@ -11,7 +11,7 @@ switch ($request.url) {
 		  "payload" : {
 			"product_skus" : [
 			  {
-				"sku" : "MATHPRESSO.QANDA.ADFREE.VN.19000",
+				"sku" : "MATHPRESSO.QANDA.ADFREE.FREE_TRIAL.VN.19000",
 				"expires_date" : "2099-07-07T07:07:07+09:00",
 				"auto_renewing" : true
 			  }
@@ -38,7 +38,7 @@ switch ($request.url) {
 			  "platform" : "ios",
 			  "price" : 19000,
 			  "consumer_user_id" : user_id,
-			  "platform_sku" : "MATHPRESSO.QANDA.ADFREE.VN.19000",
+			  "platform_sku" : "MATHPRESSO.QANDA.ADFREE.FREE_TRIAL.VN.19000",
 			  "currency" : "VND",
 			  "payment_method" : "ios"
 			},
