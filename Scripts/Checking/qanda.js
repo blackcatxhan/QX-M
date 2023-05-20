@@ -22,22 +22,20 @@ switch ($request.url) {
 		};
         break;
     case findUrl(/membership-service\/membership\/users\/status/):
-		const user_id = 87353000 + Math.floor(Math.random() * 1000);
-		const id = 500000 + Math.floor(Math.random() * 1000);
         obj.free_trial_possible = true;
         obj.show_premium_banner = false;
         obj.current_subscription = {
 			"start_at" : "2023-05-20T11:59:40Z",
-			"id" : id,
+			"id" : 500475,
 			"expire_at" : "2099-07-07T07:07:07Z",
 			"billing_info" : {
 			  "product_code" : "vi_ad_free_membership_with_trial_a",
 			  "id" : id,
-			  "payer_user_id" : user_id,
+			  "payer_user_id" : 87353459,
 			  "next_billing_at" : null,
 			  "platform" : "ios",
 			  "price" : 19000,
-			  "consumer_user_id" : user_id,
+			  "consumer_user_id" : 87353459,
 			  "platform_sku" : "MATHPRESSO.QANDA.ADFREE.FREE_TRIAL.VN.19000",
 			  "currency" : "VND",
 			  "payment_method" : "ios"
