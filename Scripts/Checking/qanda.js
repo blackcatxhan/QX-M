@@ -48,7 +48,8 @@ switch ($request.url) {
 			  "product_type" : "AD_FREE",
 			  "name" : "vi_ad_free_membership_a",
 			  "plan_type" : "NORMAL"
-			};
+			}
+		};
 		break;
 }
 
