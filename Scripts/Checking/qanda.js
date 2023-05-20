@@ -4,17 +4,6 @@ function findUrl(_reg) {
     }
 }
 let obj = JSON.parse($response.body);
-const currentDate = new Date();
-const year = currentDate.getUTCFullYear();
-const month = String(currentDate.getUTCMonth() + 1).padStart(2, '0');
-const day = (String(currentDate.getUTCDate()).padStart(2, '0'));
-const day_purchase = (String(currentDate.getUTCDate()).padStart(2, '0'))+7;
-const hours = String(currentDate.getUTCHours()).padStart(2, '0');
-const minutes = String(currentDate.getUTCMinutes()).padStart(2, '0');
-const seconds = String(currentDate.getUTCSeconds()).padStart(2, '0');
-const purchase_time = `${year}-${month}-${day_purchase}T${hours}:${minutes}:${seconds}+09:00`;
-const currentTime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
-const SeventTime = `${year}-${month}-${day_purchase}T${hours}:${minutes}:${seconds}Z`;
 
 switch ($request.url) {
     case findUrl(/payment-service\/api\/v1\/ios\/purchase_histories/):
@@ -22,8 +11,8 @@ switch ($request.url) {
 		  "payload" : {
 			"product_skus" : [
 			  {
-				"sku" : "MATHPRESSO.QANDA.ADFREE.FREE_TRIAL.VN.19000",
-				"expires_date" : purchase_time,
+				"sku" : "MATHPRESSO.QANDA.ADFREE.VN.19000",
+				"expires_date" : "2099-007-077T07:07:07+09:00",
 				"auto_renewing" : true
 			  }
 			]
@@ -38,26 +27,26 @@ switch ($request.url) {
         obj.free_trial_possible = true;
         obj.show_premium_banner = false;
         obj.current_subscription = {
-			"start_at" : currentTime,
+			"start_at" : "2023-05-20T11:59:40Z",
 			"id" : id,
-			"expire_at" : SeventTime,
+			"expire_at" : "2099-007-07T07:07:07Z",
 			"billing_info" : {
-			  "product_code" : "vi_ad_free_membership_with_trial_a",
+			  "product_code" : "vi_ad_free_membership_a",
 			  "id" : id,
 			  "payer_user_id" : user_id,
 			  "next_billing_at" : null,
 			  "platform" : "ios",
 			  "price" : 19000,
 			  "consumer_user_id" : user_id,
-			  "platform_sku" : "MATHPRESSO.QANDA.ADFREE.FREE_TRIAL.VN.19000",
+			  "platform_sku" : "MATHPRESSO.QANDA.ADFREE.VN.19000",
 			  "currency" : "VND",
 			  "payment_method" : "ios"
 			},
 			"plan" : {
-			  "product_code" : "vi_ad_free_membership_with_trial_a",
+			  "product_code" : "vi_ad_free_membership_a",
 			  "is_manual" : false,
 			  "product_type" : "AD_FREE",
-			  "name" : "vi_ad_free_membership_with_trial_a",
+			  "name" : "vi_ad_free_membership_a",
 			  "plan_type" : "NORMAL"
 			},
 			"is_trial_period" : true,
