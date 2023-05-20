@@ -1,3 +1,11 @@
+// #!name=Unlock OpenAI
+// #!desc=OpenAI
+// [MITM]
+// hostname= %APPEND% ios.chat.openai.com
+// [Script]
+// OpenAI = type=http-response,pattern=^https:\/\/ios\.chat\.openai\.com\/backend-api\/(models|conversation|accounts\/check\/(.*)),requires-body=1,max-size=0,script-path=SCRIPT_PATH,script-update-interval=-1
+
+
 function findUrl(_reg) {
     if (_reg.test($request.url)) {
         return $request.url;
