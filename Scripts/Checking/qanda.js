@@ -59,7 +59,9 @@ switch ($request.url) {
 			  "product_type" : "AD_FREE",
 			  "name" : "vi_ad_free_membership_with_trial_a",
 			  "plan_type" : "NORMAL"
-			}
+			},
+			"is_trial_period" : true,
+			"auto_renewing" : true
 		};
 		break;
 }
