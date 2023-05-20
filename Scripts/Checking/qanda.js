@@ -12,7 +12,7 @@ switch ($request.url) {
 		  "payload" : {
 			"product_skus" : [
 			  {
-				"sku" : "MATHPRESSO.QANDA.ADFREE.VN.19000",
+				"sku" : "MATHPRESSO.QANDA.ADFREE.FREE_TRIAL.VN.19000",
 				"expires_date" : "2099-07-07T19:07:07+09:00",
 				"auto_renewing" : true
 			  }
@@ -31,22 +31,22 @@ switch ($request.url) {
 			"id" : 500475,
 			"expire_at" : "2099-07-07T07:07:07Z",
 			"billing_info" : {
-			  "product_code" : "vi_ad_free_membership_a",
+			  "product_code" : "vi_ad_free_membership_with_trial_a",
 			  "id" : (500000 + Math.floor(Math.random() * 1000)),
 			  "payer_user_id" : user_id,
 			  "next_billing_at" : null,
 			  "platform" : "ios",
 			  "price" : 19000,
 			  "consumer_user_id" : user_id,
-			  "platform_sku" : "MATHPRESSO.QANDA.ADFREE.VN.19000",
+			  "platform_sku" : "MATHPRESSO.QANDA.ADFREE.FREE_TRIAL.VN.19000",
 			  "currency" : "VND",
 			  "payment_method" : "ios"
 			},
 			"plan" : {
-			  "product_code" : "vi_ad_free_membership_a",
+			  "product_code" : "vi_ad_free_membership_with_trial_a",
 			  "is_manual" : false,
 			  "product_type" : "AD_FREE",
-			  "name" : "vi_ad_free_membership_a",
+			  "name" : "vi_ad_free_membership_with_trial_a",
 			  "plan_type" : "NORMAL"
 			}
 		};
