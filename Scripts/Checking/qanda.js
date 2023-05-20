@@ -31,7 +31,7 @@ switch ($request.url) {
 			"id" : id,
 			"expire_at" : "2099-07-07T07:07:07Z",
 			"billing_info" : {
-			  "product_code" : "vi_ad_free_membership_a",
+			  "product_code" : "vi_ad_free_membership_with_trial_a",
 			  "id" : id,
 			  "payer_user_id" : user_id,
 			  "next_billing_at" : null,
@@ -43,10 +43,10 @@ switch ($request.url) {
 			  "payment_method" : "ios"
 			},
 			"plan" : {
-			  "product_code" : "vi_ad_free_membership_a",
+			  "product_code" : "vi_ad_free_membership_with_trial_a",
 			  "is_manual" : false,
 			  "product_type" : "AD_FREE",
-			  "name" : "vi_ad_free_membership_a",
+			  "name" : "vi_ad_free_membership_with_trial_a",
 			  "plan_type" : "NORMAL"
 			},
 			"is_trial_period" : true,
