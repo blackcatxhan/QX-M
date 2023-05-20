@@ -12,7 +12,7 @@ switch ($request.url) {
 			"product_skus" : [
 			  {
 				"sku" : "MATHPRESSO.QANDA.ADFREE.VN.19000",
-				"expires_date" : "2099-007-077T07:07:07+09:00",
+				"expires_date" : "2099-07-07T07:07:07+09:00",
 				"auto_renewing" : true
 			  }
 			]
@@ -29,7 +29,7 @@ switch ($request.url) {
         obj.current_subscription = {
 			"start_at" : "2023-05-20T11:59:40Z",
 			"id" : id,
-			"expire_at" : "2099-007-07T07:07:07Z",
+			"expire_at" : "2099-07-07T07:07:07Z",
 			"billing_info" : {
 			  "product_code" : "vi_ad_free_membership_a",
 			  "id" : id,
