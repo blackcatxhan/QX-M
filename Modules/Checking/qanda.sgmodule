@@ -1,8 +1,0 @@
-#!name=Unlock QANDA
-#!desc=QANDA
-[MITM]
-hostname= %APPEND% api-gateway.qanda.ai
-[Script]
-QANDA = type=http-response,pattern=^https:\/\/api-gateway\.qanda\.ai\/(payment-service\/api\/v1\/ios\/purchase_histories\/|membership-service\/membership\/users\/status\/)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/qanda.js,script-update-interval=-1
-
-
