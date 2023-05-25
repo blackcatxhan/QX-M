@@ -27,39 +27,13 @@ function generateRandomEmail() {
 
   return randomEmail;
 }
-function generateRandomToken(length) {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let randomString = '';
-
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    randomString += characters[randomIndex];
-  }
-
-  return randomString;
-}
-function generateRandomAccessToken() {
-  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.';
-  const tokenLength = 169; // Increased by 1 to accommodate the dot
-  let randomToken = '';
-
-  for (let i = 0; i < tokenLength; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    randomToken += characters[randomIndex];
-  }
-
-  return randomToken;
-}
-
-const randomAccessToken = generateRandomAccessToken();
-const randomToken = generateRandomToken(22);
 const randomEmail = generateRandomEmail();
 const randomString = generateRandomString();
 
 let obj = JSON.parse($response.body);
 
 obj = {
-  "refresh_token" : randomToken,
+  "refresh_token" : "JaLGlbX0VOtLFJFnfhzZYw",
   "user" : {
     "id" : randomString,
     "phone" : "",
@@ -96,7 +70,7 @@ obj = {
     "email" : randomEmail
   },
   "token_type" : "bearer",
-  "access_token" : randomAccessToken,
+  "access_token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjg1NTc0NTQzLCJzdWIiOiI2MGIyNDA4YS00MjJkLTRjMDItODdlZS1mY2RhNjdkY2M0ODgiLCJlbWFpbCI6Im91cndvcmxkbWFnaWNpYW5AZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE2ODQ5Njk3NDN9XSwic2Vzc2lvbl9pZCI6Ijc1NWI2MjU1LTQ0ZTQtNDFmOC04NmExLWNjMDQyNmIwZTY0MCJ9.Narelarknnp2HQLJIRyNLEOuZcpmV5vnZgH3K6WveF0",
   "expires_in" : 604800
 };
 $done({
