@@ -1,8 +1,3 @@
-function findUrl(_reg) {
-    if (_reg.test($request.url)) {
-        return $request.url;
-    }
-}
 let obj = JSON.parse($response.body);
 
 var currentTime = Math.floor(Date.now() / 1000);
