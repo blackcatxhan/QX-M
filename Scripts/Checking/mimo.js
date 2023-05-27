@@ -89,6 +89,9 @@ switch ($request.url) {
     case findUrl(/users\//):
         obj.isPremium = true;
         break;
+	case findUrl(/tutorials\//):
+        obj.dailyGoalCoinReward = 20000;
+        break;
 }
 
 $done({
