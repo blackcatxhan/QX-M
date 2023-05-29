@@ -73,24 +73,23 @@ switch ($request.url) {
     case findUrl(/products\/user/):
         const purchasedProductss = [];
 		obj.productsAvailableForPurchase.forEach(product => {
-		  const newProduct = {
-			buyMode: "once",
-			id: (2548000 + Math.floor(Math.random() * 1000)),
-			boughtAt: formattedTime,
-			productType: product.productType,
-			price: product.price,
-			coinPrice: product.coinPrice
-		  };
+			if (!(product.productType === "streak_challenge_7d")) {
+			  const newProduct = {
+				buyMode: "once",
+				id: (2548000 + Math.floor(Math.random() * 1000)),
+				boughtAt: formattedTime,
+				productType: product.productType,
+				price: product.price,
+				coinPrice: product.coinPrice
+			  };
 
-		  purchasedProductss.push(newProduct);
+			  purchasedProductss.push(newProduct);
+			}
 		});
 		obj.purchasedProducts = purchasedProductss;
         break;
     case findUrl(/users\//):
         obj.isPremium = true;
-        break;
-	case findUrl(/tutorials\//):
-        obj.dailyGoalCoinReward = 20000;
         break;
 }
 
