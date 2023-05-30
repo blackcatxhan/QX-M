@@ -1,0 +1,8 @@
+#!name=Unlock MuseScore
+#!desc=MuseScore
+[MITM]
+hostname= %APPEND% api.musescore.com
+[Script]
+MuseScore = type=http-response,pattern=^https:\/\/api\.musescore\.com\/v2\/(analytics\/tracker|app\/link\/appsflyer|purchase\/service\/access|purchase\/transaction\/device\/ios\/import(.*))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/musescore.js,script-update-interval=-1
+
+

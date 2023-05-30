@@ -1,0 +1,8 @@
+#!name=Unlock Sago
+#!desc=Sago
+[MITM]
+hostname= %APPEND% api-sago-account.sagosago.com
+[Script]
+Sago = type=http-response,pattern=^https:\/\/api-sago-account\.sagosago\.com\/account\/subscriptions$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/sago.js,script-update-interval=-1
+
+
