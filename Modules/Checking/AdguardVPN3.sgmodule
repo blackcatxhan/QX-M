@@ -1,7 +1,0 @@
-#!name=Unlock AdguardVPN3
-#!desc=AdguardVPN3
-[MITM]
-hostname = %APPEND% api.extremely-splendid-cover.org
-[Script]
-AdguardVPN3 = type=http-response,pattern=^https:\/\/api\.extremely-splendid-cover\.org\/(account\/api\/1.0\/products\/licenses\/vpn.json|api\/v2\/locations\/IOS?(.*)|api\/v1\/info\/application?(.*))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/adguardvpn.js,script-update-interval=-1
-
