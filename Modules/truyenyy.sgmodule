@@ -1,0 +1,8 @@
+#!name=Unlock TruyenYY
+#!desc=TruyenYY
+[MITM]
+hostname= %APPEND% mobile-api.truyenyy.one
+[Script]
+TruyenYY = type=http-response,pattern=^https:\/\/mobile-api\.truyenyy\.one\/api\/mobile\/ios\/auth\/verify-token\/$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/truyenyy.js,script-update-interval=-1
+
+
