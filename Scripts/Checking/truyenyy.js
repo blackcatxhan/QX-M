@@ -18,7 +18,7 @@ switch ($request.url) {
 		obj.requirePremium = false;
 		obj.msg = "LK Team";
         break;
-    case findUrl(/novel\/?/):
+    case findUrl(/novel\/?novel_id/):
         obj.novel.isVip = false;
         obj.novel.vipStartedAt = null;
         break;
