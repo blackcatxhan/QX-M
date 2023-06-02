@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% mobile-api.truyenyy.one
 [Script]
-TruyenYY = type=http-response,pattern=^https:\/\/mobile-api\.truyenyy\.one\/api\/mobile\/ios\/(auth\/verify-token\/|novel\/chapter\/raw-list\/?novel_id=(.*)|novel\/chapter\/list\/?novel_id=(.*)|novel\/chapter\/?novel_id=(.*))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/truyenyy.js,script-update-interval=-1
+TruyenYY = type=http-response,pattern=^https:\/\/mobile-api\.truyenyy\.one\/api\/mobile\/ios\/(auth\/verify-token\/|novel\/chapter\/raw-list\/?novel_id=(.*)|novel\/chapter\/list\/?novel_id=(.*)|novel\/chapter\/?novel_id=(.*)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/truyenyy.js,script-update-interval=-1
 
 
