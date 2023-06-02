@@ -38,12 +38,9 @@ switch ($request.url) {
         break;
     case findUrl(/v1\/communicate\/topics/):
         replaceValueToAny(obj, 'is_pro', false);
-        // replaceValueToAny(obj, 'is_trial', true);
         break;
     case findUrl(/v1\/communicate\/lessons/):
-        // replaceValueToAny(obj, 'is_trial', true);
         replaceValueToAny(obj, 'access_type', 'USER');
-        // replaceValueToAny(obj, 'access_type', 'DEVICE');
         break;
     case findUrl(/v1\/ai_conversation\/topics\?/):
         replaceValueToAny(obj, 'entry_status', 'OPEN');
@@ -51,23 +48,6 @@ switch ($request.url) {
     case findUrl(/v1\/ai_conversation\/topics\//):
         obj.data.popup = null;
         break;
-    case findUrl(/v1\/gym\/ipa\/lesson\?/):
-        replaceValueToAny(obj, 'is_lock', false);
-        replaceValueToAny(obj, 'is_lock_product', false);
-        replaceValueToAny(obj, 'is_lock_register', false);
-        break;
-    case findUrl(/v1\/gym\/course\/listening\/lesson\?/):
-        replaceValueToAny(obj, 'is_lock_product', false);
-        replaceValueToAny(obj, 'is_lock_login', false);
-        break;
-    // case findUrl(/v1\/product-user/):
-        // obj.data.is_trial = true;
-        // obj.data.is_trial_x_day = true;
-        // obj.data.day = 77777;
-        // obj.data.hour = 7;
-        // obj.data.second = 7;
-        // obj.data.minute = 7;
-        // break;
 }
 
 $done({
