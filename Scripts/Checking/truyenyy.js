@@ -23,24 +23,13 @@ switch ($request.url) {
         obj.user.isSuperUser =  true;
         obj.user.premiumUntil =  "2099-07-07T07:07:07.832336+07:00";
         break;
-    case findUrl(/novel\/\?novel_id/):
-        obj.novel.isVip = false;
-        obj.novel.vipStartedAt = null;
+    case findUrl(/user\/purchase\/purchase-chapters-info\//):
+        obj.totalVipStones = 0;
         break;
-    case findUrl(/novel\/chapter\/\?novel_id/):
-        replaceValueToAny(obj, 'vipStones', 0);
-        replaceValueToAny(obj, 'isVip', false);
-        replaceValueToAny(obj, 'isOwned', true);
-        break;
-    case findUrl(/novel\/chapter\/raw-list\/\?novel_id/):
-        replaceValueToAny(obj, 'vipStones', 0);
-        replaceValueToAny(obj, 'isVip', false);
-        replaceValueToAny(obj, 'isOwned', true);
-        break;
-    case findUrl(/novel\/chapter\/list\/\?novel_id/):
-        replaceValueToAny(obj, 'vipStones', 0);
-        replaceValueToAny(obj, 'isVip', false);
-        replaceValueToAny(obj, 'isOwned', true);
+    case findUrl(/user\/purchase\/purchase-chapters\//):
+        obj.requiredStones = 0;
+        obj.ok = true;
+        obj.notAfford = false;
         break;
 }
 
