@@ -28,9 +28,9 @@ switch ($request.url) {
         obj.novel.vipStartedAt = null;
         break;
     case findUrl(/novel\/chapter\/?novel_id/):
-        obj.chapter.isVip = false;
-        obj.chapter.isOwned = true;
-        obj.chapter.vipStones = 0;
+        replaceValueToAny(obj, 'vipStones', 0);
+        replaceValueToAny(obj, 'isVip', false);
+        replaceValueToAny(obj, 'isOwned', true);
         break;
     case findUrl(/novel\/chapter\/raw-list\/?novel_id/):
         replaceValueToAny(obj, 'vipStones', 0);
