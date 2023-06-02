@@ -7,11 +7,15 @@ function findUrl(_reg) {
 let obj = JSON.parse($response.body);
 
 switch ($request.url) {
-    case findUrl(/ios\/auth\/verify-token/):
+    case findUrl(/auth\/verify-token/):
         obj.user.isPremium =  true;
         obj.user.isStaff =  true;
         obj.user.isSuperUser =  true;
         obj.user.premiumUntil =  "2099-07-07T07:07:07.832336+07:00";
+        break;
+    case findUrl(/novel\/download\//):
+        obj.ok = true;
+		obj.requirePremium = false;
         break;
 }
 
