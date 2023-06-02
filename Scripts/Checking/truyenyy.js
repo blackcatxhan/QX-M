@@ -16,6 +16,11 @@ switch ($request.url) {
     case findUrl(/novel\/download\//):
         obj.ok = true;
 		obj.requirePremium = false;
+		obj.msg = "LK Team";
+        break;
+    case findUrl(/novel\/?/):
+        obj.novel.isVip = false;
+        obj.novel.vipStartedAt = null;
         break;
 }
 
