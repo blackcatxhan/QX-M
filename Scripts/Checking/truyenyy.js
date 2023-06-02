@@ -29,15 +29,6 @@ switch ($request.url) {
         obj.user.bannedUntil =  null;
         obj.user.premiumUntil =  "2099-07-07T07:07:07.832336+07:00";
         break;
-    case findUrl(/user\/purchase\/purchase-chapters-info\//):
-        obj.totalVipStones = 1;
-        break;
-    case findUrl(/user\/purchase\/purchase-chapters\//):
-        obj.requiredStones = 1;
-        obj.ok = true;
-        obj.notAfford = false;
-        obj.violetStones = 999999999;
-        break;
 }
 
 $done({
