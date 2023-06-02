@@ -17,10 +17,16 @@ switch ($request.url) {
         obj.ok = true;
 		obj.requirePremium = false;
 		obj.msg = "LK Team";
+		obj.numChapters = 9999;
         break;
     case findUrl(/novel\/?novel_id/):
         obj.novel.isVip = false;
         obj.novel.vipStartedAt = null;
+        break;
+    case findUrl(/novel\/chapter\/?novel_id/):
+        obj.chapter.isVip = false;
+        obj.chapter.isOwned = true;
+        obj.chapter.vipStones = 0;
         break;
 }
 
