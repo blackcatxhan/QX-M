@@ -20,11 +20,11 @@ switch ($request.url) {
     case findUrl(/tofu-open\/trial_day/):
         obj.data.trial_day = 77777;
         break;
-    case findUrl(/v1\/user?/):
+    case findUrl(/v1\/user\?/):
         obj.data.is_premium = true;
         obj.data.product_expired_time = '2099-07-07T07:07:07.799';
         break;
-    case findUrl(/v1\/learnfeed\/level?/):
+    case findUrl(/v1\/learnfeed\/level\?/):
         replaceValueToAny(obj, 'is_lock', false);
         replaceValueToAny(obj, 'is_prize', false);
         break;
@@ -45,18 +45,18 @@ switch ($request.url) {
         replaceValueToAny(obj, 'access_type', 'USER');
         // replaceValueToAny(obj, 'access_type', 'DEVICE');
         break;
-    case findUrl(/v1\/ai_conversation\/topics?/):
+    case findUrl(/v1\/ai_conversation\/topics\?/):
         replaceValueToAny(obj, 'entry_status', 'OPEN');
         break;
     case findUrl(/v1\/ai_conversation\/topics\//):
         obj.data.popup = null;
         break;
-    case findUrl(/v1\/gym\/ipa\/lesson?/):
+    case findUrl(/v1\/gym\/ipa\/lesson\?/):
         replaceValueToAny(obj, 'is_lock', false);
         replaceValueToAny(obj, 'is_lock_product', false);
         replaceValueToAny(obj, 'is_lock_register', false);
         break;
-    case findUrl(/v1\/gym\/course\/listening\/lesson?/):
+    case findUrl(/v1\/gym\/course\/listening\/lesson\?/):
         replaceValueToAny(obj, 'is_lock_product', false);
         replaceValueToAny(obj, 'is_lock_login', false);
         break;
