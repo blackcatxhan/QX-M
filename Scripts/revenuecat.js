@@ -1,6 +1,5 @@
 const resp = {};
 const obj = JSON.parse(typeof $response != "undefined" && $response.body || null);
-
 const ua = $request.headers['User-Agent'] || $request.headers['user-agent'];
 const list = {
     'VSCO': {
