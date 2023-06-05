@@ -1,0 +1,8 @@
+#!name=Unlock DawnAI
+#!desc=DawnAI
+[MITM]
+hostname= %APPEND% dawnai.oracle.bendingspoonsapps.com
+[Script]
+DawnAI = type=http-response,pattern=^https:\/\/dawnai\.oracle\.bendingspoonsapps\.com\/v2\/(purchases\/verify\/apple|users\/setup|users\/legal)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/dawnai.js,script-update-interval=-1
+
+
