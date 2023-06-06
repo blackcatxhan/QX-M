@@ -6,7 +6,7 @@ function generateUUID() {
   }
 
   return (
-    generateSegment() + generateSegment() + "-" + generateSegment() + "-" + generateSegment() + generateSegment() + "-" + generateSegment() + generateSegment() + generateSegment()
+    generateSegment() + generateSegment() + "-" + generateSegment() + "-" + generateSegment() + "-" + generateSegment() + "-" + generateSegment() + generateSegment() + generateSegment()
   );
 }
 
