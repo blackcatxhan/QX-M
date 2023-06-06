@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% wjapi.oswjql.com
 [Script]
-OSLink = type=http-response,pattern=^https:\/\/wjapi.oswjql.com\/user\/(login|getUserInfo|editUserInfo)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/oslink.js,script-update-interval=-1
+OSLink = type=http-response,pattern=^https:\/\/wjapi\.oswjql\.com\/user\/(login|getUserInfo|editUserInfo)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/oslink.js,script-update-interval=-1
 
 

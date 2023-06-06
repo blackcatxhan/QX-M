@@ -1,0 +1,8 @@
+#!name=Unlock PikPak
+#!desc=PikPak
+[MITM]
+hostname= %APPEND% api-drive.mypikpak.com
+[Script]
+PikPak = type=http-response,pattern=^https:\/\/api-drive\.mypikpak\.com\/(vip|drive)\/v1\/(activity\/invite|product\/productList\?|allSubscriptionStatus|vip\/info\?userId(.*)|about(.*))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/pikpak.js,script-update-interval=-1
+
+
