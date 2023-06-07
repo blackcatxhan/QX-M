@@ -1,0 +1,8 @@
+#!name=Unlock Flo
+#!desc=Flo
+[MITM]
+hostname= %APPEND% api.owhealth.com
+[Script]
+Flo = type=http-response,pattern=^https:\/\/api\.owhealth\.com\/subscriptions\/v1\/apple$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/flo.js,script-update-interval=-1
+
+
