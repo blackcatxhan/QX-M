@@ -18,7 +18,7 @@ let obj = JSON.parse($response.body);
 
 switch ($request.url){
 	case findUrl(/query_is_vip/):
-		obj =  true;
+		obj =  false;
 		break;
 	case findUrl(/config/):
 		replaceValueToAny(obj, 'is_free', true);
