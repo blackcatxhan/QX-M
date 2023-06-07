@@ -1,4 +1,4 @@
-/*
+/* Chờ kiểm tra khi hết hạn - Nếu không chạy thì bỏ Comment. Có thể obj.is_vip = true thay vì false. Kiểm tra lại cả url aiconf vs config
 #!name=Unlock AI Mirror
 #!desc=AI Mirror
 [MITM]
