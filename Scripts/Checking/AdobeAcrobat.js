@@ -112,8 +112,9 @@ switch ($request.url){
 			if (
 				offerGroup.offer_group_id === "21188762" &&
 				offerGroup.products.some(
-					(product) =>
-					product.product_id === "com.adobe.reader.ios.acropremium.v7.6999.1yr"
+					function(product) {
+						return product.product_id === "com.adobe.reader.ios.acropremium.v7.6999.1yr";
+					}
 				)
 			) {
 				for (var j = 0; j < offerGroup.products.length; j++) {
