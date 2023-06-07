@@ -24,7 +24,7 @@ switch ($request.url){
 		replaceValueToAny(obj, 'is_free', true);
 		break;
 	case findUrl(/draw\/process/):
-		replaceValueToAny(obj, 'is_vip', false);
+		obj.is_vip = false;
 		break;
 }
 
