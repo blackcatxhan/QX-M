@@ -18,7 +18,7 @@ let obj;
 
 switch ($request.url){
 	case findUrl(/query_is_vip/):
-		obj =  true;
+		obj =  false;
 		break;
 	case findUrl(/config/):
 		let resbody = JSON.parse($response.body);
