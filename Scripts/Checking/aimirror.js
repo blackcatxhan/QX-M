@@ -14,19 +14,17 @@ function replaceValueToAny(obj, key, value) {
   }
 }
 
-let obj;
+let obj = JSON.parse($response.body);
 
 switch ($request.url){
 	case findUrl(/query_is_vip/):
-		obj =  false;
+		obj =  true;
 		break;
 	case findUrl(/config/):
-		let resbody = JSON.parse($response.body);
-		replaceValueToAny(resbody, 'is_free', true);
-		obj = JSON.stringify(resbody);
+		replaceValueToAny(obj, 'is_free', true);
 		break;
 }
 
 $done({
-	body: obj
+	body: JSON.stringify(obj)
 });
