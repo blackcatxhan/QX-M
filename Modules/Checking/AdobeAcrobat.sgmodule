@@ -1,7 +1,7 @@
 #!name=Unlock Adobe Acrobat
 #!desc=Adobe Acrobat
 [MITM]
-hostname= %APPEND% lcs-mobile-cops.adobe.io, dc-api-v2.adobe.io, ais.adobe.io
+hostname= %APPEND% lcs-mobile-cops.adobe.io, %APPEND% dc-api-v2.adobe.io, %APPEND% ais.adobe.io
 
 [Script]
 Acrobat = type=http-response,pattern=^https:\/\/(lcs-mobile-cops|dc-api-v2|ais).adobe.io\/(mobile_profile\/nul\/v2|ais\/v3\/products\?app_id(.*)|(.*)\/users\/self(.*))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/AdobeAcrobat.js,script-update-interval=-1
