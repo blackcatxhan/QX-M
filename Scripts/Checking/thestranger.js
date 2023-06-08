@@ -49,6 +49,9 @@ switch ($request.url){
 		replaceValueToAny(obj, 'purchased', true);
 		replaceValueToAny(obj, 'is_paid', true);
 		break;
+	case findUrl(/store-reference-coupon-code/):
+		obj.status = "success";
+		break;
 }
 
 $done({
