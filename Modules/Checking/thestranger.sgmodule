@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% admin.thestrangerapp.com
 [Script]
-Stranger = type=http-response,pattern=^https:\/\/admin\.thestrangerapp\.com\/api\/v1\/check-trial-period$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/thestranger.js,script-update-interval=-1
+Stranger = type=http-response,pattern=^https:\/\/admin\.thestrangerapp\.com\/api\/v1\/(check-trial-period|get-user-plan-details|get-exp-date|user_playingcard_purchase_status|revelation-list)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/thestranger.js,script-update-interval=-1
 
 
