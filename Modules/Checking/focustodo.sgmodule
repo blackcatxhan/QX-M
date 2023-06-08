@@ -1,0 +1,8 @@
+#!name=Unlock Focus To-Do
+#!desc=Focus To-Do
+[MITM]
+hostname= %APPEND% focustodo.net
+[Script]
+FocusToDo = type=http-response,pattern=^https:\/\/(.*)focustodo\.net\/v60\/user\/(expired-date|config)\?acct=(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/focustodo.js,script-update-interval=-1
+
+
