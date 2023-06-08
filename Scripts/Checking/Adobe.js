@@ -112,7 +112,7 @@ switch ($request.url){
 						product.free_trial_consumed = true;
 						product.purchase_info = {
 							expiry_date: "2099-07-07T07:07:07.000+00:00",
-							purchase_date: "2023-06-06T09:54:20.000+00:00",
+							purchase_date: "2023-06-06T07:07:07.000+00:00",
 							subscription_status: "Active"
 						};
 						break;
@@ -141,7 +141,36 @@ switch ($request.url){
 						product.free_trial_consumed = true;
 						product.purchase_info = {
 							expiry_date: "2099-07-07T07:07:07.000+00:00",
-							purchase_date: "2023-06-06T09:54:20.000+00:00",
+							purchase_date: "2023-06-06T07:07:07.000+00:00",
+							subscription_status: "Active"
+						};
+						break;
+					}
+				}
+				break;
+			}
+		}
+		break;
+	case findUrl(/ais\/v3\/products\?app_id=com.adobe.fresco.ios/):
+		for (var i = 0; i < obj.offer_groups.length; i++) {
+			var offerGroup = obj.offer_groups[i];
+			if (
+				offerGroup.offer_group_id === "20531930" &&
+				offerGroup.products.some(
+					function(product) {
+						return product.product_id === "com.adobe.fresco.cc.allapps.1yr.subscription"; // com.adobe.fresco.cc.1yr.sub
+					}
+				)
+			) {
+				for (var j = 0; j < offerGroup.products.length; j++) {
+					var product = offerGroup.products[j];
+					if (
+						product.product_id === "com.adobe.fresco.cc.allapps.1yr.subscription"
+					) {
+						product.free_trial_consumed = true;
+						product.purchase_info = {
+							expiry_date: "2099-07-07T07:07:07.000+00:00",
+							purchase_date: "2023-06-06T07:07:07.000+00:00",
 							subscription_status: "Active"
 						};
 						break;
