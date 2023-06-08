@@ -122,6 +122,35 @@ switch ($request.url){
 			}
 		}
 		break;
+	case findUrl(/ais\/v3\/products\?app_id=com.adobe.scan.ios/):
+		for (var i = 0; i < obj.offer_groups.length; i++) {
+			var offerGroup = obj.offer_groups[i];
+			if (
+				offerGroup.offer_group_id === "20892743" &&
+				offerGroup.products.some(
+					function(product) {
+						return product.product_id === "com.adobe.scan.premium.6999.trial.1yr";
+					}
+				)
+			) {
+				for (var j = 0; j < offerGroup.products.length; j++) {
+					var product = offerGroup.products[j];
+					if (
+						product.product_id === "com.adobe.scan.premium.6999.trial.1yr"
+					) {
+						product.free_trial_consumed = true;
+						product.purchase_info = {
+							expiry_date: "2099-07-07T07:07:07.000+00:00",
+							purchase_date: "2023-06-06T09:54:20.000+00:00",
+							subscription_status: "Active"
+						};
+						break;
+					}
+				}
+				break;
+			}
+		}
+		break;
 	case findUrl(/createpdf\/api\/users\/me\/subscriptions/):
 		const newSubscription = {
 		  "subscription_name": "PDFPack",
@@ -138,12 +167,19 @@ switch ($request.url){
 		  obj.subscriptions.push(newSubscription);
 		}
 		break;
+	case findUrl(/a\/api\/users\/me\/limits\/acrobat/):
+		obj.acrobat_pro = true;
+		obj.acrobat_std = true;
+		break;
 	case findUrl(/a\/api\/users\/me\/limits/):
 		obj.expiry_time = 4087091227000;
 		break;
 /*
 	case findUrl(/users\/self\?fields=limit%2Fpdf_services/):
 		replaceValueToAny(obj, "access", true);
+		break;
+	case findUrl(/users\/self\/limits\/pdf_services/):
+		obj.access = true;
 		break;
 	case findUrl(/users\/self\/limits\/storage\/document_cloud/):
 		replaceValueToAny(obj, "storage_quota", 2000);
