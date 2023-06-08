@@ -3,6 +3,7 @@ function findUrl(_reg) {
     return $request.url;
   }
 }
+/*
 
 function replaceValueToAny(obj, key, value) {
   for (var prop in obj) {
@@ -13,7 +14,7 @@ function replaceValueToAny(obj, key, value) {
     }
   }
 }
-
+*/
 let obj = JSON.parse($response.body);
 var EndTimestamp = new Date().getTime() + (3 * 60 * 60 * 1000);
 switch ($request.url){
@@ -92,17 +93,6 @@ switch ($request.url){
 		  }
 		};
 		break;
-	case findUrl(/users\/self\?fields=limit%2Fpdf_services/):
-		replaceValueToAny(obj, "access", true);
-		break;
-	case findUrl(/users\/self\/limits\/storage\/document_cloud/):
-		replaceValueToAny(obj, "storage_quota", 2000);
-		replaceValueToAny(obj, "storage_remaining", 2000);
-		break;
-	case findUrl(/users\/self\?fields=limit%2Fstorage%2Fdocument_cloud/):
-		replaceValueToAny(obj, "storage_quota", 2000);
-		replaceValueToAny(obj, "storage_remaining", 2000);
-		break;
 	case findUrl(/ais\/v3\/products\?app_id=com.adobe.Adobe-Reader/):
 		for (var i = 0; i < obj.offer_groups.length; i++) {
 			var offerGroup = obj.offer_groups[i];
@@ -121,7 +111,7 @@ switch ($request.url){
 					) {
 						product.free_trial_consumed = true;
 						product.purchase_info = {
-							expiry_date: "2023-06-13T09:54:19.000+00:00",
+							expiry_date: "2099-07-07T07:07:07.000+00:00",
 							purchase_date: "2023-06-06T09:54:20.000+00:00",
 							subscription_status: "Active"
 						};
@@ -132,9 +122,38 @@ switch ($request.url){
 			}
 		}
 		break;
-	case findUrl(/ais\/v3\/products\?/):
-		replaceValueToAny(obj, 'is_free', true);
+	case findUrl(/createpdf\/api\/users\/me\/subscriptions/):
+		const newSubscription = {
+		  "subscription_name": "PDFPack",
+		  "subscription_state": "ACTIVE",
+		  "biz_source": "",
+		  "billing_term": null,
+		  "sub_ref": "51A153B9A6026822F7FA",
+		  "subscription_level": "Plus"
+		};
+
+		const existingSubscription = obj.subscriptions.find(subscription => subscription.subscription_name === newSubscription.subscription_name);
+
+		if (!existingSubscription) {
+		  obj.subscriptions.push(newSubscription);
+		}
 		break;
+	case findUrl(/a\/api\/users\/me\/limits/):
+		obj.expiry_time = 4087091227000;
+		break;
+/*
+	case findUrl(/users\/self\?fields=limit%2Fpdf_services/):
+		replaceValueToAny(obj, "access", true);
+		break;
+	case findUrl(/users\/self\/limits\/storage\/document_cloud/):
+		replaceValueToAny(obj, "storage_quota", 2000);
+		replaceValueToAny(obj, "storage_remaining", 2000);
+		break;
+	case findUrl(/users\/self\?fields=limit%2Fstorage%2Fdocument_cloud/):
+		replaceValueToAny(obj, "storage_quota", 2000);
+		replaceValueToAny(obj, "storage_remaining", 2000);
+		break;
+*/
 }
 
 $done({
