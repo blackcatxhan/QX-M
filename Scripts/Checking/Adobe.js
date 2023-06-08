@@ -129,14 +129,14 @@ switch ($request.url){
 				offerGroup.offer_group_id === "20892743" &&
 				offerGroup.products.some(
 					function(product) {
-						return product.product_id === "com.adobe.scan.premium.6999.trial.1yr";
+						return product.product_id === "com.adobe.scan.premium6999.trial.1yr";
 					}
 				)
 			) {
 				for (var j = 0; j < offerGroup.products.length; j++) {
 					var product = offerGroup.products[j];
 					if (
-						product.product_id === "com.adobe.scan.premium.6999.trial.1yr"
+						product.product_id === "com.adobe.scan.premium6999.trial.1yr"
 					) {
 						product.free_trial_consumed = true;
 						product.purchase_info = {
@@ -167,7 +167,7 @@ switch ($request.url){
 		  obj.subscriptions.push(newSubscription);
 		}
 		break;
-	case findUrl(/a\/api\/users\/me\/limits\/acrobat/):
+	case findUrl(/createpdf\/api\/users\/me\/limits\/acrobat/):
 		obj.acrobat_pro = true;
 		obj.acrobat_std = true;
 		break;
