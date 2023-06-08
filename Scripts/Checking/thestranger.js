@@ -32,13 +32,13 @@ switch ($request.url){
 		obj.status = "success";
 		break;
 	case findUrl(/get-user-plan-details/):
-		obj.plan_id = 29;
+		obj.plan_id = 21;
 		obj.plan_name = "Live";
 		obj.expire_date = "2099-07-07 07:07:07";
 		break;
 	case findUrl(/get-exp-date/):
 		obj.data.active = 1;
-		obj.data.subscription_id = 29;
+		obj.data.subscription_id = 21;
 		obj.data.expire_date = "2099-07-07 07:07:07";
 		break;
 	case findUrl(/user_playingcard_purchase_status/):
