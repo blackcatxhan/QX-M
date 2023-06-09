@@ -1,0 +1,8 @@
+#!name=Unlock Kiwi
+#!desc=Kiwi
+[MITM]
+hostname= %APPEND% apivpn.timonsoftware.com
+[Script]
+Kiwi = type=http-request,pattern=^https://apivpn\.timonsoftware\.com\/user\/getUserDetail$,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/kiwitest3.js
+
+
