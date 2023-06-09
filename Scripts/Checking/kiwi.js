@@ -1,6 +1,5 @@
 const headers = $request.headers;
 const selectedHeaders = {
-  AppId: headers['AppId'],
   Authorization: headers['Authorization'],
   UserId: headers['UserId'],
   Token: headers['Token']
