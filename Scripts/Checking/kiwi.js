@@ -7,7 +7,6 @@ const selectedHeaders = {
   Token: headers['Token']
 };
 const headerString = JSON.stringify(selectedHeaders, null, 2);
-$notification.post("Selected Headers", "Test1", headerString);
 $notify("Selected Headers", "Test2", headerString);
 $clipboard.set(headerString);
 $done({});
