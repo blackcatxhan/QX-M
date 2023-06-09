@@ -18,11 +18,15 @@ function replaceValueToAny(obj, key, value) {
 let obj = JSON.parse($response.body);
 var EndTimestamp = new Date().getTime() + (3 * 60 * 60 * 1000);
 switch ($request.url){
+	/*
 	case findUrl(/mobile_profile\/nul\/v2/):
 		obj.mobileProfile.profileStatus =  "PROFILE_AVAILABLE";
-		obj.mobileProfile.legacyProfile =  "{\"licenseId\":\"TEMP_LICENSE_PROD\",\"licenseType\":3,\"licenseVersion\":\"91.0\",\"effectiveEndTimestamp\":"+EndTimestamp+",\"graceTime\":0,\"licensedFeatures\":[],\"enigmaData\":{\"productId\":118,\"serialKey\":\"719594172484074650698776\",\"clearSerialKey\":\"90970938077827684226\",\"locale\":\"ALL\",\"associatedLocales\":\"ALL\",\"platform\":0,\"isk\":1184999,\"customerId\":0,\"deliveryMethod\":3,\"pc\":false,\"rb\":false}}";
-		obj.mobileProfile.relationshipProfile =  "[{\"profileGenerationTimestamp\":1686045287707,\"licenseId\":\"TEMP_LICENSE_PROD\",\"licenseExpiryTimestamp\":"+EndTimestamp+",\"appEntitlementStatus\":\"SUBSCRIPTION\",\"activationType\":\"NAMED_USER\",\"billingStatus\":\"NORMAL\",\"usedForLegacyProfile\":true,\"licenseExpiryWarningControl\":{\"warningStartTimestamp\":1685526873385,\"warningInterval\":0}}]";
+		obj.mobileProfile.legacyProfile =  "{\"licenseId\":\"TEMP_LICENSE_PROD\",\"licenseType\":3,\"licenseVersion\":\"91.0\",\"effectiveEndTimestamp\":"+EndTimestamp+",\"graceTime\":0,\"licensedFeatures\":[],\"enigmaData\":{\"productId\":118,\"serialKey\":\"719594172484074650698776\",\"clearSerialKey\":\"90970938077827684226\",\"locale\":\"ALL\",\"associatedLocales\":\"ALL\",\"platform\":0,\"isk\":1184999,\"customerId\":0,\"deliveryMethod\":3,\"pc\":false,\"rb\":false}}"; // Acrotbat
+		obj.mobileProfile.relationshipProfile =  "[{\"profileGenerationTimestamp\":1686045287707,\"licenseId\":\"TEMP_LICENSE_PROD\",\"licenseExpiryTimestamp\":"+EndTimestamp+",\"appEntitlementStatus\":\"SUBSCRIPTION\",\"activationType\":\"NAMED_USER\",\"billingStatus\":\"NORMAL\",\"usedForLegacyProfile\":true,\"licenseExpiryWarningControl\":{\"warningStartTimestamp\":1685526873385,\"warningInterval\":0}}]"; // Acrotbat
+		obj.mobileProfile.legacyProfile =  "{\"licenseId\":\"TEMP_LICENSE_PROD\",\"licenseType\":3,\"licenseVersion\":\"1.0\",\"effectiveEndTimestamp\":1686302263189,\"graceTime\":0,\"licensedFeatures\":[],\"enigmaData\":{\"productId\":598,\"serialKey\":\"719594172484074650698776\",\"clearSerialKey\":\"90970938077827684226\",\"locale\":\"ALL\",\"associatedLocales\":\"ALL\",\"platform\":0,\"isk\":5984027,\"customerId\":0,\"deliveryMethod\":3,\"pc\":true,\"rb\":true}}"; // Adobe Express
+		obj.mobileProfile.relationshipProfile =  "[{\"profileGenerationTimestamp\":1686279330990,\"licenseId\":\"TEMP_LICENSE_PROD\",\"licenseExpiryTimestamp\":1686302263189,\"appEntitlementStatus\":\"SUBSCRIPTION\",\"activationType\":\"NAMED_USER\",\"billingStatus\":\"NORMAL\",\"usedForLegacyProfile\":true,\"licenseExpiryWarningControl\":{\"warningStartTimestamp\":1685697463189,\"warningInterval\":0}}]"; // Adobe Express
 		break;
+	*/
 	case findUrl(/users\/self\/limits\/conversions/):
 		obj = {
 		  "edit_pdf_ops" : {
