@@ -17,5 +17,5 @@ const selectedHeaders = {
 const headerString = JSON.stringify(selectedHeaders);
 const encodedString = encodeString(headerString);
 
-$notify("Sao chép mã", "", encodedString);
+$notify("Sao chép Kiwi Token", "", encodedString);
 $done({});
