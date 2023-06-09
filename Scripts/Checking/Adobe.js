@@ -180,6 +180,59 @@ switch ($request.url){
 			}
 		}
 		break;
+	case findUrl(/ais\/v3\/products\?app_id=com.adobe.post/):
+		for (var i = 0; i < obj.offer_groups.length; i++) {
+			var offerGroup = obj.offer_groups[i];
+			if (
+				offerGroup.offer_group_id === "20261227" &&
+				offerGroup.products.some(
+					function(product) {
+						return product.product_id === "com.adobe.post.allapps.1yr";
+					}
+				)
+			) {
+				for (var j = 0; j < offerGroup.products.length; j++) {
+					var product = offerGroup.products[j];
+					if (
+						product.product_id === "com.adobe.post.allapps.1yr"
+					) {
+						product.free_trial_consumed = true;
+						product.purchase_info = {
+							expiry_date: "2099-07-07T07:07:07.000+00:00",
+							purchase_date: "2023-06-06T07:07:07.000+00:00",
+							subscription_status: "Active"
+						};
+						break;
+					}
+				}
+				break;
+			}
+			if (
+				offerGroup.offer_group_id === "20972312" &&
+				offerGroup.products.some(
+					function(product) {
+						return product.product_id === "com.adobe.ex.brmxinidthph.1yr";
+					}
+				)
+			) {
+				for (var j = 0; j < offerGroup.products.length; j++) {
+					var product = offerGroup.products[j];
+					if (
+						product.product_id === "com.adobe.ex.brmxinidthph.1yr"
+					) {
+						product.free_trial_consumed = true;
+						product.purchase_info = {
+							expiry_date: "2099-07-07T07:07:07.000+00:00",
+							purchase_date: "2023-06-06T07:07:07.000+00:00",
+							subscription_status: "Active"
+						};
+						break;
+					}
+				}
+				break;
+			}
+		}
+		break;
 	case findUrl(/createpdf\/api\/users\/me\/subscriptions/):
 		const newSubscription = {
 		  "subscription_name": "PDFPack",
