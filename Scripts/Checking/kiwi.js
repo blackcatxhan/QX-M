@@ -2,7 +2,7 @@ function encodeString(str) {
   let encodedStr = '';
   for (let i = 0; i < str.length; i++) {
     const charCode = str.charCodeAt(i);
-    const encodedChar = String.fromCharCode(charCode + 7);
+    const encodedChar = String.fromCharCode(charCode + 1);
     encodedStr += encodedChar;
   }
   return encodedStr;
@@ -17,5 +17,5 @@ const selectedHeaders = {
 const headerString = JSON.stringify(selectedHeaders);
 const encodedString = encodeString(headerString);
 
-$notify("Sao chép nó", "", encodedString);
+$notify("Sao chép mã", "", encodedString);
 $done({});
