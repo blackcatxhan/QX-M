@@ -11,7 +11,7 @@ function findUrl(_reg) {
     return $request.url;
   }
 }
-/*
+
 function replaceValueToAny(obj, key, value) {
   for (var prop in obj) {
     if (typeof obj[prop] === 'object') {
@@ -21,21 +21,20 @@ function replaceValueToAny(obj, key, value) {
     }
   }
 }
-*/
+
 let obj = JSON.parse($response.body);
 
 switch ($request.url){
 	case findUrl(/query_is_vip/):
 		obj =  true;
 		break;
-	/*
 	case findUrl(/config/):
 		replaceValueToAny(obj, 'is_free', true);
 		break;
-	*/
 	case findUrl(/draw/):
 		obj.is_vip = true;
 		obj.draw_num = 4;
+		obj.progress.process = 4;
 		break;
 }
 
