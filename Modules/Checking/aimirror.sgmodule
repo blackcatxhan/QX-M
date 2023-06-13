@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% be.aimirror.fun
 [Script]
-AIMirror = type=http-response,pattern=^https:\/\/be\.aimirror\.fun\/query_is_vip\?(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/aimirror.js,script-update-interval=-1
+AIMirror = type=http-response,pattern=^https:\/\/be\.aimirror\.fun\/query_is_vip|config|draw(.*))\?(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/aimirror.js,script-update-interval=-1
 
 
