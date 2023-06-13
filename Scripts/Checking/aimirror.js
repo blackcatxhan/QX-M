@@ -31,10 +31,16 @@ switch ($request.url){
 	case findUrl(/config/):
 		replaceValueToAny(obj, 'is_free', true);
 		break;
-	case findUrl(/draw/):
+	case findUrl(/aiconf/):
+		obj.data.free = 4;
+		break;
+	case findUrl(/draw\?/):
 		obj.is_vip = true;
 		obj.draw_num = 4;
-		obj.progress.process = 4;
+		break;
+	case findUrl(/draw\/process/):
+		obj.is_vip = true;
+		obj.draw_num = 4;
 		break;
 }
 
