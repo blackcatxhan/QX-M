@@ -1,8 +1,0 @@
-#!name=Unlock PDF Search
-#!desc=PDF Search
-[MITM]
-hostname= %APPEND% pdfsearch.app
-[Script]
-PDFSearch = type=http-response,pattern=^https://pdfsearch\.app\/irv\/rv5\.php\?(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/pdfsearch.js,script-update-interval=-1
-
-
