@@ -2,8 +2,8 @@
 #!desc=StormSniffer
 
 [Script]
-StormSnifferHeader = type=http-request, pattern="^http[s]?:\/\/api\.x-storm\.com(:\d{2,5})?\/app\/.+$", script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/StormSnifferHeader.js, timeout=60, script-update-interval=0
-StormSnifferCrack = type=http-response, pattern="^http[s]?:\/\/api\.x-storm\.com(:\d{2,5})?\/app\/user-profile\/$", requires-body=true, max-size=3145728, script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/StormSnifferCrack.js, timeout=60, script-update-interval=0
+StormSnifferHeader = type=http-request, pattern="^http[s]?:\/\/api\.x-storm\.com(:\d{2,5})?\/app/.*$", script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/StormSnifferHeader.js, timeout=60, script-update-interval=0
+StormSnifferCrack = type=http-response, pattern="^http[s]?:\/\/api\.x-storm\.com(:\d{2,5})?\/app/user-profile\/$", requires-body=true, max-size=3145728, script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/StormSnifferCrack.js, timeout=60, script-update-interval=0
 
 [MITM]
 hostname = %APPEND% *.x-storm.com
