@@ -1,8 +1,11 @@
-#!name=Unlock Spotify(iOS15)
-#!desc=Partial unlocking Premium
+#!name=Spotify(>=iOS15)
+#!desc=2023.6.13 Mở khóa Premium, nên đăng nhập lại và xóa bộ nhớ cache, chất lượng âm thanh không thể đặt ở mức siêu cao
+# Warehouse address https://github.com/app2smile/rules
+# Function: 1. Xóa quảng cáo phát 2. Hiển thị danh sách nghệ sĩ/album 3. Xóa phát ngẫu nhiên
 
 [MITM]
 hostname = %APPEND% spclient.wg.spotify.com
 
 [Script]
-Spotify-Premium = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/spotify.js,script-update-interval=0
+spotify-json = type=http-request,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/,requires-body=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/spotify-json.js
+spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/spotify-proto.js,script-update-interval=0
