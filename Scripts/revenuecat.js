@@ -37,6 +37,10 @@ const list = {
     'CallRecorder': {
         name: 'subscriptions',
         id: 'com.prettyboa.CallRecorder.MonthlySubscription2999'
+    },
+    'dreamerai': {
+        name: 'Pro',
+        id: 'dreamerai_lifetime'
     }
 };
 const data = {
