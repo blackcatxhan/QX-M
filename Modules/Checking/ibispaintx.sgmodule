@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% ibispaint.com
 [Script]
-ibispaintx = type=http-response,pattern=^https:\/\/ibispaint.com\/manageSubscription.jsp$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ibispaintx.js,script-update-interval=-1
+ibispaintx = type=http-response,pattern=^https:\/\/ibispaint.com\/(manageSubscription.jsp|getFileTree)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ibispaintx.js,script-update-interval=-1
 
 
