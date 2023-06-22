@@ -41,7 +41,7 @@ switch ($request.url) {
 					"timestamp": 4087091227
 				},
 				"gifted": false,
-				"grace_period_days": 777,
+				"grace_period_days": 364,
 				"is_referral": false,
 				"ownership": "purchased",
 				"period": "P1Y",
@@ -53,7 +53,7 @@ switch ($request.url) {
 				"sku_identifier": "S_Club_G_Family_12Months",
 				"status": "normal",
 				"store": "app_store",
-				"trial_period": null
+				"trial_period": "P1Y"
 			}
 		];
         break;
