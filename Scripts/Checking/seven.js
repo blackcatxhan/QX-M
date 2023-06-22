@@ -29,7 +29,7 @@ function generateUUID() {
 let obj = JSON.parse($response.body);
 const id = generateUUID();
 switch ($request.url) {
-    case findUrl(/v2\/verify-purchases/):
+    case findUrl(/\/verify-purchases/):
         obj.subscription_purchases_state = 3883519044;
         obj.buyer_identifier = id; // a0c7a5c2-5caa-4797-83f0-f9a4a0cb934e
         obj.has_valid_purchases = true;
@@ -57,13 +57,13 @@ switch ($request.url) {
 			}
 		];
         break;
-    case findUrl(/v1\/account\/subscription-purchases/):
+    case findUrl(/\/account\/subscription-purchases/):
         obj.subscription_purchases_state = 3883519044;
         break;
-    case findUrl(/v2\/account\/feed-activities/):
+    case findUrl(/\/account\/feed-activities/):
         replaceValueToAny(obj, "club_member_until", 4087091227);
         break;
-    case findUrl(/v2\/account\/profile/):
+    case findUrl(/\/account\/profile/):
         obj.club_member_until = 4087091227;
         break;
 }
