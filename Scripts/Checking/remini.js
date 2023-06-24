@@ -8,5 +8,8 @@ obj.transactions =
     }
 }
 obj.me.active_subscriptions_ids = ["com.bigwinepot.nwdn.international.1y_p99_99_pro"]
+obj.me.available_consumable_credits = {
+"avatar_generations": 100000
+}
 body = JSON.stringify(obj);
 $done({body});
