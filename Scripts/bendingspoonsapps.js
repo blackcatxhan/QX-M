@@ -46,6 +46,15 @@ switch ($request.url) {
     case findUrl(/doubletake.oracle/):
         obj.me.active_subscriptions_ids =  ["com.filmicpro.doubletake.1y_t130_bundle"];
         break;
+    case findUrl(/alightmotion.oracle/):
+        obj.me.active_subscriptions_ids =  ["alightcreative.motion.1y_t60"];
+        obj.transactions = {
+			"450001466527778": {
+				"error_code": null,
+				"product_id": "alightcreative.motion.1y_t60"
+			}
+		};
+        break;
 }
 
 $done({
