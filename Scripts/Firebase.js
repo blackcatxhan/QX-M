@@ -1,3 +1,5 @@
+const headers = $request.headers;
+const appName = headers['X-Ios-Bundle-Identifier'];
 let obj = {
   "entries": {
     "verify_receipt": "true",
@@ -14,7 +16,7 @@ let obj = {
     "library_search_movie": "{\"enable\":true,\"source\":\"tmdb\"}",
     "enable_search_lyrics": "false"
   },
-  "appName": "me.shuifeng.Filebox",
+  "appName": appName,
   "state": "UPDATE",
   "templateVersion": "42"
 };
