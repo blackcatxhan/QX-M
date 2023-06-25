@@ -22,7 +22,7 @@ switch ($request.url) {
     case findUrl(/filmicpro.oracle/):
         obj.me.non_consumables_ids = ["com.cinegenix.filmic.pro.filmic_standard_t15"];
         break;
-    case findUrl(/slice.oracle/):
+    case findUrl(/splice.oracle/):
         obj.me.non_consumables_ids =  ["com.path36.SpliceFree.lt_t73"];
         break;
 }
