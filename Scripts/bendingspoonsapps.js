@@ -30,6 +30,7 @@ switch ($request.url) {
         break;
     case findUrl(/sleep.oracle/):
         obj.me.non_consumables_ids =  ["com.bendingspoonsapps.SleepHelp.1y_t100"];
+        obj.me.active_subscriptions_ids =  ["com.bendingspoonsapps.SleepHelp.1y_t100"];
         break;
     case findUrl(/focos.oracle/):
         obj.me.non_consumables_ids =  ["com.focos.lifetime"]; //com.focos.1w_t8 or 1w_t8_1w
@@ -41,10 +42,12 @@ switch ($request.url) {
         obj.me.non_consumables_ids =  ["com.flyingnayeem.yoga.1w_t10"];
         break;
     case findUrl(/firstlight.oracle/):
-        obj.me.non_consumables_ids =  ["com.filmicpro.firstlight.1y_t100_bundle"];
+        obj.me.non_consumables_ids =  ["com.filmicpro.firstlight.1y_t130_bundle_creator"];
+        obj.me.active_subscriptions_ids =  ["com.filmicpro.firstlight.1y_t130_bundle_creator"];
         break;
     case findUrl(/alightmotion.oracle/):
         obj.me.non_consumables_ids =  ["alightcreative.motion.1y_t60"];
+        obj.me.active_subscriptions_ids =  ["alightcreative.motion.1y_t60"];
         break;
     case findUrl(/doubletake.oracle/):
         obj.me.non_consumables_ids =  ["com.filmicpro.doubletake.1y_t100_bundle"];
