@@ -55,7 +55,7 @@ switch ($request.url) {
 			}
 		};
         break;
-    case findUrl(/us-central1-alight-creative.cloudfunctions.net\/getAcccountStatusAndLicenses/):
+    case findUrl(/us-central1-alight-creative.cloudfunctions.net\/getAccountStatusAndLicenses/):
         obj.result.msTime =  1687679011305;
         obj.result.licenses = [
             {
