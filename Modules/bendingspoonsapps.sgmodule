@@ -1,5 +1,5 @@
-#!name=Unlock Bendingspoonsapps
-#!desc=Unlocked Remini, FilmicPro, Splice
+#!name=Unlock Bending Spoons Apps
+#!desc=Unlocked Remini, Filmicpro, Splice, ThirtydayFitness, Sleep, Focos, Focoslive, Yoga, Firstlight, Doubletake
 [MITM]
 hostname= %APPEND% *.oracle.bendingspoonsapps.com
 [Script]
