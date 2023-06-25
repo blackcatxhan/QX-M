@@ -55,6 +55,33 @@ switch ($request.url) {
 			}
 		};
         break;
+    case findUrl(/us-central1-alight-creative.cloudfunctions.net\/getAcccountStatusAndLicenses/):
+        obj.result.msTime =  1687679011305;
+        obj.result.licenses = [
+            {
+                "autoRenewing": true,
+                "benefits": [
+                    "RemoveWatermark",
+                    "MemberEffects",
+                    "ProjectPackageSharing",
+                    "FutureMemberFeatures",
+                    "AdvancedEasing",
+                    "CameraObjects",
+                    "LayerParenting"
+                ],
+                "details": null,
+                "expires": 4087091227000,
+                "label": null,
+                "linkStatus": "linked-current",
+                "orderNumber": "450001466527778",
+                "period": "1y",
+                "productId": "alightcreative.motion.1y_t60",
+                "store": "apple_app_store",
+                "type": "subscription",
+                "valid": true
+            }
+        ];
+        break;
 }
 
 $done({
