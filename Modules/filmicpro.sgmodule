@@ -1,8 +1,0 @@
-#!name=Unlock Filmic Pro
-#!desc=Filmic
-[MITM]
-hostname= %APPEND% filmicpro.oracle.bendingspoonsapps.com
-[Script]
-Filmic = type=http-response,pattern=^https:\/\/filmicpro\.oracle\.bendingspoonsapps\.com\/v2\/(users\/setup|purchases\/verify\/apple)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/filmicpro.js,script-update-interval=-1
-
-

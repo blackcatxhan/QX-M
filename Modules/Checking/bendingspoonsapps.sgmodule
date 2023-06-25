@@ -1,0 +1,8 @@
+#!name=Unlock Bendingspoonsapps
+#!desc=Unlocked Remini, FilmicPro, Splice
+[MITM]
+hostname= %APPEND% *.oracle.bendingspoonsapps.com
+[Script]
+Bendingspoonsapps = type=http-response,pattern=^https:\/\/(remini|filmicpro|slice)\.oracle\.bendingspoonsapps\.com\/v2\/(purchases\/verify\/apple|users\/setup|users\/legal)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/bendingspoonsapps.js,script-update-interval=-1
+
+
