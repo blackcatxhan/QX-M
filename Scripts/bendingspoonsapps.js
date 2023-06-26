@@ -1,3 +1,7 @@
+let body = $response.body.replace(/\"__is_free__\":false/, "\"__is_free__\":true");
+
+$done({body});
+/*
 function findUrl(_reg) {
   if (_reg.test($request.url)) {
     return $request.url;
@@ -87,3 +91,4 @@ switch ($request.url) {
 $done({
     body: JSON.stringify(obj)
 });
+*/
