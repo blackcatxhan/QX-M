@@ -2,6 +2,15 @@ let body = $response.body.replace(/\"__is_free__\":false/, "\"__is_free__\":true
 
 $done({body});
 /*
+#!name=Unlock Bending Spoons Apps
+#!desc=Unlocked Remini, Filmicpro, Splice, ThirtydayFitness, Sleep, Focos, Focoslive, Yoga, Firstlight, Doubletake, AlightMotion
+[MITM]
+hostname= %APPEND% *.oracle.bendingspoonsapps.com, us-central1-alight-creative.cloudfunctions.net
+[Script]
+Bendingspoonsapps = type=http-response,pattern=^https:\/\/(remini|filmicpro|splice|thirtydayfitness|sleep|focos|focoslive|yoga|firstlight|doubletake|alightmotion)\.oracle\.bendingspoonsapps\.com\/v2\/(purchases\/verify\/apple|users\/setup|users\/legal)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/bendingspoonsapps.js,script-update-interval=-1
+AlightMotion = type=http-response,pattern=^https:\/\/us-central1-alight-creative\.cloudfunctions\.net\/getAccountStatusAndLicenses$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/bendingspoonsapps.js,script-update-interval=-1
+Bendingspoonsapps = 
+
 function findUrl(_reg) {
   if (_reg.test($request.url)) {
     return $request.url;
