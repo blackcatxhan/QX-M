@@ -8,7 +8,7 @@ let obj = JSON.parse($response.body);
 
 switch ($request.url) {
     case findUrl(/mine\/vips/):
-        obj.vips = [{"name":"注册用户","has_ad":0,"memberid":10,"expire_time":1998890772,"enabled":null},{"name":"WPS Premium","has_ad":0,"memberid":77,"expire_time":4087091227,"enabled":null}];
+        obj.vips = [{"name":"注册用户","has_ad":0,"memberid":10,"expire_time":1998890772,"enabled":null},{"name":"WPS Premium","has_ad":0,"memberid":210,"expire_time":4087091227,"enabled":null}];
     /*
 	case findUrl(/order\/create/): // Restore purchase
 		After purchased: {"code":401,"message":"You have become a member, please be patient","data":null}
@@ -19,7 +19,7 @@ switch ($request.url) {
 		obj.data = [{"service_id":5,"expire_time":4087091227,"is_available":1,"fake_service_id":0,"permit_pack_id":0},{"service_id":211,"expire_time":4087091227,"is_available":1,"fake_service_id":0,"permit_pack_id":0},{"service_id":210,"expire_time":4087091227,"is_available":1,"fake_service_id":0,"permit_pack_id":0}];
         break;
     case findUrl(/api\/users/):
-		obj.vip = {"name":"WPS Premium","has_ad":0,"memberid":77,"expire_time":4087091227,"enabled":[]};
+		obj.vip = {"name":"WPS Premium","has_ad":0,"memberid":210,"expire_time":4087091227,"enabled":[]};
         break;
 }
 
