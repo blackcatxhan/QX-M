@@ -76,7 +76,11 @@ const list = {
 'Genius': { name: 'premium', id: 'com.alloy.genius.subscription.monthly'},
 'TouchRetouchBasic': { name: 'premium', id: 'tr5_yearlysubsc_15dlrs_1'},
 'image_upscaler': { name: 'pro', id: 'yearly_sub_pro'},
-'dreamerai': { name: 'Pro', id: 'dreamerai_lifetime'}
+'dreamerai': { name: 'Pro', id: 'dreamerai_lifetime'},
+'HTTPBot': { name: 'pro', id: 'com.behindtechlines.HTTPBot.prounlock'},
+'Chatme': { name: 'premium', id: 'chatme_premium_week_trial'},
+'ChatGPTApp': { name: 'Advanced', id: 'com.palligroup.gpt3.yearlyyy'},
+'Chai': { name: 'premium', id: 'subscription_gold_annually'}
 
 };
 const data = {
