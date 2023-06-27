@@ -78,9 +78,7 @@ const list = {
 'image_upscaler': { name: 'pro', id: 'yearly_sub_pro'},
 'dreamerai': { name: 'Pro', id: 'dreamerai_lifetime'},
 'HTTPBot': { name: 'pro', id: 'com.behindtechlines.HTTPBot.prounlock'},
-'Chatme': { name: 'premium', id: 'chatme_premium_week_trial'},
-'ChatGPTApp': { name: 'Advanced', id: 'com.palligroup.gpt3.yearlyyy'},
-'Chai': { name: 'premium', id: 'subscription_gold_annually'}
+'Chatme': { name: 'premium', id: 'chatme_premium_week_trial'}
 
 };
 const data = {
