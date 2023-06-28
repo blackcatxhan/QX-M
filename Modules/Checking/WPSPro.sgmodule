@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% *.wps.c*
 [Script]
-WPSPro = type=http-response,pattern=^https:\/\/(.*)\.wps\.c(.*)\/(api\/users|query\/api\/v1\/list_purchase_info)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WPSPro.js,script-update-interval=-1
+WPSPro = type=http-response,pattern=^https:\/\/(.*)\.wps\.c(.*)\/(api|permits)\/(check_snew(.*)|(users\/(.*)\/overview|v(.*)\/mine\/vips))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WPSPro.js,script-update-interval=-1
 
 
