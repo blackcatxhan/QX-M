@@ -81,7 +81,8 @@ const list = {
 'Chatme': { name: 'premium', id: 'chatme_premium_week_trial'},
 'ChatGPTApp': { name: 'Advanced', id: 'com.palligroup.gpt3.weeklyyy'}, // com.palligroup.gpt3.yearlyyy
 'Chai': { name: 'premium', id: 'subscription_gold_trial'}, // subscription_gold_annually
-'DeforumAI': { name: 'Subscriptions', id: 'com.niwoq.deforum.weekly.subscription'}
+'DeforumAI': { name: 'Subscriptions', id: 'com.niwoq.deforum.weekly.subscription'},
+'audiomack-iphone': { name: 'Premium1', id: 'com.audiomack.premium.2018'}
 
 };
 const data = {
