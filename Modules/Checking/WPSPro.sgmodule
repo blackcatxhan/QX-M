@@ -1,8 +1,8 @@
 #!name=WPS Pro
 #!desc=Unlock WPS Pro
 [MITM]
-hostname = *account.wps.cn, *account.wps.com
+hostname= %APPEND% *.wps.com
 [Script]
-WPSPro = type=http-response,pattern=^https?:\/\/[a-z-]*account\.wps\.c(n|om)(:\d+|)\/api\/users$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WPSPro.js,script-update-interval=-1
+WPSPro = type=http-response,pattern=^https:\/\/(.*)\.wps\.c(.*)\/(api|permits)\/(check_snew(.*)|(users\/(.*)\/overview|v(.*)\/mine\/vips))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WPSPro.js,script-update-interval=-1
 
 
