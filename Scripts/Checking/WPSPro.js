@@ -105,7 +105,7 @@ switch ($request.url) {
 				"name": "稻壳会员",
 				"expire_time": 4087091227
 			}, {
-				"memberid:" 100,
+				"memberid": 100,
 				"name": "企业用户",
 				"expire_time": 4087091227
 			}, {
