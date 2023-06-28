@@ -3,5 +3,5 @@
 [MITM]
 hostname = %APPEND% app-subscription-proxy.accuweather.com
 [Script]
-AccuWeather = type=http-response,pattern=^https:\/\/app-subscription-proxy\.accuweather\.com\/subscriptions\/v1\/apple\/validate $,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/AccuWeather.js,script-update-interval=0
+AccuWeather = type=http-response,pattern=^https:\/\/app-subscription-proxy\.accuweather\.com\/subscriptions\/v1\/apple\/validate (.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/AccuWeather.js,script-update-interval=0
 
