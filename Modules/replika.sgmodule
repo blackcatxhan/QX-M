@@ -1,0 +1,8 @@
+#!name=Replika
+#!desc=Unlock Replika
+[MITM]
+hostname= %APPEND% replika.ai
+[Script]
+Replika = type=http-response,pattern=^https:\/\/replika.ai\/api\/mobile\/1.5\/payment_subscriptions$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/replika.js,script-update-interval=-1
+
+
