@@ -78,7 +78,10 @@ const list = {
 'image_upscaler': { name: 'pro', id: 'yearly_sub_pro'},
 'dreamerai': { name: 'Pro', id: 'dreamerai_lifetime'},
 'HTTPBot': { name: 'pro', id: 'com.behindtechlines.HTTPBot.prounlock'},
-'Chatme': { name: 'premium', id: 'chatme_premium_week_trial'}
+'Chatme': { name: 'premium', id: 'chatme_premium_week_trial'},
+'ChatGPTApp': { name: 'Advanced', id: 'com.palligroup.gpt3.weeklyyy'}, // com.palligroup.gpt3.yearlyyy
+'Chai': { name: 'premium', id: 'subscription_gold_trial'}, // subscription_gold_annually
+'DeforumAI': { name: 'Subscriptions', id: 'com.niwoq.deforum.weekly.subscription'}
 
 };
 const data = {
@@ -95,7 +98,7 @@ if (typeof $response == "undefined") {
 	obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
 	obj.subscriber.entitlement = obj.subscriber.entitlement || {};
 	for (const i in list) {
-		if (new RegExp(`^${i}`, `i`).test(ua)) {
+		if (new RegExp(`^${i}(?:\\W|$)`, `i`).test(ua)) {
 			obj.subscriber.subscriptions[list[i].id] = data;
 			obj.subscriber.entitlements[list[i].name] = JSON.parse(JSON.stringify(data));
 			obj.subscriber.entitlements[list[i].name].product_identifier = list[i].id;
