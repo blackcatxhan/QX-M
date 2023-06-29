@@ -1,0 +1,7 @@
+#!name=InVideoFilmr
+#!desc=Unlock InVideoFilmr
+[MITM]
+hostname = %APPEND% payments.invideo.io
+[Script]
+InVideoFilmr = type=http-response,pattern=^https:\/\/payments\.invideo\.io\/(verify_purchase|subscription )$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/InVideoFilmr.js,script-update-interval=0
+

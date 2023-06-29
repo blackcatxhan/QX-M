@@ -1,0 +1,7 @@
+#!name=Funimate
+#!desc=Unlock Funimate
+[MITM]
+hostname = %APPEND% api.funimate.com
+[Script]
+Funimate = type=http-response,pattern=^https?:\/\/api\.funimate\.com\/users\/(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Funimate.js,script-update-interval=0
+
