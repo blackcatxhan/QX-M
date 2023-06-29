@@ -10,7 +10,7 @@ obj.result.oldSuperStartTime = "2022-07-07 07:07:07";
 obj.result.oldSuperEndTime = "2099-07-07 07:07:07";
 obj.result.pro_center_data = {
 	"pro_type": 2,
-	"pro_type_title": "金星會員",
+	"pro_type_title": "LK Team",
 	"pro_service_title": "",
 	"pro_start_date": "",
 	"pro_end_date": "2099-07-07",
