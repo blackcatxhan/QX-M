@@ -1,0 +1,7 @@
+#!name=Daily Yoga
+#!desc=Unlock Daily Yoga
+[MITM]
+hostname = %APPEND% pre.dailyyoga.com
+[Script]
+dailyYoga = type=http-response,pattern=^https:\/\/pre\.dailyyoga\.com\/h2oapi\/user\/getUserDetail(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/dailyYoga.js,script-update-interval=0
+
