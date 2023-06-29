@@ -82,7 +82,8 @@ const list = {
 'ChatGPTApp': { name: 'Advanced', id: 'com.palligroup.gpt3.weeklyyy'}, // com.palligroup.gpt3.yearlyyy
 'Chai': { name: 'premium', id: 'subscription_gold_trial'}, // subscription_gold_annually
 'DeforumAI': { name: 'Subscriptions', id: 'com.niwoq.deforum.weekly.subscription'},
-'audiomack-iphone': { name: 'Premium1', id: 'com.audiomack.premium.2018'}
+'audiomack-iphone': { name: 'Premium1', id: 'com.audiomack.premium.2018'},
+'Funimate': { name: 'Pro', id: 'com.avcr.funimate.ProSubscription.weekly.ft3day'}
 
 };
 const data = {
