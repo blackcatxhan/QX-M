@@ -1,8 +1,0 @@
-#!name=Unlock Seven
-#!desc=Seven
-[MITM]
-hostname= %APPEND% api.sevenworkouts.com
-[Script]
-Seven = type=http-response,pattern=^https:\/\/api\.sevenworkouts\.com\/api\/(v1|v2)\/(verify-purchases|account\/(verify-purchases|(subscription-purchases|feed-activities|profile)\?(.*)))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/seven.js,script-update-interval=-1
-
-
