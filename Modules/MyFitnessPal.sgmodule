@@ -1,0 +1,8 @@
+#!name=MyFitnessPal
+#!desc=Unlock MyFitnessPal
+[MITM]
+hostname= %APPEND% premium-api.myfitnesspal.com
+[Script]
+MyFitnessPal = type=http-response,pattern=^https:\/\/premium-api\.myfitnesspal\.com\/v3\/subscriptions\/MFP\/(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/MyFitnessPal.js,script-update-interval=-1
+
+
