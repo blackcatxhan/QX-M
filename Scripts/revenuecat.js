@@ -86,7 +86,8 @@ const list = {
 'Usage': { name: 'pro', id: 'com.olegst.usage.pro'},
 'Viet%20ID': { name: 'Pro', id: 'yearly_pro'},
 'VSCO': { name: 'membership', id: 'com.circles.fin.premium.yearly' },
-'WidgetsApp': { name: 'pro', id: 'cw_1999_1y' }
+'WidgetsApp': { name: 'pro', id: 'cw_1999_1y' },
+'Widgetsmith': { name: 'Premium', id: 'PremiumMonthly' }
 
 };
 const data = {
