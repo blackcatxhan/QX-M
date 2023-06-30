@@ -84,7 +84,7 @@ const list = {
 'DeforumAI': { name: 'Subscriptions', id: 'com.niwoq.deforum.weekly.subscription'},
 'audiomack-iphone': { name: 'Premium1', id: 'com.audiomack.premium.2018'},
 'Funimate': { name: 'Pro', id: 'com.avcr.funimate.ProSubscription.weekly.ft3day'},
-'Noto': { name: 'pro', id: 'com.lkzhao.editor.pro.ios.lifetime'}
+'Noto': { name: 'pro', id: 'com.lkzhao.editor.pro.ios.lifetime'} // com.lkzhao.editor.pro.ios.yearly // monthly
 
 };
 const data = {
