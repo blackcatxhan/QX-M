@@ -55,8 +55,7 @@ const list = {
 'MyAniList': { name: 'Tokubetsu+', id: 'com.coreyroberts.myanilist.tokubetsu.forever' },
 'Naughty': { name: 'Premium', id: 'com.scottjulian.nice.yearly2'},
 'NotePlan': { name: 'Personal Annual', id: 'co.noteplan.subscription.personal.annual'},
-'Noto': { name: 'pro', id: 'com.lkzhao.editor.full'},
-'Noto': { name: 'pro', id: 'com.lkzhao.editor.pro.ios.lifetime'}, // com.lkzhao.editor.pro.ios.yearly // monthly
+'Noto': { name: 'pro', id: 'com.lkzhao.editor.full'}, // com.lkzhao.editor.pro.ios.yearly // monthly // lifetime
 'NotVPN': { name: 'Premium', id: 'org.reactjs.native.exampleio.NotVPN.30'},
 'OffScreen': { name: 'Entitlement.Pro', id: 'tech.miidii.OffScreen.pro.c' },
 'OneBox': { name: 'all', id: 'com.ziheng.totowallet.onetimepurchase'},
@@ -88,7 +87,6 @@ const list = {
 'VSCO': { name: 'membership', id: 'com.circles.fin.premium.yearly' },
 'WidgetsApp': { name: 'pro', id: 'cw_1999_1y' },
 'Widgetsmith': { name: 'Premium', id: 'PremiumMonthly' }
-
 };
 const data = {
 	"expires_date": "2099-02-18T07:52:54Z",
