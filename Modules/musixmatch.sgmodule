@@ -1,0 +1,8 @@
+#!name=Musixmatch
+#!desc=Unlock Musixmatch
+[MITM]
+hostname= %APPEND% apic.musixmatch.com
+[Script]
+Musixmatch = type=http-response,pattern=^https:\/\/apic\.musixmatch\.com\/ws\/1.1\/config.get$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/musixmatch.js,script-update-interval=-1
+
+
