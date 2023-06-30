@@ -66,7 +66,7 @@ const list = {
 'Penbook': { name: 'pro', id: 'penbook.lifetime02'},
 'Period%20Calendar': { name: 'Premium', id: 'com.lbrc.PeriodCalendar.premium.yearly'},
 'PhotoRoom': { name: 'business', id: 'com.background.business.yearly' },
-'Pixelcut': { name: 'pro', id: 'com.circular.pixels.pro.yearly' }, // teams | com.circular.pixels.teams.monthly.3
+'Pixelcut': { name: 'teams', id: 'com.circular.pixels.teams.monthly.3' }, // pro | com.circular.pixels.pro.yearly
 'Planny': { name: 'premium', id: 'com.kevinreutter.Sagittarius.Premium3Months' },
 'Pomodoro': { name: 'Plus', id: 'com.MINE.PomodoroTimer.plus.lifetime.en.forYearly' },
 'ProximoJogo': { name: 'Pro', id: 'nm_199_lifetime'},
