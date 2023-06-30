@@ -78,6 +78,7 @@ const list = {
 'Simple': { name: 'pro', id: 'ios_simple_original_subscription_12_weeks_2999_trial_7d'},
 'Spark': { name: 'premium', id: 'spark_b_799_1m_1w0'},
 'Super%20Agent': { name: 'unlimited', id: 'sa_2999_lifetime'},
+'Tangerine': { name: 'Premium', id: 'PremiumMonthly'},
 'Thenics': { name: 'Pro', id: 'pro_yearly_subscription_ios'},
 'TouchRetouchBasic': { name: 'premium', id: 'tr5_yearlysubsc_15dlrs_1'},
 'TuneIn': { name: 'subscriptions', id: 'com.tunein.TuneInRadio.TUNEIN_1_MONTH_7_DAY_1.99'},
