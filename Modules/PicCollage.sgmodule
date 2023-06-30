@@ -1,0 +1,8 @@
+#!name=PicCollage
+#!desc=Unlock PicCollage
+[MITM]
+hostname= %APPEND% piccollage.com
+[Script]
+PicCollage = type=http-response,pattern=^https:\/\/piccollage\.com\/api\/graphql$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/PicCollage.js,script-update-interval=-1
+
+
