@@ -1,0 +1,8 @@
+#!name=TenPercent
+#!desc=Unlock TenPercent
+[MITM]
+hostname= %APPEND% api.changecollective.com
+[Script]
+TenPercent = type=http-response,pattern=^https:\/\/api\.changecollective\.com\/api\/v3\/user,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/TenPercent.js,script-update-interval=-1
+
+
