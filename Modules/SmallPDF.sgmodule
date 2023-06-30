@@ -1,0 +1,8 @@
+#!name=SmallPDF
+#!desc=Unlock SmallPDF
+[MITM]
+hostname= %APPEND% pro.smallpdf.com
+[Script]
+SmallPDF = type=http-response,pattern=^https:\/\/pro\.smallpdf\.com\/pro\/account,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/SmallPDF.js,script-update-interval=-1
+
+
