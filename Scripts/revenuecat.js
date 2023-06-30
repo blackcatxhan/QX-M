@@ -83,7 +83,8 @@ const list = {
 'Chai': { name: 'premium', id: 'subscription_gold_trial'}, // subscription_gold_annually
 'DeforumAI': { name: 'Subscriptions', id: 'com.niwoq.deforum.weekly.subscription'},
 'audiomack-iphone': { name: 'Premium1', id: 'com.audiomack.premium.2018'},
-'Funimate': { name: 'Pro', id: 'com.avcr.funimate.ProSubscription.weekly.ft3day'}
+'Funimate': { name: 'Pro', id: 'com.avcr.funimate.ProSubscription.weekly.ft3day'},
+'Noto': { name: 'pro', id: 'com.lkzhao.editor.pro.ios.lifetime'}
 
 };
 const data = {
