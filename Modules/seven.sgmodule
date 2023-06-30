@@ -1,5 +1,5 @@
-#!name=Unlock Seven
-#!desc=Seven
+#!name=Seven
+#!desc=Unlock Seven
 [MITM]
 hostname= %APPEND% api.sevenworkouts.com
 [Script]
