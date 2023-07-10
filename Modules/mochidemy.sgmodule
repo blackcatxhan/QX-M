@@ -1,8 +1,8 @@
 #!name=Unlock Mochidemy
 #!desc=Mochidemy
 [MITM]
-hostname= %APPEND% mochien3.1-api.mochidemy.com
+hostname= %APPEND% mochien3.1-api.mochidemy.com, mochien-server.mochidemy.com
 [Script]
-Mochidemy = type=http-response,pattern=^https:\/\/mochien3.1-api.mochidemy.com/(v3.0|v3.1)/(profile?(.*)|words\/summary-ios?(.*)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/mochidemy.js,script-update-interval=-1
+Mochidemy = type=http-response,pattern=^https:\/\/mochien(3.1-api|-server).mochidemy.com/(v3.0|v3.1)/(profile?(.*)|words\/summary-ios?(.*)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/mochidemy.js,script-update-interval=-1
 
 
