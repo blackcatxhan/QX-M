@@ -1,8 +1,0 @@
-#!name=Unlock Sibelius
-#!desc=Sibelius
-[MITM]
-hostname= %APPEND% api.sibelius.avid.com
-[Script]
-Sibelius = type=http-response,pattern=^https://api\.sibelius\.avid\.com\/apis\/avid-sibelius\/auth\/tokens$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/sibelius.js,script-update-interval=-1
-
-
