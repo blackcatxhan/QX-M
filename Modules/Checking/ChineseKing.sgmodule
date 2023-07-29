@@ -1,0 +1,8 @@
+#!name=Chineses King Unlocked
+#!desc=Chineses King
+[MITM]
+hostname= %APPEND% api.duongchau.edu.vn
+[Script]
+ChinesesKing = type=http-response,pattern=^https:\/\/api\.duongchau\.edu\.vn\/api\/lessons\?(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/ChineseKing.js,script-update-interval=-1
+
+
