@@ -10,7 +10,7 @@ function replaceValueToAny(obj, key, value) {
 
 let obj = JSON.parse($response.body);
 
-replaceValueToAny(obj, 'bought', 'true');
+replaceValueToAny(obj, 'bought', true);
 replaceValueToAny(obj, 'courses', '[{"id":1,"title:"LK-Team","price":0}]');
 
 $done({
