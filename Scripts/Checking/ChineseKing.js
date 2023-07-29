@@ -12,6 +12,7 @@ let obj = JSON.parse($response.body);
 
 replaceValueToAny(obj, 'bought', true);
 replaceValueToAny(obj, 'price', 0);
+replaceValueToAny(obj, 'isActivatedFree', true);
 
 $done({
 	body: JSON.stringify(obj)
