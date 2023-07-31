@@ -1,4 +1,4 @@
-#!name=Unlock ibis Paint X
+#!name=ibis Paint X Unlocked
 #!desc=ibispaintx
 [MITM]
 hostname= %APPEND% ibispaint.com
