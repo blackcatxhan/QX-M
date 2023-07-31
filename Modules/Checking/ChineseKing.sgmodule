@@ -1,5 +1,7 @@
 #!name=Chineses King Unlocked
 #!desc=Chineses King
+[Header Rewrite]
+.+ header-del if-none-match
 [MITM]
 hostname= %APPEND% api.duongchau.edu.vn
 [Script]
