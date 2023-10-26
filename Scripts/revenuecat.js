@@ -86,7 +86,7 @@ const list = {
 'Viet%20ID': { name: 'Pro', id: 'yearly_pro'},
 'VSCO': { name: 'membership', id: 'com.circles.fin.premium.yearly' },
 'WidgetsApp': { name: 'pro', id: 'cw_1999_1y' },
-'Locket': { name: 'Premium', id: 'locket_6000_1y' },
+'Locket': { name: 'Premium', id: 'locket_2400_1y' },
 'Widgetsmith': { name: 'Premium', id: 'PremiumMonthly' }
 };
 const data = {
