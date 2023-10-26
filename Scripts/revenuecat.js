@@ -87,6 +87,7 @@ const list = {
 'VSCO': { name: 'membership', id: 'com.circles.fin.premium.yearly' },
 'WidgetsApp': { name: 'pro', id: 'cw_1999_1y' },
 'Locket': { name: 'Gold', id: 'locket_2400_1y' },
+'Zoomerang': { name: 'pro', id: 'zoomerang.yearly.h' },
 'Widgetsmith': { name: 'Premium', id: 'PremiumMonthly' }
 };
 const data = {
