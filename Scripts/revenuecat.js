@@ -16,7 +16,7 @@ const list = {
 'CadTool': { name: 'revencat.entitlement.cadviewer', id: 'com.jieluo.cadviewer.subsription.yearly'},
 'CallRecorder': { name: 'full_access', id: 'com.prettyboa.CallRecorder.MonthlySubscription2999' },
 'Calories': { name: 'premium', id: 'com.lhmedia.healthyfood.calories.12months'},
-'Chai': { name: 'premium', id: 'subscription_gold_trial'}, // subscription_gold_annually
+'Chai': { name: 'premium', id: 'subscription_gold'}, // subscription_gold_annually
 'chatbotapp': { name: 'Premium', id: 'aichat_premium_yearly1'},
 'ChatGPTApp': { name: 'Advanced', id: 'com.palligroup.gpt3.weeklyyy'}, // com.palligroup.gpt3.yearlyyy
 'Chatme': { name: 'premium', id: 'chatme_premium_week_trial'},
