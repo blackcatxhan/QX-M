@@ -1,0 +1,6 @@
+#!name=Unlock Sago-Piknik
+#!desc=Sago-Piknik
+[MITM]
+hostname= %APPEND% account-api.playpiknik.com
+[Script]
+SagoPiknik = type=http-response,pattern=^https:\/\/account-api.playpiknik.com\/account\/subscriptions$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/sagopiknik.js,script-update-interval=-1
