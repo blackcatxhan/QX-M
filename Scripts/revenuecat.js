@@ -111,7 +111,8 @@ const list = {
 'VSCO': { name: 'membership', id: 'com.circles.fin.premium.yearly' },
 'WidgetsApp': { name: 'pro', id: 'cw_1999_1y' },
 'Widgetsmith': { name: 'Premium', id: 'PremiumMonthly' },
-'Zoomerang': { name: 'pro', id: 'zoomerang.yearly.h' }
+'Zoomerang': { name: 'pro', id: 'zoomerang.yearly.h' },
+'Tacter': { name: 'tier1.tacter.app', id: 'pe.high.annual.tacter.app' }
 };
 const data = {
 	"expires_date": "2099-02-18T07:52:54Z",
