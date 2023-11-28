@@ -1,0 +1,8 @@
+#!name=Fing
+#!desc=Unlock Fing
+[MITM]
+hostname= %APPEND% app.fing.com
+[Script]
+Fing = type=http-response,pattern=^https:\/\/app\.fing\.com\/purchase\/verify$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/fing.js,script-update-interval=-1
+
+
