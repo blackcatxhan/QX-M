@@ -2,7 +2,8 @@
 #!desc=Unlock Nicegramv6
 
 [MITM]
-hostname = %APPEND% nicegram.cloud
+hostname = %APPEND% nicegram.cloud, my.nicegram.app
 
 [Script]
 Nicegramv6 = type=http-response,pattern=^https:\/\/nicegram.cloud\/api\/v6\/(user\/info|telegram\/auth),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/nicegramv6.js,script-update-interval=-1 
+Nicegramv62 = type=http-response,pattern=^https:\/\/my.nicegram.app\/api\/v4\/settings\/(.*),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/nicegramv6.js,script-update-interval=-1 
