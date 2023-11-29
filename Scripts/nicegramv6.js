@@ -7,10 +7,14 @@ function findUrl(_reg) {
 let obj = JSON.parse($response.body);
 
 switch ($request.url) {
-    case findUrl(/my.nicegram.app\/api\/v4\/settings/):
+    case findUrl(/api\/v4\/settings/):
         obj.premium = true;
         break;
-    case findUrl(/nicegram.cloud\/api\/v6\/(user\/info|telegram\/auth)/):
+    case findUrl(/api\/v6\/telegram\/auth/):
+        obj.data.user.subscription = true;
+		obj.data.user.lifetime_subscription = true;
+        break;
+    case findUrl(/api\/v6\/user\/info/):
         obj.data.user.subscription = true;
 		obj.data.user.lifetime_subscription = true;
         break;
