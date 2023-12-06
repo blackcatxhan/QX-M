@@ -113,8 +113,7 @@ const list = {
 'Widgetsmith': { name: 'Premium', id: 'PremiumMonthly' },
 'Zoomerang': { name: 'pro', id: 'zoomerang.yearly.h' },
 'Tacter': { name: 'tier1.tacter.app', id: 'pe.high.annual.tacter.app' },
-'Sex%20Actions': { name: 'Premium Plus', id: 'ru.sexactions.subscriptionPlus12' },
-'Sex%20Actions': { name: '', id: 'ru.sexactions.coin4' }
+'Sex%20Actions': { name: 'Premium', id: 'ru.sexactions.subscriptionPromo1' }
 };
 const data = {
 	"expires_date": "2099-02-18T07:52:54Z",
