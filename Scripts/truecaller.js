@@ -76,7 +76,8 @@ switch ($request.url) {
   case findUrl(/subscriptions\/status/):
       obj = {
         expire: "2099-07-07T11:20:25Z",
-		subscriptionStatus: "INITIAL_BUY",
+		// subscriptionStatus: "INITIAL_BUY",
+		subscriptionStatus: "SUBSCRIBED",
         start: "2022-09-03T11:20:25Z",
 		isGracePeriodExpired: false,
 		isExpired: false,
@@ -94,29 +95,29 @@ switch ($request.url) {
     break;
   case findUrl(/products\/apple/):
       obj = {
-  "tier": [
-    {
-      "id": "gold",
-      "product": [
-        {
-          "productType": "GoldYearly",
-          "id": "renewable.premiumgold.annual",
-          "sku": "renewable.premiumgold.annual",
-          "contentType": "subscription",
-          "rank": 6,
-          "paymentProvider": "Apple",
-          "clientProductMetadata": {
-            "selectionRank": 5,
-            "displayOrder": 5,
-            "isEntitledPremiumScreenProduct": false
-          }
-        }
-      ],
-      "feature": features,
-      "rank": 5
-    }
-  ]
-}
+	  "tier": [
+		{
+		  "id": "gold",
+		  "product": [
+			{
+			  "productType": "GoldYearly",
+			  "id": "renewable.premiumgold.annual",
+			  "sku": "renewable.premiumgold.annual",
+			  "contentType": "subscription",
+			  "rank": 6,
+			  "paymentProvider": "Apple",
+			  "clientProductMetadata": {
+				"selectionRank": 5,
+				"displayOrder": 5,
+				"isEntitledPremiumScreenProduct": false
+			  }
+			}
+		  ],
+		  "feature": features,
+		  "rank": 5
+		}
+	  ]
+	}
     break;
 }
 $done({body: JSON.stringify(obj)});
