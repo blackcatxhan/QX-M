@@ -95,6 +95,15 @@ switch ($request.url) {
             }
         ];
         break;
+    case findUrl(/scannable.oracle/):
+        obj.me.active_subscriptions_ids =  ["com.evernote.Scannable.1y_t80"];
+		obj.transactions = {
+			"450001730319236": {
+			  "error_code": null,
+			  "product_id": "com.evernote.Scannable.1y_t80"
+			}
+		};
+        break;
 }
 
 $done({
