@@ -84,13 +84,13 @@ switch ($request.url) {
 		inAppPurchaseAllowed: true,
         paymentProvider: "Apple",
         product: {
-          id: "renewable.premiumgold.annual",
-          sku: "renewable.premiumgold.annual",
+          id: "renewable.pro.annual",
+          sku: "renewable.pro.annual",
           contentType: "subscription",
-          productType: "GoldYearly",
-          isFreeTrial: true
+          productType: "SubsYearly",
+          isFreeTrial: false
         },
-        tier: { id: "gold", feature: features }
+        tier: { id: "premium", feature: features }
       }
     break;
   case findUrl(/products\/apple/):
