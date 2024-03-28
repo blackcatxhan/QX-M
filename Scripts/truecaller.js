@@ -88,16 +88,9 @@ switch ($request.url) {
           sku: "renewable.premiumgold.annual",
           contentType: "subscription",
           productType: "GoldYearly",
-          isFreeTrial: false,
-		  rank : 6,
-		  paymentProvider : "Apple",
-		  clientProductMetadata : {
-			selectionRank : 5,
-			displayOrder : 5,
-			isEntitledPremiumScreenProduct : false
-		  }
+          isFreeTrial: false
         },
-        tier: { id: "premium", feature: features }
+        tier: { id: "gold", feature: features }
       }
     break;
   case findUrl(/products\/apple/):
