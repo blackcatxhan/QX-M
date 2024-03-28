@@ -84,11 +84,18 @@ switch ($request.url) {
 		inAppPurchaseAllowed: true,
         paymentProvider: "Apple",
         product: {
-          id: "renewable.pro.annual",
-          sku: "renewable.pro.annual",
+          id: "renewable.premiumgold.annual",
+          sku: "renewable.premiumgold.annual",
           contentType: "subscription",
-          productType: "SubsYearly",
-          isFreeTrial: false
+          productType: "GoldYearly",
+          isFreeTrial: false,
+		  rank : 6,
+		  paymentProvider : "Apple",
+		  clientProductMetadata : {
+			selectionRank : 5,
+			displayOrder : 5,
+			isEntitledPremiumScreenProduct : false
+		  }
         },
         tier: { id: "premium", feature: features }
       }
