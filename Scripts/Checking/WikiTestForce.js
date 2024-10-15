@@ -1,6 +1,8 @@
 let obj = JSON.parse($response.body);
 obj = {
-	"proTools": "yes"
+	"requestedString": "newreplacetext",
+	"currentString": "gptpara",
+	"updatedString": "newreplacetext"
 };
 $done({
 	body: JSON.stringify(obj)
