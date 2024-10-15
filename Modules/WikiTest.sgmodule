@@ -1,0 +1,8 @@
+#!name=Unlock WikiTest
+#!desc=WikiTest
+[MITM]
+hostname= wikicount.net
+
+[Script]
+WikiTest = type=http-response,pattern=^https:\/\/wikicount.net\/wikitest\/v5api\/aicredits\/get.php?user=(.*)&pass=(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/WikiTest.js,script-update-interval=-1
+
