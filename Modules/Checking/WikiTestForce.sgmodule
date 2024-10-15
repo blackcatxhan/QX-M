@@ -1,0 +1,7 @@
+#!name=WikiTest Force
+#!desc=Unlock WikiTest
+[MITM]
+hostname = %APPEND% wikicount.net
+[Script]
+WikiTest = type=http-response,pattern=^https:\/\/wikicount.net\/wikitest\/v5api\/articleText\/set.php$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WikiTestForce.js,script-update-interval=0
+
