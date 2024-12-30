@@ -1,0 +1,7 @@
+#!name=OneAHead
+#!desc=Unlock OneAHead
+[MITM]
+hostname = %APPEND% oneahead.com
+[Script]
+OneAHead = type=http-response,pattern=^https:\/\/(.*)oneahead.com\/members\/api\/member\/$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/iOS-Settings-URLs/main/OneAHead.js,script-update-interval=0
+
