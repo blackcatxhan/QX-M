@@ -4,7 +4,7 @@ obj = [
         "uuid": "12faf4fc-127a-4fe6-9ebf-513289658b22",
         "created_at": "2024-04-30T14:48:18.041318+00:00",
         "name": "Wingman Pro",
-        "available": true,
+        "available": false,
         "appicon": "https://jsxfeosppbjbjkfixdeh.supabase.co/storage/v1/object/public/images/icons/1714488488777000.png",
         "slug": "wingman",
         "instructionslink": null,
@@ -21,11 +21,11 @@ obj = [
         "price": 0,
         "createdBy": "cd92c43c-4957-446c-b6ec-527a683cd1b3",
         "trailer": "342717/c39e4578-1571-4149-8ca3-d98b56183be0",
-        "purchasingOption": false,
+        "purchasingOption": true,
         "currency": "GBP",
         "production": true,
         "usesPairing": false,
-        "preOrder": true,
+        "preOrder": false,
         "facebookGroup": ""
     }
 ];
