@@ -1,8 +1,0 @@
-#!name=Unlock Wiki
-#!desc=Wiki
-[MITM]
-hostname= wikicount.net
-
-[Script]
-Wiki = type=http-response,pattern=https://wikicount.net/wikitest/receipt/receipt.php,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Wiki3.js,script-update-interval=-1
-
