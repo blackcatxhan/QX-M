@@ -1,9 +1,11 @@
-function replaceYWithF(obj) {
+function replaceValues(obj) {
     for (var prop in obj) {
-        if (obj[prop] === 'Y') {
-            obj[prop] = 'F';
+        if (prop === 'free_yn' && obj[prop] === 'N') {
+            obj[prop] = 'Y'; // đổi N thành Y cho free_yn
+        } else if (obj[prop] === 'Y') {
+            obj[prop] = 'F'; // đổi Y thành F (theo logic cũ)
         } else if (typeof obj[prop] === 'object') {
-            replaceYWithF(obj[prop]);
+            replaceValues(obj[prop]);
         }
     }
 }
@@ -17,15 +19,18 @@ function findUrl(_reg) {
 let obj = JSON.parse($response.body);
 
 switch ($request.url) {
+    case findUrl(/game/):
+        replaceValues(obj);
+        break;
     case findUrl(/story/):
-        replaceYWithF(obj);
+        replaceValues(obj);
         break;
     case findUrl(/song/):
-        replaceYWithF(obj);
+        replaceValues(obj);
         break;
     case findUrl(/player?/):
         delete obj.data.preview_time;
-        replaceYWithF(obj);
+        replaceValues(obj);
         break;
 }
 
