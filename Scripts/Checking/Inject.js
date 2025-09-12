@@ -1,12 +1,9 @@
-let obj = JSON.parse($response.body);
+let obj = {
+  "platform": "ios",
+  "productId": "com.rostamimagic.inject",
+  "receipt": "MA==5122",
+  "email": "nguyendat.glhan@gmail.com",
+  "password": null
+}
 
-obj.platform = "ios";
-obj.productId = "com.rostamimagic.inject";
-obj.receipt = "MA==5122";
-obj.email = "nguyendat.glhan@gmail.com";
-obj.password = null;
-
-
-$done({
-	body: JSON.stringify(obj)
-});
+$done({response: {body: JSON.stringify(obj)}});

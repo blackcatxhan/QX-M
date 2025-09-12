@@ -1,8 +1,0 @@
-#!name=Unlock Inject
-#!desc=Inject
-[MITM]
-hostname= %APPEND% rostami-inject.appspot.com
-[Script]
-Inject = type=http-response,pattern=^https:\/\/rostami-inject\.appspot\.com\/_x\/app\/validate\?ts=(.*)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Inject.js,script-update-interval=-1
-
-
