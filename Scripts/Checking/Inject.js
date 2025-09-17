@@ -6,4 +6,10 @@ const obj = {
   "password": "mqluus"
 };
 
-$done({response: {body: JSON.stringify(obj)}})
+$done({
+  response: {
+    status: 200,
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify($obj)
+  }
+});
