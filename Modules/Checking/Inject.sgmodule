@@ -2,7 +2,7 @@
 #!desc=Inject
 
 [Script]
-Inject = type=http-request,pattern=^https:\/\/rostami-inject\.appspot\.com\/_x\/app\/validate\?ts=(.*)$,requires-body=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Inject.js
+Inject = type=http-request,pattern=^https:\/\/rostami-inject\.appspot\.com\/_x\/app\/validate\?ts=(.*)$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Inject.js
 
 [MITM]
 hostname= %APPEND% rostami-inject.appspot.com
