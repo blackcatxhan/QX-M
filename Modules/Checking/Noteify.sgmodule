@@ -1,0 +1,8 @@
+#!name=Unlock Noteify
+#!desc=Noteify
+[MITM]
+hostname= %APPEND% 6706a59c67f18b8396a9.digitalforestapp.xyz
+[Script]
+Noteify = type=http-response,pattern=^https:\/\/6706a59c67f18b8396a9.digitalforestapp.xyz\/$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Noteify.js,script-update-interval=-1
+
+
