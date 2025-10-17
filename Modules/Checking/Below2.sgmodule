@@ -1,0 +1,8 @@
+#!name=Unlock Below2
+#!desc=Below2
+[MITM]
+hostname= %APPEND% googleapis.com
+[Script]
+Below2 = type=http-response,pattern=^https:\/\/*googleapis.com\/identitytoolkit\/v3\/relyingparty\/verifyCustomToken?key=AIzaSyDfilsXf7gKSjqlZKQtdc3usS1bZhS7I2k$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Below2.js,script-update-interval=-1
+
+
