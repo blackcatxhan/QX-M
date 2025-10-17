@@ -1,0 +1,8 @@
+#!name=Unlock Below
+#!desc=Below
+[MITM]
+hostname= %APPEND% us-central1-below-d85b5.cloudfunctions.net
+[Script]
+Below = type=http-response,pattern=^https:\/\/us-central1-below-d85b5.cloudfunctions.net\/app\/signin$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Below.js,script-update-interval=-1
+
+
