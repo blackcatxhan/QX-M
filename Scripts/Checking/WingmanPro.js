@@ -6,7 +6,7 @@ function findUrl(_reg) {
 let obj = JSON.parse($response.body);
 
 switch ($request.url){
-	case findUrl(/getUser/):
+	case findUrl(/api\/getUser/):
 		obj.data.data = [
 			{
 				"id": 1024,
@@ -20,7 +20,7 @@ switch ($request.url){
 			}
 		];
 		break;
-	case findUrl(/verify/):
+	case findUrl(/api\/verify/):
 		obj = {
 			"type": "success",
 			"errors": [],
