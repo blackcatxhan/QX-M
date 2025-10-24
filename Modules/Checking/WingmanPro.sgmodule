@@ -1,10 +1,11 @@
 #!name=Unlock WingmanPro
 #!desc=WingmanPro
 [MITM]
-hostname= %APPEND% api.magicapps.co.uk
+hostname= %APPEND% api.magicapps.co.uk, wingman.magicapps.co.uk
 [Script]
 WingmanPro = type=http-response,pattern=^https:\/\/api.magicapps.co.uk\/api\/getUser$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WingmanPro.js,script-update-interval=-1
 WingmanPro2 = type=http-request,pattern=^https:\/\/api.magicapps.co.uk\/api\/verify$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WingmanPro2.js
-WingmanPro3 = type=http-response,pattern=^https:\/\/api.magicapps.co.uk\/api\/verify$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WingmanPro3.js,script-update-interval=-1
+WingmanPro3 = type=http-response,pattern=^https:\/\/api.magicapps.co.uk\/api\/(verify|licenses)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WingmanPro3.js,script-update-interval=-1
+WingmanPro4 = type=http-response,pattern=^https:\/\/(api.magicapps.co.uk|wingman.magicapps.co.uk)\/api\/(app|purchase-options\/12faf4fc-127a-4fe6-9ebf-513289658b22)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WingmanPro4.js,script-update-interval=-1
 
 
