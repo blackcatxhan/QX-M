@@ -1,0 +1,8 @@
+#!name=Unlock Akronym
+#!desc=Akronym
+[MITM]
+hostname= %APPEND% settings.ddnn.fr
+[Script]
+Akronym = type=http-response,pattern=^https:\/\/settings.ddnn.fr\/activateKey$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Akronym.js,script-update-interval=-1
+
+
