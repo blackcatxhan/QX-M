@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% appwrite.icr.bz
 [Script]
-v2 = type=http-response,pattern=^https:\/\/appwrite.icr.bz\/v1\/databases\/68ebac9c001b713a4477\/collections\/6902e330002a12ace555\/documents?queries%5B0%5D=%7B%22method%22%3A%22equal%22%2C%22attribute%22%3A%22Licensce%22%2C%22values%22%3A%5B%22(.*)%22%5D%7D$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/v2.js,script-update-interval=-1
+v2 = type=http-response,^^https:\/\/appwrite\.icr\.bz\/v1\/databases\/68ebac9c001b713a4477\/collections\/6902e330002a12ace555\/documents\?queries%5B0%5D=%7B%22method%22%3A%22equal%22%2C%22attribute%22%3A%22Licensce%22%2C%22values%22%3A%5B%22(.*)%22%5D%7D,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/v2.js,script-update-interval=-1
 
 
