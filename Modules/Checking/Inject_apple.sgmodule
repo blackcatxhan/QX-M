@@ -1,11 +1,9 @@
-#!name=Unlock Inject/Realist Apple
-#!desc=Inject/Realist Apple
+#!name=Unlock Inject Apple
+#!desc=Inject Apple
 
 [Script]
 Inject = type=http-response,pattern=^https:\/\/rostami-inject\.appspot\.com\/_x\/app\/login\?ts=(.*)$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Inject_apple.js,script-update-interval=-1
-Realist = type=http-response,pattern=^https:\/\/google-stats\.com\/api\/login$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Inject_apple.js,script-update-interval=-1
-VS = type=http-request,pattern=^https:\/\/dc\.services\.visualstudio\.com\/v2\/track$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/WingmanPro5.js
 
 
 [MITM]
-hostname= %APPEND% rostami-inject.appspot.com, google-stats.com, dc.services.visualstudio.com
+hostname= %APPEND% rostami-inject.appspot.com
