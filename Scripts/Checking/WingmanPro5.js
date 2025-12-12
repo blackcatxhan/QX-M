@@ -1,17 +1,11 @@
-function replaceValueToAny(obj, key, value) {
-  for (var prop in obj) {
-    if (typeof obj[prop] === 'object') {
-      replaceValueToAny(obj[prop], key, value);
-    } else if (prop === key) {
-      obj[prop] = value;
-    }
-  }
+let obj = {
+    "type": "success",
+    "has_access": true,
+    "addon_found": true,
+    "addon_id": "ed063df5-8897-40c2-bf0c-6abd0a1baf5c",
+    "addon_slug": "wingman-sites",
+    "addon_name": "Wingman Sites"
 }
-
-let obj = JSON.parse($response.body);
-
-replaceValueToAny(obj, 'success', true);
-replaceValueToAny(obj, 'resultCode', 200);
 
 $done({
 	body: JSON.stringify(obj)
