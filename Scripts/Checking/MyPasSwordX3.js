@@ -4,6 +4,6 @@ $done({
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
-    "status": "ok"
-	})
+    "message": "License key is valid"
+  })
 });
