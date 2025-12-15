@@ -4,6 +4,7 @@ $done({
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
-    "message": "License key is valid"
-  })
+    "code": 200,
+    "message": "Success"
+})
 });
