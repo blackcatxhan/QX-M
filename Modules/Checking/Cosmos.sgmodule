@@ -3,6 +3,6 @@
 [MITM]
 hostname= %APPEND% cosmos-api.blackboxmagic.shop
 [Script]
-Cosmos = type=http-response,pattern=^https:\/\/cosmos-api.blackboxmagic.shop\/api\/register$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Cosmos.js,script-update-interval=-1
+Cosmos = type=http-response,pattern=^https:\/\/cosmos-api.blackboxmagic.shop\/api\/(register|verify)$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Cosmos.js,script-update-interval=-1
 
 
