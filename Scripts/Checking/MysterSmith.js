@@ -2,10 +2,12 @@ let obj = JSON.parse($response.body);
 
 obj.siker = 1;
 obj.credits = 9999;
+obj.allow_secret_hardware = 1;
 obj.mystersmith_sub = 1;
 obj.mystersmith_sub_type = "basic";
 obj.mystersmith_sub_id = "P-81S44269VD7462810M6MJSGY";
 obj.mystersmith_sub_valid = "2099-12-30";
+obj.wonderpocket = 1;
 obj.allow_nfcreaders = 1;
 obj.allow_godice = 1;
 obj.barmit_vett = 1;
@@ -32,7 +34,12 @@ obj.offline_textrec_addon_activated = 1;
 obj.webdoodle = "WDL123MYSTER";
 obj.webdoodle_activated = 1;
 obj.otherboards = 1;
-obj.jovahagyas_folyamatban = 0;
+obj.jovahagyas_folyamatban = 1;
+obj.dictionary_api = "DIC123MYSTER";
+obj.dictionary_api_activated = 1;
+obj.dictionary_api = "DIC123MYSTER";
+obj.aw_board = "AW123MYSTER";
+obj.aw_board_activated = 1;
 
 /*
 obj = {
