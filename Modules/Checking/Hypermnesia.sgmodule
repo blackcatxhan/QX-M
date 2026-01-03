@@ -2,7 +2,7 @@
 #!desc=Hypermnesia
 
 [Script]
-Hypermnesia = type=http-response,pattern=^https:\/\/ncgpnwtxzlrsyybeghmi.supabase.co/rest/v1/transactions?select=%2A&user_id=eq.(.*)&status=eq.paid$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Hypermnesia.js
+Hypermnesia = type=http-response,pattern=^https:\/\/ncgpnwtxzlrsyybeghmi\.supabase\.co\/rest\/v1\/transactions\?select=%2A&user_id=eq\..*&status=eq\.paid$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Hypermnesia.js
 
 [MITM]
-hostname= %APPEND% ncgpnwtxzlrsyybeghmi.supabase.co
+hostname = %APPEND% ncgpnwtxzlrsyybeghmi.supabase.co
