@@ -1,9 +1,10 @@
 #!name=Unlock MysterSmith
 #!desc=MysterSmith
+
 [MITM]
 hostname= %APPEND% bsmagic.app
+
 [Script]
-MysterSmith = type=http-response,pattern=^https:\/\/bsmagic.app\/api\/sync_account_data.php$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/MysterSmith.js,script-update-interval=-1
-MysterSmith2 = type=http-response,pattern=^https:\/\/bsmagic.app\/activate\/activate.php$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/MysterSmith2.js,script-update-interval=-1
+MysterSmith = type=http-response,pattern=^https:\/\/bsmagic.app\/(api\/sync_account_data|activate\/activate)\.php$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/MysterSmith.js,script-update-interval=-1
 
 
