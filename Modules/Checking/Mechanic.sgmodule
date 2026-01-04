@@ -1,8 +1,0 @@
-#!name=MechanicWar Buff Dinamond
-#!desc=MechanicWar
-
-[Script]
-Inject = type=http-request,pattern=^https:\/\/api\.thebackend\.io\/data\/gameLog\/v1\.1\/product_buy$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Mechanic.js
-
-[MITM]
-hostname = %APPEND% api.thebackend.io
