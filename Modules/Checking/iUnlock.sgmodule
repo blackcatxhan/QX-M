@@ -1,0 +1,8 @@
+#!name=Unlock iUnlock
+#!desc=iUnlock
+[MITM]
+hostname= %APPEND% digitalmentalism.com
+[Script]
+iUnlock = type=http-response,pattern=^https:\/\/digitalmentalism.com\/iunlock2/(login|register)\.php$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/iUnlock.js,script-update-interval=-1
+
+
