@@ -2,7 +2,15 @@ function matchUrl(reg) {
   return reg.test($request.url);
 }
 
-let obj = JSON.parse($response.body);
+let resp = JSON.parse($response.body);
+let req = {};
+
+if ($request.body) {
+  try {
+    req = JSON.parse($request.body);
+  } catch (e) {}
+}
+
 let new_obj;
 
 switch (true) {
@@ -16,14 +24,14 @@ switch (true) {
   case matchUrl(/auth\/login/):
     new_obj = {
       message: "Login is success.",
-      email: obj.email,
-      password: obj.password,
-      deviceId: obj.deviceId
+      email: req.email,
+      password: req.password,
+      deviceId: req.deviceId
     };
     break;
 
   default:
-    new_obj = obj;
+    new_obj = resp;
 }
 
 $done({
