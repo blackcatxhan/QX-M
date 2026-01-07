@@ -8,14 +8,17 @@ let obj = JSON.parse($response.body);
 
 switch ($request.url){
 	case findUrl(/auth\/start-registration/):
-		obj = {
+		let new_obj = {
 		  message: "License key is valid. You can continue registration.",
 		  licenseStatus: "active"
 		};
 		break;
 	case findUrl(/auth\/login/):
-		obj = {
+		let new_obj = {
 		  message: "Login is success."
+		  email: obj.email,
+		  password: obj.password,
+		  deviceId: obj.deviceId
 		};
 		break;
 }
@@ -25,5 +28,5 @@ $done({
   headers: {
     "Content-Type": "application/json"
   },
-  body: JSON.stringify(obj)
+  body: JSON.stringify(new_obj)
 });
