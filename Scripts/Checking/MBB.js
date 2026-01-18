@@ -25,6 +25,7 @@ if (findUrl(/rpc\/redeem_license_on_device/)) {
 if (findUrl(/licenses\?user_id=/)) {
   replaceValueToAny(obj, 'paid', true);
   replaceValueToAny(obj, 'is_active', true);
+  replaceValueToAny(obj, 'payment_pending_review', false);
   replaceValueToAny(obj, 'trial_expires_at', "2099-12-30T08:00:00.003459+00:00");
 }
 
