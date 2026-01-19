@@ -1,8 +1,6 @@
 let obj = JSON.parse($response.body);
 
-obj = {
-	"status" : "success"
-};
+obj = {};
 
 $done({
   status: "HTTP/1.1 200 OK",
