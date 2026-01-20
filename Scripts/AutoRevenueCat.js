@@ -47,7 +47,7 @@ $task.fetch(options).then(response => {
                 jsonToUpdate.subscriber.entitlements[entitlement] = {
                     "purchase_date": "2024-01-01T01:01:01Z",
                     "original_purchase_date": "2024-01-01T01:01:01Z",
-                    "expires_date": "9999-01-01T01:01:01Z",
+                    "expires_date": "2099-01-01T01:01:01Z",
                     "is_sandbox": false,
                     "ownership_type": "PURCHASED",
                     "store": "app_store",
@@ -55,7 +55,7 @@ $task.fetch(options).then(response => {
                 };
 
                 jsonToUpdate.subscriber.subscriptions[productIdentifier] = {
-                    "expires_date": "9999-01-01T01:01:01Z",
+                    "expires_date": "2099-01-01T01:01:01Z",
                     "original_purchase_date": "2024-01-01T01:01:01Z",
                     "purchase_date": "2024-01-01T01:01:01Z",
                     "is_sandbox": false,
