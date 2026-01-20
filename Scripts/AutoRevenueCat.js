@@ -1,6 +1,8 @@
 const request = $request;
+
 const options = {
     url: "https://api.revenuecat.com/v1/product_entitlement_mapping",
+    method: "GET",
     headers: {
         'Authorization': request.headers["Authorization"] || request.headers["authorization"],
         'X-Platform': 'iOS',
@@ -8,15 +10,14 @@ const options = {
     }
 };
 
-$httpClient.get(options, function(error, newResponse, data) {
-    if (error || !data) {
+$task.fetch(options).then(response => {
+    if (!response || !response.body) {
         $done({});
         return;
     }
 
-    const ent = JSON.parse(data);
-    
-    // Tạo giả lập dữ liệu subscriber mới
+    const ent = JSON.parse(response.body);
+
     let jsonToUpdate = {
         "request_date_ms": 1704070861000,
         "request_date": "2024-01-01T01:01:01Z",
@@ -35,16 +36,14 @@ $httpClient.get(options, function(error, newResponse, data) {
         }
     };
 
-    // Duyệt qua tất cả các entitlements có trong mapping của app
     const productEntitlementMapping = ent.product_entitlement_mapping;
 
     if (productEntitlementMapping) {
-        for (const [entitlementId, productInfo] of Object.entries(productEntitlementMapping)) {
+        for (const [_, productInfo] of Object.entries(productEntitlementMapping)) {
             const productIdentifier = productInfo.product_identifier;
             const entitlements = productInfo.entitlements;
 
             for (const entitlement of entitlements) {
-                // Thêm vào entitlements
                 jsonToUpdate.subscriber.entitlements[entitlement] = {
                     "purchase_date": "2024-01-01T01:01:01Z",
                     "original_purchase_date": "2024-01-01T01:01:01Z",
@@ -55,7 +54,6 @@ $httpClient.get(options, function(error, newResponse, data) {
                     "product_identifier": productIdentifier
                 };
 
-                // Thêm vào subscriptions
                 jsonToUpdate.subscriber.subscriptions[productIdentifier] = {
                     "expires_date": "9999-01-01T01:01:01Z",
                     "original_purchase_date": "2024-01-01T01:01:01Z",
@@ -68,6 +66,8 @@ $httpClient.get(options, function(error, newResponse, data) {
         }
     }
 
-    // Trả về body đã được chỉnh sửa
     $done({ body: JSON.stringify(jsonToUpdate) });
+}).catch(err => {
+    console.log(err);
+    $done({});
 });
