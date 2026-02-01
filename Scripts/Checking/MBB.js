@@ -29,6 +29,26 @@ if (findUrl(/licenses\?user_id=/)) {
   replaceValueToAny(obj, 'trial_expires_at', "2099-12-30T08:00:00.003459+00:00");
 }
 
+// For: api/auth/license
+if (findUrl(/api\/auth\/license/)) {
+  replaceValueToAny(obj, 'paid', true);
+  replaceValueToAny(obj, 'payment_pending_review', false);
+  replaceValueToAny(obj, 'trial_expires_at', "2099-12-30T08:00:00.003459+00:00");
+}
+
+// For: api/license/validate
+if (findUrl(/api\/license\/validate/)) {
+  replaceValueToAny(obj, 'validUntil', "2099-12-30T08:00:00Z");
+}
+
+// For: api/license/status
+if (findUrl(/api\/license\/status/)) {
+  replaceValueToAny(obj, 'paid', true);
+  replaceValueToAny(obj, 'is_active', true);
+  replaceValueToAny(obj, 'payment_pending_review', false);
+  replaceValueToAny(obj, 'trial_expires_at', "2099-12-30T08:00:00.003459+00:00");
+}
+
 $done({
   body: JSON.stringify(obj)
 });

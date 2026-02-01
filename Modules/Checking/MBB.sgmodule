@@ -2,8 +2,7 @@
 #!desc=MBB
 
 [Script]
-MBB = type=http-response,pattern=^https:\/\/odbxcpqdvsudowsotbnv\.supabase\.co\/rest\/v1\/(rpc\/redeem_license_on_device|licenses\?user_id=[^&]+)$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/MBB.js,script-update-interval=-1
-
+MBB = type=http-response,pattern=^https:\/\/(odbxcpqdvsudowsotbnv\.supabase\.co\/rest\/v1\/(rpc\/redeem_license_on_device|licenses\?user_id=[^&]+)|mbb\.jesper-amstrup\.dk\/api\/(auth\/license|license\/(validate|status.*)))$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/MBB.js,script-update-interval=-1
 
 [MITM]
-hostname= %APPEND% odbxcpqdvsudowsotbnv.supabase.co
+hostname= %APPEND% odbxcpqdvsudowsotbnv.supabase.co, mbb.jesper-amstrup.dk
