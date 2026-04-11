@@ -14,9 +14,10 @@ code = decodeURIComponent(code);
 // override response
 obj = {
     valid: true,
-    discount: 100,
+    discount: 99,
     code: code,
-    message: "✓ Access granted!"
+    message: "99% off applied!"
+    //message: "✓ Access granted!"
 };
 
 $done({ body: JSON.stringify(obj) });
