@@ -1,0 +1,7 @@
+#!name=Unlock MagicPM
+#!desc=MagicPM
+[MITM]
+hostname= %APPEND% magic.pm
+[Script]
+MagicPM = type=http-response,pattern=^https:\/\/magic\.pm\/.*\/buy\/validate_coupon\.php$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/MagicPM.js,script-update-interval=-1
+
