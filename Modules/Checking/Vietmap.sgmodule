@@ -1,0 +1,10 @@
+#!name=Unlock Vietmap Live Pro
+#!desc=Vietmap Live - Unlock Pro Features
+
+[MITM]
+hostname= %APPEND% api.vietmap.live
+
+[Script]
+Vietmap = type=http-response,pattern=^https:\/\/api\.vietmap\.live\/production\/v20\/user\/GetProfile$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Vietmap.js,script-update-interval=-1
+Vietmap2 = type=http-response,pattern=^https:\/\/api\.vietmap\.live\/production\/v20\/user\/GetFeaturePacks$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Vietmap.js,script-update-interval=-1
+Vietmap3 = type=http-response,pattern=^https:\/\/api\.vietmap\.live\/production\/v20\/user\/GetUserExpireDate\?userId=\d+$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Vietmap.js,script-update-interval=-1
