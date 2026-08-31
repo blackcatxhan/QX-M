@@ -1,7 +1,9 @@
-let obj = JSON.parse($response.body);
+var obj = JSON.parse($response.body);
+
+var url = $request.url;
 
 // One month in seconds (30 days)
-const ONE_MONTH = 30 * 24 * 60 * 60;
+var ONE_MONTH = 30 * 24 * 60 * 60;
 
 // Function to add 1 month to expireDate
 function addOneMonth(expireDate) {
@@ -13,25 +15,25 @@ function addOneMonth(expireDate) {
 }
 
 // GetProfile endpoint
-if ($request.url.includes("/GetProfile")) {
+if (url.indexOf("/GetProfile") !== -1) {
   if (obj.data && obj.data.user) {
     obj.data.user.expireDate = addOneMonth(obj.data.user.expireDate);
   }
 }
 
 // GetFeaturePacks endpoint
-if ($request.url.includes("/GetFeaturePacks")) {
+if (url.indexOf("/GetFeaturePacks") !== -1) {
   if (obj.data && obj.data.results) {
-    for (let i = 0; i < obj.data.results.length; i++) {
+    for (var i = 0; i < obj.data.results.length; i++) {
       obj.data.results[i].isLock = false;
     }
   }
 }
 
 // GetUserExpireDate endpoint
-if ($request.url.includes("/GetUserExpireDate")) {
+if (url.indexOf("/GetUserExpireDate") !== -1) {
   // Extract userId from URL parameter
-  const urlMatch = $request.url.match(/userId=(\d+)/);
+  var urlMatch = url.match(/userId=(\d+)/);
   if (urlMatch && obj.data) {
     obj.data.userId = parseInt(urlMatch[1]);
   }
