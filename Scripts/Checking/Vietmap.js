@@ -2,7 +2,7 @@ var obj = JSON.parse($response.body);
 var url = $request.url;
 
 // 1 year in seconds
-var ONE_YEAR = 365 * 24 * 60 * 60;
+var ONE_YEAR = 3650 * 24 * 60 * 60;
 
 // Get current time + 1 year
 var newExpireDate = Math.floor(Date.now() / 1000) + ONE_YEAR;
