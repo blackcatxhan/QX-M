@@ -18,8 +18,11 @@ let firstInstallAt = new Date();
 // expiresAt = hiện tại + 4 ngày
 let expiresAt = new Date(firstInstallAt.getTime() + 4 * 24 * 60 * 60 * 1000);
 
+var secondsRemaining = 4 * 24 * 60 * 60;
+
 let obj = JSON.parse($response.body);
 
+replaceValueToAny(obj, 'secondsRemaining', secondsRemaining);
 replaceValueToAny(obj, 'firstInstallAt', formatDate(firstInstallAt));
 replaceValueToAny(obj, 'expiresAt', formatDate(expiresAt));
 replaceValueToAny(obj, 'isExpired', false);
