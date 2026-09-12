@@ -11,6 +11,16 @@ var newExpireDate = Math.floor(Date.now() / 1000) + ONE_YEAR;
 if (url.indexOf("/GetProfile") !== -1) {
   if (obj.data && obj.data.user) {
     obj.data.user.expireDate = newExpireDate;
+    obj.data.user.packages = [
+      {
+        "expireDate" : newExpireDate,
+        "packageName" : "Pro"
+      },
+      {
+        "expireDate" : newExpireDate,
+        "packageName" : "OMNI Add-on"
+      }
+    ];
   }
 }
 
@@ -31,6 +41,16 @@ if (url.indexOf("/GetUserExpireDate") !== -1) {
   }
   if (obj.data) {
     obj.data.expireDate = newExpireDate;
+    obj.data.packages = [
+      {
+        "expireDate" : newExpireDate,
+        "packageName" : "Pro"
+      },
+      {
+        "expireDate" : newExpireDate,
+        "packageName" : "OMNI Add-on"
+      }
+    ];
   }
 }
 
