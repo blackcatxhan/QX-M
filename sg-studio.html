@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>SG Studio — Quản lý Modules & Scripts</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#10141c">
 <style>
 :root{
   --bg:#0b0e14; --panel:#10141c; --panel2:#161c26; --border:#202a38;
@@ -11,17 +13,30 @@
   --green:#98c379; --purple:#c678dd; --orange:#d19a66; --red:#e06c75;
   --yellow:#e5c07b; --cyan:#56b6c2; --ghost:#5d6a7d;
   --mono:'Cascadia Code','JetBrains Mono',Consolas,'Courier New','Microsoft YaHei',monospace;
+  --bgm:#07090d; --gr:#3d4a5d; --caret:#7ee0ff;
+  --sel:rgba(76,194,255,.22); --selbg:rgba(76,194,255,.14);
+  --com:#5c6370; --str:var(--green); --num:var(--orange); --kw:var(--purple);
+  --fn:#61afef; --env:var(--red); --meta:var(--yellow); --sec:var(--purple); --key:#61afef; --host:var(--cyan);
+  --ch:#4cc2ff; --btnA:#0e7490; --btnB:#155e75;
+}
+body.theme-mono{
+  --bg:#0f0f0f; --panel:#141414; --panel2:#1c1c1c; --border:#282828;
+  --text:#e8e8e8; --dim:#909090; --ghost:#5a5a5a;
+  --bgm:#050505; --gr:#4a4a4a; --caret:#ffffff; --sel:rgba(255,255,255,.16); --selbg:rgba(255,255,255,.09);
+  --com:#6b6b6b; --str:#9ece6a; --num:#e0af68; --kw:#bb9af7; --fn:#7aa2f7; --env:#f7768e;
+  --meta:#e0af68; --sec:#bb9af7; --key:#7aa2f7; --host:#73daca;
+  --green:#9ece6a; --purple:#bb9af7; --orange:#e0af68; --red:#f7768e; --yellow:#e0af68; --cyan:#73daca;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,'Segoe UI',Roboto,sans-serif;overflow:hidden}
 button{font:inherit;color:inherit;background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;transition:.15s}
-button:hover{border-color:var(--accent);color:var(--accent)}
-button.primary{background:linear-gradient(135deg,#0e7490,#155e75);border-color:#0e7490;color:#eafcff;font-weight:600}
+button:hover{border-color:var(--ch);color:var(--ch)}
+button.primary{background:linear-gradient(135deg,var(--btnA),var(--btnB));border-color:var(--btnA);color:#eafcff;font-weight:600}
 button.primary:hover{filter:brightness(1.2)}
 button:disabled{opacity:.4;cursor:not-allowed}
 input{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:6px 10px;outline:0}
-input:focus{border-color:var(--accent)}
+input:focus{border-color:var(--ch)}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-thumb{background:#2a3547;border-radius:6px;border:2px solid var(--bg)}
 ::-webkit-scrollbar-corner{background:transparent}
@@ -31,10 +46,48 @@ header{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(-
 header .logo{font-weight:700;font-size:15px;letter-spacing:.3px;margin-right:6px;white-space:nowrap}
 header .logo b{color:var(--accent)}
 header .spacer{flex:1}
+.iconbtn{display:none;font-size:16px;padding:4px 11px}
+
+@media (max-width:1250px){
+  header{padding:8px 10px;gap:6px}
+  header .logo{display:none}
+  header button{padding:5px 9px;font-size:13px}
+}
+@media (max-width:1000px){
+  #btnOpenAny{display:none}
+  #welcome{padding:26px 22px}
+}
+@media (max-width:860px){
+  .iconbtn{display:inline-block}
+  main{position:relative}
+  #sidebar{position:absolute;top:0;bottom:0;left:0;z-index:60;width:min(310px,84vw);max-width:none;min-width:0;box-shadow:14px 0 44px rgba(0,0,0,.45);transform:translateX(-103%);transition:transform .18s ease}
+  body.sidenav #sidebar{transform:none}
+  #scrim{display:none;position:absolute;inset:0;z-index:55;background:rgba(4,7,11,.5)}
+  body.sidenav #scrim{display:block}
+  #welcome{padding:18px 14px}
+  #welcome h1{font-size:20px}
+}
+@media (max-width:560px){
+  header{gap:4px;padding:6px 6px;flex-wrap:wrap}
+  header button{padding:5px 7px;font-size:12.5px}
+  .bigbtns button{width:100%}
+  footer{gap:8px;flex-wrap:wrap;white-space:normal}
+  #stDict{display:none}
+  #qoBox{margin-top:5vh}
+  .ac-item .det{display:none}
+  #acPopup{min-width:220px;max-width:78vw}
+}
+@media (max-height:560px){
+  #welcome{padding:14px 18px}
+  .cards{margin-bottom:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+  .card{padding:10px 12px}
+  .shorts{font-size:12px}
+  footer{padding:2px 12px}
+  header{padding:5px 10px}
+}
 .chip{font-size:11px;padding:2px 9px;border-radius:99px;border:1px solid;white-space:nowrap}
 .chip.fs{color:var(--green);border-color:var(--green);background:rgba(152,195,121,.08)}
 .chip.ro{color:var(--yellow);border-color:var(--yellow);background:rgba(229,192,123,.08)}
-.chip.demo{color:var(--purple);border-color:var(--purple);background:rgba(198,120,221,.08)}
 
 #banner{display:none;align-items:center;gap:10px;padding:6px 12px;background:#13202b;border-bottom:1px solid var(--border);font-size:13px}
 #banner.show{display:flex}
@@ -51,7 +104,7 @@ main{flex:1;display:flex;min-height:0}
 #tree li{white-space:nowrap}
 .row{display:flex;align-items:center;gap:6px;padding:2.5px 6px;border-radius:6px;cursor:pointer;color:var(--text)}
 .row:hover{background:var(--panel2)}
-.row.active{background:rgba(76,194,255,.14);color:var(--accent)}
+.row.active{background:var(--selbg);color:var(--ch)}
 .row .caret{width:12px;display:inline-block;text-align:center;color:var(--dim);font-size:10px;transition:.12s}
 .row .caret.open{transform:rotate(90deg)}
 .row .caret.leaf{visibility:hidden}
@@ -68,24 +121,26 @@ main{flex:1;display:flex;min-height:0}
 #tabbar{display:flex;background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;min-height:35px}
 #tabbar:empty{display:none}
 .tab{display:flex;align-items:center;gap:7px;padding:0 10px;border-right:1px solid var(--border);cursor:pointer;font-size:13px;color:var(--dim);white-space:nowrap;user-select:none}
-.tab.active{background:var(--bg);color:var(--text);box-shadow:inset 0 2px 0 var(--accent)}
+.tab.active{background:var(--bg);color:var(--text);box-shadow:inset 0 2px 0 var(--ch)}
 .tab .dot{color:var(--orange);font-size:16px;line-height:1;display:none}
 .tab.dirty .dot{display:inline}
 .tab .x{border-radius:5px;padding:0 4px;color:var(--dim);font-size:13px}
 .tab .x:hover{background:var(--border);color:var(--text)}
 
 #welcome{flex:1;overflow:auto;padding:40px 48px}
+#welcome h1 b{color:var(--ch)}
 #welcome h1{font-size:24px;margin:0 0 6px}
-#welcome h1 b{color:var(--accent)}
 #welcome p.sub{color:var(--dim);margin:0 0 26px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;max-width:980px;margin-bottom:30px}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
-.card h3{margin:0 0 8px;font-size:14px;color:var(--accent)}
+.card h3{margin:0 0 8px;font-size:14px;color:var(--ch)}
 .card p{margin:0;color:var(--dim);font-size:13px;line-height:1.6}
 #welcome .bigbtns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
 kbd{background:var(--panel2);border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;padding:1px 6px;font:11.5px var(--mono);color:var(--yellow)}
 .shorts{max-width:980px;color:var(--dim);font-size:13px}
 .shorts td{padding:3px 18px 3px 0}
+.pickOther{display:block;background:none;border:0;color:var(--dim);cursor:pointer;padding:6px 0;font-size:13.5px;text-decoration:underline dotted;margin-top:-14px}
+.pickOther:hover{color:var(--ch)}
 
 #editorWrap{flex:1;display:none;flex-direction:column;min-height:0}
 #editorWrap.on{display:flex}
@@ -99,12 +154,12 @@ kbd{background:var(--panel2);border:1px solid var(--border);border-bottom-width:
 #gutter{overflow:hidden;flex:none;background:var(--bg);border-right:1px solid var(--border);user-select:none}
 #gutter pre{margin:0;padding:8px 0;color:#3d4a5d;text-align:right}
 #gutter pre div{padding-right:12px;height:var(--glh,20.2px);line-height:var(--glh,20.2px)}
-#gutter pre div.cur{color:var(--accent)}
+#gutter pre div.cur{color:var(--ch)}
 #codeWrap{flex:1;position:relative;min-width:0}
 .codefont{font-family:var(--mono);font-size:var(--codefs,13px);line-height:1.55;tab-size:4}
 #hl{position:absolute;inset:0;margin:0;padding:8px 12px;overflow:hidden;pointer-events:none;white-space:pre;color:var(--text)}
-#ta{position:absolute;inset:0;padding:8px 12px;border:0;outline:0;resize:none;background:transparent;color:transparent;caret-color:#7ee0ff;white-space:pre;overflow:auto;spellcheck:false}
-#ta::selection{background:rgba(76,194,255,.22)}
+#ta{position:absolute;inset:0;padding:8px 12px;border:0;outline:0;resize:none;background:transparent;color:transparent;caret-color:var(--caret);white-space:pre;overflow:auto;spellcheck:false}
+#ta::selection{background:var(--sel)}
 #ghost{position:absolute;color:var(--ghost);pointer-events:none;white-space:pre;z-index:5;display:none;background:rgba(93,106,125,.12);border-radius:3px}
 #markLayer,#curline{position:absolute;inset:0;pointer-events:none;z-index:1}
 #markLayer .mk{position:absolute;background:rgba(229,192,123,.22);border-radius:2px}
@@ -116,7 +171,7 @@ body.wrap #gutterPre{text-align:left}
 body.wrap #gutterPre div{padding-right:0}
 #gutterPre div.gl{position:relative;color:transparent}
 #gutterPre div.gl .num{position:absolute;left:0;top:0;min-width:calc(var(--gutw,44px) - 14px);text-align:right;color:#3d4a5d}
-#gutterPre div.gl.cur .num{color:var(--accent)}
+#gutterPre div.gl.cur .num{color:var(--ch)}
 .mirror{position:absolute;left:-99999px;top:0;visibility:hidden;white-space:pre;padding:0;margin:0;border:0;letter-spacing:normal}
 button.on{border-color:var(--accent2);color:var(--accent2)}
 #problems{display:none;border-top:1px solid var(--border);background:var(--panel);max-height:26vh;overflow:auto;padding:6px 10px;font-size:12.5px}
@@ -129,16 +184,16 @@ button.on{border-color:var(--accent2);color:var(--accent2)}
 #curline{z-index:0}
 #curline .bar{position:absolute;left:0;right:0;background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.04)}
 /* syntax */
-.c-com{color:#5c6370;font-style:italic}
-.c-str{color:var(--green)}
-.c-num{color:var(--orange)}
-.c-kw{color:var(--purple)}
-.c-fn{color:#61afef}
-.c-env{color:var(--red);font-weight:600}
-.c-meta{color:var(--yellow);font-weight:600}
-.c-sec{color:var(--purple);font-weight:700}
-.c-key{color:#61afef}
-.c-host{color:var(--cyan)}
+.c-com{color:var(--com);font-style:italic}
+.c-str{color:var(--str)}
+.c-num{color:var(--num)}
+.c-kw{color:var(--kw)}
+.c-fn{color:var(--fn)}
+.c-env{color:var(--env);font-weight:600}
+.c-meta{color:var(--meta);font-weight:600}
+.c-sec{color:var(--sec);font-weight:700}
+.c-key{color:var(--key)}
+.c-host{color:var(--host)}
 
 #acPopup{position:absolute;z-index:40;display:none;min-width:300px;max-width:420px;max-height:270px;overflow:auto;background:#141a24;border:1px solid #2b3646;border-radius:10px;box-shadow:0 10px 32px rgba(0,0,0,.55)}
 .ac-item{display:flex;align-items:center;gap:8px;padding:4.5px 12px;cursor:pointer;font-size:13px}
@@ -146,8 +201,8 @@ button.on{border-color:var(--accent2);color:var(--accent2)}
 .ac-item .lab b{color:var(--accent)}
 .ac-item .det{margin-left:auto;color:var(--dim);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}
 .ac-item .k{font-size:10px;width:16px;text-align:center;flex:none}
-.ac-item.act{background:rgba(76,194,255,.14)}
-.ac-item.act .lab{color:var(--accent)}
+.ac-item.act{background:var(--selbg)}
+.ac-item.act .lab{color:var(--ch)}
 .k-env{color:var(--red)} .k-word{color:var(--yellow)} .k-prop{color:var(--cyan)} .k-sg{color:var(--purple)}
 
 footer{display:flex;align-items:center;gap:14px;padding:4px 12px;background:var(--panel);border-top:1px solid var(--border);font-size:12px;color:var(--dim);white-space:nowrap}
@@ -163,93 +218,166 @@ footer b{color:var(--text);font-weight:600}
 #qoList{max-height:52vh;overflow:auto;padding:6px}
 #qoList .row{padding:6px 10px}
 #qoList .row .det{margin-left:auto;color:var(--dim);font-size:11.5px}
-#gsearch{position:fixed;top:52px;left:300px;right:12px;bottom:38px;background:var(--panel);border:1px solid var(--border);border-radius:12px;z-index:70;display:none;flex-direction:column;box-shadow:0 18px 60px rgba(0,0,0,.6)}
+#gsearch{position:fixed;top:52px;left:0;right:0;bottom:38px;border-radius:0;border-left:0;border-right:0;border-bottom:0;background:var(--panel);border-top:1px solid var(--border);z-index:70;display:none;flex-direction:column;box-shadow:0 18px 60px rgba(0,0,0,.6)}
 #gsearch.on{display:flex}
 #gsearch .gs-head{display:flex;gap:8px;padding:10px;border-bottom:1px solid var(--border);align-items:center}
 #gsearch .gs-head input{flex:1}
 #gsearch .gs-head .info{color:var(--dim);font-size:12px;white-space:nowrap}
 #gsResults{flex:1;overflow:auto;padding:8px}
-.gs-file{margin:8px 0 4px;color:var(--accent);font-weight:600;font-size:13px;cursor:pointer}
+.gs-file{margin:8px 0 4px;color:var(--ch);font-weight:600;font-size:13px;cursor:pointer}
 .gs-hit{display:flex;gap:10px;padding:3px 8px 3px 18px;border-radius:6px;cursor:pointer;font:12.5px var(--mono);color:var(--dim)}
 .gs-hit:hover{background:var(--panel2);color:var(--text)}
 .gs-hit .ln{color:var(--orange);min-width:44px;text-align:right;flex:none}
 .gs-hit b{color:var(--yellow)}
 
+@media (min-width:861px){#gsearch{top:46px;left:calc(var(--sbw,280px) + 1px);right:14px;bottom:34px;border-radius:12px;border:1px solid var(--border)}}
+
 #ctx{position:fixed;z-index:100;display:none;background:#161d29;border:1px solid var(--border);border-radius:10px;padding:5px;min-width:190px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
 #ctx button{display:block;width:100%;text-align:left;background:none;border:0;border-radius:7px;padding:7px 12px;font-size:13px}
-#ctx button:hover{background:rgba(76,194,255,.14);color:var(--accent)}
+#ctx button:hover{background:var(--selbg);color:var(--ch)}
 #ctx button.danger:hover{background:rgba(224,108,117,.14);color:var(--red)}
 #ctx hr{border:0;border-top:1px solid var(--border);margin:4px 6px}
 
 #toasts{position:fixed;right:16px;bottom:44px;z-index:120;display:flex;flex-direction:column;gap:8px}
-.toast{background:#182230;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:9px 14px;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.5);animation:tin .18s ease}
+.toast{background:#182230;border:1px solid var(--border);border-left:3px solid var(--ch);border-radius:10px;padding:9px 14px;font-size:13px;box-shadow:0 8px 30px rgba(0,0,0,.5);animation:tin .18s ease}
 .toast.err{border-left-color:var(--red)}
 .toast.ok{border-left-color:var(--green)}
 @keyframes tin{from{transform:translateY(8px);opacity:0}}
 .hidden{display:none!important}
+
+/* ===== themes ===== */
+body.theme-light{
+ --bg:#f6f8fb; --panel:#ffffff; --panel2:#eef1f6; --border:#d9e0ea;
+ --text:#1f2937; --dim:#5b6776; --ghost:#9aa7b8;
+ --bgm:#dee4ec; --gr:#93a1b3; --caret:#0b7fae; --sel:rgba(9,105,218,.16); --selbg:rgba(9,105,218,.1);
+ --com:#8a97a8; --str:#3f7d23; --num:#b5590d; --kw:#8250df; --fn:#0858a8; --env:#c01c28;
+ --meta:#96660a; --sec:#8250df; --key:#0858a8; --host:#0b7261;
+}
+body.theme-candy{
+ --bg:#191320; --panel:#221a2e; --panel2:#2c2138; --border:#3b2e4c;
+ --text:#efe6f7; --dim:#a896c2; --ghost:#6e5a8a;
+ --bgm:#100b17; --gr:#4d3e63; --caret:#ff9ad5; --sel:rgba(255,122,204,.24); --selbg:rgba(255,122,204,.12);
+ --com:#8a7aa0; --str:#c3f584; --num:#ffb86c; --kw:#ff7ac6; --fn:#7ad9ff; --env:#ff6b9d;
+ --meta:#ffd166; --sec:#ff7ac6; --key:#7ad9ff; --host:#9d8cff;
+ --purple:#ff7ac6; --green:#c3f584; --orange:#ffb86c; --red:#ff6b8f; --yellow:#ffd166; --cyan:#7ad9ff;
+}
+body.theme-solarized{
+ --bg:#002b36; --panel:#073642; --panel2:#0a4250; --border:#15505e;
+ --text:#eee8d5; --dim:#93a1a1; --ghost:#586e75;
+ --bgm:#001d24; --gr:#3d5b66; --caret:#eee8d5; --sel:rgba(147,161,161,.22); --selbg:rgba(147,161,161,.12);
+ --com:#586e75; --str:#859900; --num:#d33682; --kw:#cb4b16; --fn:#268bd2; --env:#dc322f;
+ --meta:#b58900; --sec:#d33682; --key:#268bd2; --host:#2aa198;
+ --purple:#d33682; --green:#859900; --orange:#cb4b16; --red:#dc322f; --yellow:#b58900; --cyan:#2aa198;
+}
+body.theme-paper{
+ --bg:#fbfaf7; --panel:#f3f1ec; --panel2:#eae7e0; --border:#d8d3c7;
+ --text:#33302a; --dim:#77726a; --ghost:#b3ac9e;
+ --bgm:#e7e4dc; --gr:#a9a394; --caret:#8a6d3b; --sel:rgba(140,105,45,.16); --selbg:rgba(140,105,45,.1);
+ --com:#a09a8c; --str:#6b7f2e; --num:#b0560e; --kw:#8b2500; --fn:#25587f; --env:#a03028;
+ --meta:#8a6d3b; --sec:#8b2500; --key:#25587f; --host:#3d6b52;
+ --purple:#8b2500; --green:#6b7f2e; --orange:#b0560e; --red:#a03028; --yellow:#8a6d3b; --cyan:#3d6b52;
+}
+body.theme-light .ficon.js{background:rgba(130,80,223,.13);color:#8250df}
+body.theme-light .ficon.sg{background:rgba(11,114,97,.13);color:#0b7261}
+body.theme-light .ficon.json{background:rgba(63,125,35,.14);color:#3f7d23}
+body.theme-light .ficon.txt{background:rgba(91,103,118,.12);color:#5b6776}
+body.theme-light .toast{background:#fff}
+body.theme-light .tab.active{box-shadow:inset 0 2px 0 var(--ch)}
+body.theme-light .row .name{color:inherit}
+body.theme-light #banner{background:#eef3f9}
+body.theme-light #acPopup,body.theme-light #ctx{background:#fff}
+body.theme-light #ghost{background:rgba(9,105,218,.08)}
+
+/* ===== settings dialog ===== */
+#setOverlay{position:fixed;inset:0;background:rgba(4,7,11,.55);z-index:90;display:none;align-items:flex-start;justify-content:center;backdrop-filter:blur(2px)}
+#setOverlay.on{display:flex}
+#setBox{margin-top:7vh;width:min(560px,92vw);max-height:84vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.55)}
+#setBox h2{margin:0;padding:15px 18px 11px;font-size:16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+#setBox .sec{padding:13px 18px;border-bottom:1px solid var(--border)}
+#setBox .sec:last-child{border-bottom:0}
+#setBox .sec h3{margin:0 0 9px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:var(--dim)}
+#setBox .opt{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:9px;cursor:pointer;border:1px solid transparent;font-size:13.5px}
+#setBox .opt:hover{background:var(--panel2)}
+#setBox .opt.on{border-color:var(--ch);background:var(--selbg)}
+#setBox .opt .sw{width:20px;height:20px;border-radius:50%;flex:none;border:1px solid rgba(255,255,255,.2)}
+#setBox .opt .ico{font-size:17px;width:22px;text-align:center}
+#setBox .opt .name{flex:1}
+#setBox .opt .check{color:var(--ch);font-weight:700;opacity:0}
+#setBox .opt.on .check{opacity:1}
+#setBox .swatches{display:flex;gap:10px;padding:2px 10px;flex-wrap:wrap}
+#setBox .swatch{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid transparent;outline:2px solid transparent;outline-offset:2px}
+#setBox .swatch.on{outline-color:var(--ch)}
+#setBox .swatch:hover{transform:scale(1.1)}
+#setBox .row2{display:flex;align-items:center;gap:10px;font-size:13.5px}
+#setBox select{font:inherit;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:6px 10px;outline:0}
+#setBox .actions{display:flex;justify-content:space-between;align-items:center;padding:12px 18px}
+#setBox .ghostbtn{background:none;border:1px dashed var(--border);border-radius:8px;color:var(--dim);cursor:pointer;padding:6px 12px;font:inherit;font-size:12.5px}
+#setBox .ghostbtn:hover{color:var(--red);border-color:var(--red)}
 </style>
 </head>
 <body>
 <div id="app">
   <header>
+    <button id="btnMenu" class="iconbtn" data-i18n-title="menu.tip">☰</button>
     <span class="logo">⚡ SG <b>Studio</b></span>
-    <button id="btnOpenModules" class="primary">📂 Mở Modules</button>
-    <button id="btnOpenScripts" class="primary">📄 Mở Scripts</button>
-    <button id="btnOpenAny">🗂 Thư mục khác…</button>
+    <button id="btnOpenModules" class="primary" data-i18n="btn.openModules" data-i18n-title="btn.openModules.tip">📂 Mở Modules</button>
+    <button id="btnOpenScripts" class="primary" data-i18n="btn.openScripts" data-i18n-title="btn.openScripts.tip">📄 Mở Scripts</button>
+    <button id="btnOpenAny" data-i18n="btn.openAny" data-i18n-title="btn.openAny.tip">🗂 Thư mục khác…</button>
     <span class="spacer"></span>
-    <button id="btnSave" title="Ctrl+S">💾 Lưu</button>
-    <button id="btnSaveAll" title="Lưu mọi tệp đã sửa">Lưu tất cả</button>
-    <button id="btnWrap" title="Alt+Z — tự xuống dòng khi dòng dài">↵ Xuống dòng</button>
-    <button id="btnAuto" title="Tự lưu tệp sau khi ngừng gõ">⏱ Tự lưu</button>
-    <button id="btnProblems" title="Danh sách lỗi cú pháp">⚠ 0</button>
-    <span id="modeChip" class="chip demo">DEMO</span>
+    <button id="btnSave" title="Ctrl+S" data-i18n="btn.save">💾 Lưu</button>
+    <button id="btnSaveAll" data-i18n="btn.saveAll" data-i18n-title="btn.saveAll.tip">Lưu tất cả</button>
+    <button id="btnWrap" data-i18n="btn.wrap" data-i18n-title="btn.wrap.tip">↵ Xuống dòng</button>
+    <button id="btnAuto" data-i18n="btn.auto" data-i18n-title="btn.auto.tip">⏱ Tự lưu</button>
+    <button id="btnProblems" data-i18n-title="btn.problems.tip">⚠ 0</button>
+    <button id="btnSettings" class="iconbtn2" title="Cài đặt">⚙</button>
   </header>
 
   <div id="banner">
-    <span class="msg" id="bannerMsg"></span>
-    <button id="bannerBtn" class="primary" style="display:none">Kết nối lại</button>
-    <button id="bannerClose" title="Ẩn">✕</button>
+    <span class="msg" id="bannerMsg" data-i18n-dyn></span>
+    <button id="bannerBtn" class="primary" style="display:none" data-i18n="btn.reconnect">Kết nối lại</button>
+    <button id="bannerClose" data-i18n-title="btn.hide">✕</button>
   </div>
 
   <main>
+    <div id="scrim"></div>
     <aside id="sidebar">
       <div class="side-head">
-        <button id="btnNewFile" title="Tạo tệp mới">＋ Tệp</button>
-        <button id="btnNewFolder" title="Tạo thư mục mới">＋ Thư mục</button>
-        <button id="btnRefresh" title="Đọc lại từ đĩa">🔄</button>
+        <button id="btnNewFile" data-i18n="btn.newFile" data-i18n-title="btn.newFile.tip">＋ Tệp</button>
+        <button id="btnNewFolder" data-i18n="btn.newFolder" data-i18n-title="btn.newFolder.tip">＋ Thư mục</button>
+        <button id="btnRefresh" data-i18n-title="btn.refresh.tip">🔄</button>
       </div>
-      <input id="treeFilter" placeholder="🔍 Lọc tệp…">
-      <div id="tree"><div class="empty">Chưa mở thư mục nào.<br>Dùng các nút ở thanh trên.</div></div>
+      <input id="treeFilter" data-i18n-ph="ph.filter" placeholder="🔍 Lọc tệp…">
+      <div id="tree"><div class="empty">'+tr('tree.empty')+'</div></div>
     </aside>
 
     <section id="center">
       <div id="tabbar"></div>
 
       <div id="welcome">
-        <h1>Quản lý & sửa <b>Modules</b> và <b>Scripts</b> ngay trên Windows</h1>
-        <p class="sub">Mở trực tiếp thư mục <b>Modules</b> / <b>Scripts</b> — mọi thay đổi được ghi thẳng vào đĩa. Gợi ý code học từ toàn bộ script đã có.</p>
+        <h1 data-i18n-html="welcome.h1">Quản lý &amp; sửa <b>Modules</b> và <b>Scripts</b> ngay trên Windows</h1>
+        <p class="sub" data-i18n="welcome.sub">Mở trực tiếp thư mục <b>Modules</b> / <b>Scripts</b> — mọi thay đổi được ghi thẳng vào đĩa. Gợi ý code học từ toàn bộ script đã có.</p>
         <div class="bigbtns">
-          <button class="primary" style="padding:10px 20px" onclick="pickFolder('Modules')">📂 Mở thư mục Modules</button>
-          <button class="primary" style="padding:10px 20px" onclick="pickFolder('Scripts')">📄 Mở thư mục Scripts</button>
-          <button style="padding:10px 20px" onclick="pickFolder()">🗂 Chọn thư mục khác…</button>
+          <button class="primary" style="padding:10px 20px" data-pick="Modules" data-i18n="welcome.openModules">📂 Mở thư mục Modules</button>
+          <button class="primary" style="padding:10px 20px" data-pick="Scripts" data-i18n="welcome.openScripts">📄 Mở thư mục Scripts</button>
         </div>
+        <button class="pickOther" data-pick="" data-i18n="welcome.pickOther">…hoặc chọn một thư mục khác</button>
         <div class="cards">
-          <div class="card"><h3>✏️ Sửa & lưu trực tiếp</h3><p>Đọc/ghi thẳng vào tệp trên đĩa qua File System Access API (Chrome / Edge trên Windows). Tạo, đổi tên, nhân bản, xóa tệp bằng chuột phải.</p></div>
-          <div class="card"><h3>🧠 Gợi ý thông minh</h3><p>Khi gõ, ứng dụng học từ <b>tất cả</b> script &amp; module trong thư mục: tên biến, hàm, thuộc tính, hostname… Gợi ý dạng “bóng mờ” — nhấn <kbd>Tab</kbd> để nhận. <kbd>Ctrl</kbd>+<kbd>Space</kbd> mở danh sách đầy đủ.</p></div>
-          <div class="card"><h3>🎨 Hỗ trợ .sgmodule & .js</h3><p>Tô sáng cú pháp riêng cho Surge module (<b>[Script]</b>, <b>[MITM]</b>, pattern…) và JavaScript ($request, $persistentStore…), kèm gợi ý thuộc tính môi trường.</p></div>
+          <div class="card"><h3 data-i18n="welcome.card1h">✏️ Sửa &amp; lưu trực tiếp</h3><p data-i18n-html="welcome.card1p">Đọc/ghi thẳng vào tệp trên đĩa qua File System Access API (Chrome / Edge trên Windows). Tạo, đổi tên, nhân bản, xóa tệp bằng chuột phải.</p></div>
+          <div class="card"><h3 data-i18n="welcome.card2h">🧠 Gợi ý thông minh</h3><p data-i18n-html="welcome.card2p">Khi gõ, ứng dụng học từ <b>tất cả</b> script &amp; module trong thư mục: tên biến, hàm, thuộc tính, hostname… Gợi ý dạng “bóng mờ” — nhấn <kbd>Tab</kbd> để nhận. <kbd>Ctrl</kbd>+<kbd>Space</kbd> mở danh sách đầy đủ.</p></div>
+          <div class="card"><h3 data-i18n="welcome.card3h">🎨 Hỗ trợ .sgmodule &amp; .js</h3><p data-i18n-html="welcome.card3p">Tô sáng cú pháp riêng cho Surge module (<b>[Script]</b>, <b>[MITM]</b>, pattern…) và JavaScript ($request, $persistentStore…), kèm gợi ý thuộc tính môi trường.</p></div>
         </div>
         <table class="shorts">
-          <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Lưu tệp</td><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td>Mở nhanh tệp</td><td><kbd>Ctrl</kbd>+<kbd>F</kbd></td><td>Tìm trong tệp</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></td><td>Tìm trong toàn bộ tệp</td><td><kbd>Ctrl</kbd>+<kbd>Space</kbd></td><td>Gợi ý code</td><td><kbd>Tab</kbd></td><td>Nhận gợi ý / thụt lề</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>/</kbd></td><td>Ghi chú dòng</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Hoàn tác</td><td>Chuột phải</td><td>Menu tệp (đổi tên, xóa…)</td></tr>
-          <tr><td><kbd>Alt</kbd>+<kbd>Z</kbd></td><td>Bật/tắt tự xuống dòng</td><td><kbd>Ctrl</kbd>+<kbd>G</kbd></td><td>Nhảy tới dòng</td><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td>Nhân bản dòng</td></tr>
-          <tr><td><kbd>Alt</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd></td><td>Di chuyển dòng</td><td><kbd>Ctrl</kbd>+<kbd>+</kbd>/<kbd>-</kbd></td><td>Phóng to/thu nhỏ chữ</td><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd></td><td>Format JSON (vùng chọn)</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td data-i18n="sc.save">Lưu tệp</td><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td data-i18n="sc.quickOpen">Mở nhanh tệp</td><td><kbd>Ctrl</kbd>+<kbd>F</kbd></td><td data-i18n="sc.find">Tìm trong tệp</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></td><td data-i18n="sc.findGlobal">Tìm trong toàn bộ tệp</td><td><kbd>Ctrl</kbd>+<kbd>Space</kbd></td><td data-i18n="sc.suggest">Gợi ý code</td><td><kbd>Tab</kbd></td><td data-i18n="sc.accept">Nhận gợi ý / thụt lề</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>/</kbd></td><td data-i18n="sc.comment">Ghi chú dòng</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td data-i18n="sc.undo">Hoàn tác</td><td><kbd>Ctrl</kbd>+<kbd>G</kbd></td><td data-i18n="sc.goto">Nhảy tới dòng</td></tr>
+          <tr><td><kbd>Alt</kbd>+<kbd>Z</kbd></td><td data-i18n="sc.wrap">Bật/tắt tự xuống dòng</td><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td data-i18n="sc.dupLine">Nhân bản dòng</td><td><kbd>Alt</kbd>+<kbd>↑</kbd>/<kbd>↓</kbd></td><td data-i18n="sc.moveLine">Di chuyển dòng</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>+</kbd>/<kbd>-</kbd></td><td data-i18n="sc.zoom">Phóng to/thu nhỏ chữ</td><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd></td><td data-i18n="sc.formatJson">Format JSON (vùng chọn)</td><td><kbd>Ctrl</kbd>+<kbd>,</kbd></td><td data-i18n="sc.settings">Cài đặt</td></tr>
         </table>
       </div>
 
       <div id="editorWrap">
         <div id="findbar">
-          <input id="findInput" placeholder="Tìm trong tệp…">
+          <input id="findInput" data-i18n-ph="ph.find" placeholder="Tìm trong tệp…">
           <span class="cnt" id="findCnt">0/0</span>
           <button id="findPrev">↑</button>
           <button id="findNext">↓</button>
@@ -271,7 +399,6 @@ footer b{color:var(--text);font-weight:600}
   </main>
 
   <footer>
-    <span id="stMode"><b>Demo</b></span>
     <span class="path" id="stPath">—</span>
     <span id="stPos">Ln 1, Col 1</span>
     <span id="stSel"></span>
@@ -282,9 +409,59 @@ footer b{color:var(--text);font-weight:600}
   </footer>
 </div>
 
+<div id="setOverlay">
+  <div id="setBox">
+    <h2>⚙ <span data-i18n="settings.title">Cài đặt</span><span class="spacer" style="flex:1"></span><button id="setClose" data-i18n-title="btn.close" style="padding:2px 10px">✕</button></h2>
+    <div class="sec">
+      <h3 data-i18n="settings.language">Ngôn ngữ</h3>
+      <div class="opt" data-lang="vi"><span class="ico">🇻🇳</span><span class="name">Tiếng Việt</span><span class="check">✓</span></div>
+      <div class="opt" data-lang="en"><span class="ico">🇬🇧</span><span class="name">English</span><span class="check">✓</span></div>
+    </div>
+    <div class="sec">
+      <h3 data-i18n="settings.theme">Giao diện</h3>
+      <div class="opt" data-theme="dark"><span class="sw" style="background:linear-gradient(135deg,#0b0e14 50%,#4cc2ff 50%)"></span><span class="name" data-i18n="theme.dark">Tối (mặc định)</span><span class="check">✓</span></div>
+      <div class="opt" data-theme="light"><span class="sw" style="background:linear-gradient(135deg,#f6f8fb 50%,#0969da 50%)"></span><span class="name" data-i18n="theme.light">Sáng</span><span class="check">✓</span></div>
+      <div class="opt" data-theme="mono"><span class="sw" style="background:linear-gradient(135deg,#0f0f0f 50%,#e8e8e8 50%)"></span><span class="name" data-i18n="theme.mono">Tối đơn sắc (Tokyo Night)</span><span class="check">✓</span></div>
+      <div class="opt" data-theme="candy"><span class="sw" style="background:linear-gradient(135deg,#191320 50%,#ff7ac6 50%)"></span><span class="name" data-i18n="theme.candy">Tối kẹo (Candy)</span><span class="check">✓</span></div>
+      <div class="opt" data-theme="solarized"><span class="sw" style="background:linear-gradient(135deg,#002b36 50%,#859900 50%)"></span><span class="name" data-i18n="theme.solarized">Xanh cổ vịt (Solarized Dark)</span><span class="check">✓</span></div>
+      <div class="opt" data-theme="paper"><span class="sw" style="background:linear-gradient(135deg,#fbfaf7 50%,#8b2500 50%)"></span><span class="name" data-i18n="theme.paper">Giấy (Sepia)</span><span class="check">✓</span></div>
+    </div>
+    <div class="sec">
+      <h3 data-i18n="settings.accent">Màu nhấn</h3>
+      <div class="swatches">
+        <div class="swatch" data-accent="#4cc2ff" style="background:#4cc2ff" title="Blue"></div>
+        <div class="swatch" data-accent="#2dd4bf" style="background:#2dd4bf" title="Teal"></div>
+        <div class="swatch" data-accent="#98c379" style="background:#98c379" title="Green"></div>
+        <div class="swatch" data-accent="#ffd166" style="background:#ffd166" title="Amber"></div>
+        <div class="swatch" data-accent="#ff6b8f" style="background:#ff6b8f" title="Rose"></div>
+        <div class="swatch" data-accent="#c678dd" style="background:#c678dd" title="Violet"></div>
+        <div class="swatch" data-accent="#ff8a3c" style="background:#ff8a3c" title="Orange"></div>
+      </div>
+    </div>
+    <div class="sec">
+      <h3 data-i18n="settings.editor">Trình soạn thảo</h3>
+      <div class="row2">
+        <label for="setFont" data-i18n="settings.font">Phông chữ code</label>
+        <select id="setFont">
+          <option value="">Cascadia / Consolas (Windows)</option>
+          <option value="JetBrains Mono">JetBrains Mono</option>
+          <option value="Fira Code">Fira Code</option>
+          <option value="Source Code Pro">Source Code Pro</option>
+          <option value="Hack">Hack</option>
+          <option value="Courier New">Courier New</option>
+        </select>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="ghostbtn" id="setReset" data-i18n="settings.reset">Đặt lại mặc định</button>
+      <button class="primary" id="setDone" data-i18n="settings.done">Xong</button>
+    </div>
+  </div>
+</div>
+
 <div id="gsearch">
   <div class="gs-head">
-    <input id="gsInput" placeholder="🔍 Tìm trong toàn bộ tệp của các thư mục đã mở…">
+    <input id="gsInput" data-i18n-ph="ph.findGlobal" placeholder="🔍 Tìm trong toàn bộ tệp của các thư mục đã mở…">
     <span class="info" id="gsInfo"></span>
     <button id="gsClose">✕</button>
   </div>
@@ -293,7 +470,7 @@ footer b{color:var(--text);font-weight:600}
 
 <div class="overlay" id="qoOverlay">
   <div id="qoBox">
-    <input id="qoInput" placeholder="Gõ tên tệp để mở nhanh…">
+    <input id="qoInput" data-i18n-ph="ph.quickOpen" placeholder="Gõ tên tệp để mở nhanh…">
     <div id="qoList"></div>
   </div>
 </div>
@@ -308,6 +485,185 @@ const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const debounce=(fn,ms)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}};
 function toast(msg,cls=''){const d=document.createElement('div');d.className='toast '+cls;d.textContent=msg;$('#toasts').appendChild(d);setTimeout(()=>{d.style.opacity='0';d.style.transition='.3s';setTimeout(()=>d.remove(),320)},2600)}
+
+/* ================= settings: language / theme / accent / font ================= */
+const I18N={
+vi:{
+ 'menu.tip':'Danh sách tệp',
+ 'btn.openModules':'📂 Mở Modules','btn.openModules.tip':'Mở thư mục Modules','btn.openScripts':'📄 Mở Scripts','btn.openScripts.tip':'Mở thư mục Scripts',
+ 'btn.openAny':'🗂 Thư mục khác…','btn.openAny.tip':'Chọn một thư mục bất kỳ để mở',
+ 'btn.save':'💾 Lưu','btn.saveAll':'Lưu tất cả','btn.wrap':'↵ Xuống dòng','btn.auto':'⏱ Tự lưu',
+ 'btn.problems.tip':'Danh sách lỗi cú pháp','btn.reconnect':'Kết nối lại','btn.hide':'Ẩn',
+ 'btn.newFile':'＋ Tệp','btn.newFile.tip':'Tạo tệp mới','btn.newFolder':'＋ Thư mục','btn.newFolder.tip':'Tạo thư mục mới','btn.refresh.tip':'Đọc lại từ đĩa',
+ 'btn.close':'Đóng',
+ 'settings.title':'Cài đặt','settings.language':'Ngôn ngữ','settings.theme':'Giao diện','settings.accent':'Màu nhấn','settings.editor':'Trình soạn thảo',
+ 'settings.font':'Phông chữ code','settings.reset':'Đặt lại mặc định','settings.done':'Xong',
+ 'theme.dark':'Tối (mặc định)','theme.light':'Sáng','theme.mono':'Tối đơn sắc (Tokyo Night)','theme.candy':'Tối kẹo (Candy)','theme.solarized':'Xanh cổ vịt (Solarized Dark)','theme.paper':'Giấy (Sepia)',
+ 'ph.filter':'🔍 Lọc tệp…','ph.find':'Tìm trong tệp…','ph.findGlobal':'🔍 Tìm trong toàn bộ tệp của các thư mục đã mở…','ph.quickOpen':'Gõ tên tệp để mở nhanh…',
+ 'welcome.h1':'Quản lý &amp; sửa <b>Modules</b> và <b>Scripts</b> ngay trên Windows',
+ 'welcome.sub':'Mở trực tiếp thư mục <b>Modules</b> / <b>Scripts</b> — mọi thay đổi được ghi thẳng vào đĩa. Gợi ý code học từ toàn bộ script đã có.',
+ 'welcome.openModules':'📂 Mở thư mục Modules','welcome.openScripts':'📄 Mở thư mục Scripts','welcome.pickOther':'…hoặc chọn một thư mục khác',
+ 'welcome.card1h':'✏️ Sửa &amp; lưu trực tiếp',
+ 'welcome.card1p':'Đọc/ghi thẳng vào tệp trên đĩa qua File System Access API (Chrome / Edge trên Windows). Tạo, đổi tên, nhân bản, xóa tệp bằng chuột phải.',
+ 'welcome.card2h':'🧠 Gợi ý thông minh',
+ 'welcome.card2p':'Khi gõ, ứng dụng học từ <b>tất cả</b> script &amp; module trong thư mục: tên biến, hàm, thuộc tính, hostname… Gợi ý dạng “bóng mờ” — nhấn <kbd>Tab</kbd> để nhận. <kbd>Ctrl</kbd>+<kbd>Space</kbd> mở danh sách đầy đủ.',
+ 'welcome.card3h':'🎨 Hỗ trợ .sgmodule &amp; .js',
+ 'welcome.card3p':'Tô sáng cú pháp riêng cho Surge module (<b>[Script]</b>, <b>[MITM]</b>, pattern…) và JavaScript ($request, $persistentStore…), kèm gợi ý thuộc tính môi trường.',
+ 'sc.save':'Lưu tệp','sc.quickOpen':'Mở nhanh tệp','sc.find':'Tìm trong tệp','sc.findGlobal':'Tìm trong toàn bộ tệp','sc.suggest':'Gợi ý code','sc.accept':'Nhận gợi ý / thụt lề',
+ 'sc.comment':'Ghi chú dòng','sc.undo':'Hoàn tác','sc.goto':'Nhảy tới dòng','sc.wrap':'Bật/tắt tự xuống dòng','sc.dupLine':'Nhân bản dòng','sc.moveLine':'Di chuyển dòng',
+ 'sc.zoom':'Phóng to/thu nhỏ chữ','sc.formatJson':'Format JSON (vùng chọn)','sc.settings':'Cài đặt',
+ 'st.selected':'đã chọn','st.chars':'ký tự','st.unsaved':'chưa lưu','st.savedAt':'✓ đã lưu','st.dict':'Từ điển: {n} từ · {m} thuộc tính','st.loading':'Đang nạp {n} tệp để học từ điển…',
+ 'st.lncol':'Ln {l}, Col {c}',
+ 'tab.close':'Đóng',
+ 'p.none':'Không có lỗi cú pháp.','p.line':'Dòng {n}','lint.mismatch':'Thiếu cặp: “{ch}” không khớp','lint.unterminatedStr':'Chuỗi chưa đóng (dấu {ch})','lint.unterminatedComment':'Chú thích /* chưa đóng','lint.unclosed':'Thiếu dấu đóng “{close}” cho “{open}”','lint.metaUnknown':'Dòng meta lạ: {k}','lint.sectionUnknown':'Section không phổ biến: [{name}]','lint.missingEq':'Thiếu “=” trong [Script]','lint.dupKey':'Trùng tên script: {key}','lint.missingType':'Thiếu type= (http-request/http-response…)','lint.typeUnknown':'type lạ: {type}','lint.missingPattern':'Thiếu pattern=','lint.badRegex':'pattern không phải regex hợp lệ','lint.missingPath':'Thiếu script-path=','lint.pathFormat':'script-path nên là URL hoặc đường dẫn','lint.requiresBody':'requires-body phải là 0/1','lint.emptyHostname':'hostname rỗng','lint.mapLocal':'Dòng [Map Local] thường cần pattern + data=','lint.noMitm':'Có [Script] nhưng thiếu [MITM] hostname',
+ 'gs.hits':'{h} kết quả · {f} tệp · {ms}ms',
+ 'ctx.open':'📖 Mở','ctx.rename':'✏️ Đổi tên','ctx.dup':'⧉ Nhân bản','ctx.delete':'🗑 Xóa','ctx.download':'⬇ Tải về','ctx.newFile':'＋ Tệp mới','ctx.newFolder':'＋ Thư mục mới','ctx.refresh':'🔄 Làm mới',
+ 'msg.noChange':'Không có thay đổi để lưu.','msg.noPerm':'Chưa được cấp quyền ghi tệp.','msg.saved':'Đã lưu {name}','msg.saveErr':'Lỗi khi lưu: {e}','msg.readErr':'Không đọc được tệp: {e}',
+ 'msg.closeDirty':'“{name}” có thay đổi chưa lưu. Đóng và bỏ thay đổi?','msg.roSave':'Chế độ chỉ đọc — đã tải tệp về để thay thế.','msg.rootOpen':'Thư mục đã mở rồi.',
+ 'msg.readDirErr':'Lỗi đọc thư mục {name}: {e}','msg.created':'Đã tạo {name}','msg.newFileName':'Tên tệp mới (vd: MyApp.sgmodule hoặc myapp.js):','msg.newFolderName':'Tên thư mục mới:',
+ 'msg.roTarget':'Thư mục đích không hỗ trợ ghi (chế độ chỉ đọc).','msg.ro':'Chế độ chỉ đọc.','msg.renamed':'Đã đổi tên thành {name}','msg.saveFirst':'Hãy lưu tệp trước khi đổi tên.',
+ 'msg.renamePrompt':'Tên mới cho “{name}”:','msg.dupName':'Tên bản sao:','msg.dupped':'Đã nhân bản thành {name}','msg.deleteConfirm':'Xóa vĩnh viễn “{path}”?','msg.deleted':'Đã xóa {name}',
+ 'msg.downloadErr':'Không đọc được tệp để tải.','msg.noFS':'Trình duyệt không hỗ trợ ghi đĩa — chuyển sang chế độ chỉ đọc.','msg.opened':'Đã mở thư mục: {name}','msg.openSub':'Đã mở thư mục con: {name}',
+ 'msg.openRO':'Đã mở (chỉ đọc): {name}','msg.openErr':'Không mở được thư mục ({e}). Chuyển sang chỉ đọc.','msg.reread':'Đã đọc lại từ đĩa.','msg.openFirst':'Hãy mở thư mục trước.','msg.noFolderQuick':'Chưa mở thư mục nào.',
+ 'msg.autosaveOn':'Bật tự lưu (1.5s sau khi ngừng gõ).','msg.autosaveOff':'Đã tắt tự lưu.','msg.jsonFmt':'Đã format JSON','msg.jsonErr':'JSON không hợp lệ: {e}',
+ 'msg.jumpLine':'Nhảy tới số dòng:','msg.reconnect':'Có thư mục đã mở từ lần trước — bấm “Kết nối lại” để cấp quyền trình duyệt.',
+ 'msg.bootEmpty':'Chưa có thư mục nào được mở — bấm “Mở Modules” hoặc “Mở Scripts” để bắt đầu (Chrome/Edge trên Windows).',
+ 'banner.reconnect':'Kết nối lại',
+ 'tree.empty':'Chưa mở thư mục nào.<br>Dùng các nút ở thanh trên.','tree.reading':'Đang đọc…',
+ 'toast.settingsReset':'Đã đặt lại cài đặt mặc định.','qo.none':'Không tìm thấy','gs.none':'Không có kết quả','tpl.name':'// Tên: ','tpl.desc':'// Mô tả: ','det.httpReq':'Yêu cầu HTTP','det.httpRes':'Phản hồi HTTP','det.endScript':'kết thúc script','det.notify':'thông báo','det.notifySurge':'thông báo Surge','det.args':'tham số script','det.res':'tài nguyên','det.log':'in ra console'
+},
+en:{
+ 'menu.tip':'File list',
+ 'btn.openModules':'📂 Open Modules','btn.openModules.tip':'Open the Modules folder','btn.openScripts':'📄 Open Scripts','btn.openScripts.tip':'Open the Scripts folder',
+ 'btn.openAny':'🗂 Other folder…','btn.openAny.tip':'Pick any folder to open',
+ 'btn.save':'💾 Save','btn.saveAll':'Save all','btn.wrap':'↵ Word wrap','btn.auto':'⏱ Auto-save',
+ 'btn.problems.tip':'Syntax problems','btn.reconnect':'Reconnect','btn.hide':'Hide',
+ 'btn.newFile':'＋ File','btn.newFile.tip':'New file','btn.newFolder':'＋ Folder','btn.newFolder.tip':'New folder','btn.refresh.tip':'Reload from disk',
+ 'btn.close':'Close',
+ 'settings.title':'Settings','settings.language':'Language','settings.theme':'Theme','settings.accent':'Accent color','settings.editor':'Editor',
+ 'settings.font':'Code font','settings.reset':'Reset to defaults','settings.done':'Done',
+ 'theme.dark':'Dark (default)','theme.light':'Light','theme.mono':'Dark mono (Tokyo Night)','theme.candy':'Candy dark','theme.solarized':'Solarized Dark','theme.paper':'Paper (Sepia)',
+ 'ph.filter':'🔍 Filter files…','ph.find':'Find in file…','ph.findGlobal':'🔍 Search across all opened folders…','ph.quickOpen':'Type a file name to quick-open…',
+ 'welcome.h1':'Manage &amp; edit <b>Modules</b> and <b>Scripts</b> right on Windows',
+ 'welcome.sub':'Open your <b>Modules</b> / <b>Scripts</b> folders directly — every change is written straight to disk. Code suggestions are learned from your existing scripts.',
+ 'welcome.openModules':'📂 Open Modules folder','welcome.openScripts':'📄 Open Scripts folder','welcome.pickOther':'…or pick another folder',
+ 'welcome.card1h':'✏️ Edit &amp; save in place',
+ 'welcome.card1p':'Reads/writes files on disk via the File System Access API (Chrome / Edge on Windows). Create, rename, duplicate and delete files from the right-click menu.',
+ 'welcome.card2h':'🧠 Smart suggestions',
+ 'welcome.card2p':'While typing, the app learns from <b>all</b> scripts &amp; modules in your folders: variables, functions, properties, hostnames… Ghost suggestions appear as you type — press <kbd>Tab</kbd> to accept. <kbd>Ctrl</kbd>+<kbd>Space</kbd> shows the full list.',
+ 'welcome.card3h':'🎨 Built for .sgmodule &amp; .js',
+ 'welcome.card3p':'Dedicated syntax highlighting for Surge modules (<b>[Script]</b>, <b>[MITM]</b>, patterns…) and JavaScript ($request, $persistentStore…), plus environment snippets.',
+ 'sc.save':'Save file','sc.quickOpen':'Quick-open file','sc.find':'Find in file','sc.findGlobal':'Search all files','sc.suggest':'Code suggestions','sc.accept':'Accept suggestion / indent',
+ 'sc.comment':'Toggle comment','sc.undo':'Undo','sc.goto':'Go to line','sc.wrap':'Toggle word wrap','sc.dupLine':'Duplicate line','sc.moveLine':'Move line',
+ 'sc.zoom':'Zoom text in/out','sc.formatJson':'Format JSON (selection)','sc.settings':'Settings',
+ 'st.selected':'selected','st.chars':'chars','st.unsaved':'unsaved','st.savedAt':'✓ saved','st.dict':'Dictionary: {n} words · {m} properties','st.loading':'Loading {n} files to build dictionary…',
+ 'st.lncol':'Ln {l}, Col {c}',
+ 'tab.close':'Close',
+ 'p.none':'No syntax problems.','p.line':'Line {n}','lint.mismatch':'Unmatched: “{ch}” does not close','lint.unterminatedStr':'Unterminated string ({ch})','lint.unterminatedComment':'Unterminated /* comment','lint.unclosed':'Missing “{close}” to close “{open}”','lint.metaUnknown':'Unknown meta line: {k}','lint.sectionUnknown':'Uncommon section: [{name}]','lint.missingEq':'Missing “=” in [Script]','lint.dupKey':'Duplicate script key: {key}','lint.missingType':'Missing type= (http-request/http-response…)','lint.typeUnknown':'Unusual type: {type}','lint.missingPattern':'Missing pattern=','lint.badRegex':'pattern is not a valid regex','lint.missingPath':'Missing script-path=','lint.pathFormat':'script-path should be a URL or a path','lint.requiresBody':'requires-body must be 0 or 1','lint.emptyHostname':'Empty hostname','lint.mapLocal':'[Map Local] lines usually need pattern + data=','lint.noMitm':'[Script] present but [MITM] hostname missing',
+ 'gs.hits':'{h} results · {f} files · {ms}ms',
+ 'ctx.open':'📖 Open','ctx.rename':'✏️ Rename','ctx.dup':'⧉ Duplicate','ctx.delete':'🗑 Delete','ctx.download':'⬇ Download','ctx.newFile':'＋ New file','ctx.newFolder':'＋ New folder','ctx.refresh':'🔄 Refresh',
+ 'msg.noChange':'No changes to save.','msg.noPerm':'Write permission not granted.','msg.saved':'Saved {name}','msg.saveErr':'Save failed: {e}','msg.readErr':'Cannot read file: {e}',
+ 'msg.closeDirty':'“{name}” has unsaved changes. Close and discard?','msg.roSave':'Read-only mode — downloaded the file instead.','msg.rootOpen':'Folder already opened.',
+ 'msg.readDirErr':'Error reading folder {name}: {e}','msg.created':'Created {name}','msg.newFileName':'New file name (e.g. MyApp.sgmodule or myapp.js):','msg.newFolderName':'New folder name:',
+ 'msg.roTarget':'Target folder is not writable (read-only mode).','msg.ro':'Read-only mode.','msg.renamed':'Renamed to {name}','msg.saveFirst':'Save the file before renaming.',
+ 'msg.renamePrompt':'New name for “{name}”:','msg.dupName':'Copy name:','msg.dupped':'Duplicated as {name}','msg.deleteConfirm':'Permanently delete “{path}”?','msg.deleted':'Deleted {name}',
+ 'msg.downloadErr':'Cannot read file for download.','msg.noFS':'Browser cannot write to disk — switching to read-only.','msg.opened':'Opened folder: {name}','msg.openSub':'Opened subfolder: {name}',
+ 'msg.openRO':'Opened (read-only): {name}','msg.openErr':'Cannot open folder ({e}). Switching to read-only.','msg.reread':'Reloaded from disk.','msg.openFirst':'Open a folder first.','msg.noFolderQuick':'No folder opened yet.',
+ 'msg.autosaveOn':'Auto-save on (1.5s after you stop typing).','msg.autosaveOff':'Auto-save off.','msg.jsonFmt':'JSON formatted','msg.jsonErr':'Invalid JSON: {e}',
+ 'msg.jumpLine':'Go to line number:','msg.reconnect':'Folders from the last session — click “Reconnect” to grant permission again.',
+ 'msg.bootEmpty':'No folder opened yet — click “Open Modules” or “Open Scripts” to start (Chrome/Edge on Windows).',
+ 'banner.reconnect':'Reconnect',
+ 'tree.empty':'No folder opened yet.<br>Use the buttons in the toolbar.','tree.reading':'Reading…',
+ 'toast.settingsReset':'Settings reset to defaults.','qo.none':'Not found','gs.none':'No results','tpl.name':'// Name: ','tpl.desc':'// Description: ','det.httpReq':'HTTP request','det.httpRes':'HTTP response','det.endScript':'end of script','det.notify':'notification','det.notifySurge':'Surge notification','det.args':'script arguments','det.res':'resources','det.log':'log to console'
+}};
+let LANG='vi';
+function tr(key,params){
+  let s=(I18N[LANG]&&I18N[LANG][key])||I18N.vi[key]||key;
+  if(params)for(const k in params)s=s.split('{'+k+'}').join(params[k]);
+  return s;
+}
+const THEME_NAMES={dark:'theme.dark',light:'theme.light',mono:'theme.mono',candy:'theme.candy',solarized:'theme.solarized',paper:'theme.paper'};
+const ACCENTS=['#4cc2ff','#2dd4bf','#98c379','#ffd166','#ff6b8f','#c678dd','#ff8a3c'];
+function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)]}
+function applyAccent(hex){
+  if(!hex)return;
+  const[r,g,b]=hexToRgb(hex);
+  const root=document.documentElement.style;
+  root.setProperty('--ch',hex);
+  root.setProperty('--sel','rgba('+r+','+g+','+b+',.22)');
+  root.setProperty('--selbg','rgba('+r+','+g+','+b+',.14)');
+}
+function applyFont(name){
+  const root=document.documentElement.style;
+  if(name)root.setProperty('--mono',"'"+name+"',Consolas,'Courier New',monospace");
+  else root.removeProperty('--mono');
+}
+function applyTheme(name){
+  document.body.classList.remove('theme-light','theme-mono','theme-candy','theme-solarized','theme-paper');
+  if(name&&name!=='dark')document.body.classList.add('theme-'+name);
+  const meta=document.querySelector('meta[name=theme-color]');
+  if(meta)meta.setAttribute('content',name==='light'?'#ffffff':name==='paper'?'#f3f1ec':name==='mono'?'#141414':name==='candy'?'#221a2e':name==='solarized'?'#073642':'#10141c');
+}
+function applyLang(lang){
+  LANG=(lang==='en')?'en':'vi';
+  document.documentElement.lang=LANG==='en'?'en':'vi';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=tr(el.getAttribute('data-i18n'))});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=tr(el.getAttribute('data-i18n-html'))});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{el.placeholder=tr(el.getAttribute('data-i18n-ph'))});
+  document.querySelectorAll('[data-i18n-title]').forEach(el=>{el.title=tr(el.getAttribute('data-i18n-title'))});
+  const sel=document.getElementById('setFont');
+  if(sel&&sel.selectedIndex===0)sel.options[0].textContent=LANG==='en'?'Cascadia / Consolas (Windows)':'Cascadia / Consolas (Windows)';
+  updateStatus();renderTabs();refreshTreeEmpty();renderProblems();
+}
+function refreshTreeEmpty(){
+  const tree=document.getElementById('tree');
+  const empty=tree&&tree.querySelector('.empty');
+  if(empty)empty.innerHTML=tr('tree.empty');
+}
+/* ---- settings persistence ---- */
+function saveSettings(){
+  try{localStorage.setItem('sgstudio.settings',JSON.stringify({lang:LANG,theme:S.theme,accent:S.accent,font:S.font}))}catch(e){}
+}
+function loadSettings(){
+  let o=null;
+  try{o=JSON.parse(localStorage.getItem('sgstudio.settings')||'null')}catch(e){}
+  S.theme=(o&&o.theme)||'dark';
+  S.accent=(o&&o.accent)||'';
+  S.font=(o&&o.font)||'';
+  if(o&&o.lang)LANG=o.lang;
+  else LANG=(navigator.language||'vi').toLowerCase().startsWith('vi')?'vi':'en';
+  applyTheme(S.theme);applyAccent(S.accent);applyFont(S.font);
+}
+function renderSettingsUI(){
+  document.querySelectorAll('#setBox .opt[data-lang]').forEach(el=>el.classList.toggle('on',el.dataset.lang===LANG));
+  document.querySelectorAll('#setBox .opt[data-theme]').forEach(el=>el.classList.toggle('on',el.dataset.theme===S.theme));
+  document.querySelectorAll('#setBox .swatch').forEach(el=>el.classList.toggle('on',el.dataset.accent===S.accent));
+  const sel=document.getElementById('setFont');
+  if(sel)sel.value=S.font||'';
+}
+function openSettings(){renderSettingsUI();document.getElementById('setOverlay').classList.add('on')}
+function closeSettings(){document.getElementById('setOverlay').classList.remove('on')}
+document.addEventListener('DOMContentLoaded',()=>{
+  const ov=document.getElementById('setOverlay');
+  if(!ov)return;
+  document.getElementById('btnSettings').onclick=openSettings;
+  document.getElementById('setClose').onclick=closeSettings;
+  document.getElementById('setDone').onclick=closeSettings;
+  document.getElementById('setReset').onclick=()=>{
+    S.theme='dark';S.accent='';S.font='';LANG='vi';
+    applyTheme('dark');applyAccent('');applyFont('');applyLang('vi');
+    saveSettings();renderSettingsUI();toast(tr('toast.settingsReset'),'ok');
+  };
+  ov.addEventListener('click',e=>{if(e.target===ov)closeSettings()});
+  document.querySelectorAll('#setBox .opt[data-lang]').forEach(el=>el.onclick=()=>{applyLang(el.dataset.lang);saveSettings();renderSettingsUI()});
+  document.querySelectorAll('#setBox .opt[data-theme]').forEach(el=>el.onclick=()=>{S.theme=el.dataset.theme;applyTheme(S.theme);saveSettings();renderSettingsUI()});
+  document.querySelectorAll('#setBox .swatch').forEach(el=>el.onclick=()=>{
+    S.accent=(S.accent===el.dataset.accent)?'':el.dataset.accent;
+    applyAccent(S.accent);saveSettings();renderSettingsUI();
+  });
+  const sel=document.getElementById('setFont');
+  if(sel)sel.onchange=()=>{S.font=sel.value;applyFont(S.font);measure();saveSettings()};
+});
 function download(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
 
 /* ================= IndexedDB (nhớ thư mục) ================= */
@@ -394,11 +750,11 @@ function addMap(map,w){if(!w||w.length<2||w.length>40||/^\d+$/.test(w))return;ma
 const BUILTIN_WORDS=['console','JSON','Math','Object','Array','String','Number','Boolean','Promise','Date','RegExp','Error','fetch','encodeURIComponent','decodeURIComponent','setTimeout','setInterval','parseInt','parseFloat','atob','btoa','structuredClone','localStorage','request','response','headers','body','url','method','status','done','log','stringify','parse','keys','values','entries','forEach','map','filter','reduce','includes','indexOf','slice','split','replace','match','trim','length','name','value','data','items','result','params'];
 const BUILTIN_PROPS=['getTime','charCodeAt','fromCharCode','toUpperCase','toLowerCase','hasOwnProperty','appendChild','split','join','endsWith','startsWith','padStart','padEnd','repeat','flat','flatMap','sort','reverse','find','some','every','push','pop','shift','unshift','splice','concat','test','exec','toFixed','toString','hasOwn','freeze','assign','then','catch','finally','all','race','resolve','reject','now','random','floor','ceil','round','abs','max','min'];
 const ENV_ITEMS=[
- {label:'$request',k:'env',det:'HTTP request',ins:'$request'},
- {label:'$response',k:'env',det:'HTTP response',ins:'$response'},
- {label:'$done',k:'env',det:'kết thúc script',ins:'$done(|)'},
- {label:'$notify',k:'env',det:'thông báo',ins:'$notify(|, subtitle, body)'},
- {label:'$notification.post',k:'env',det:'thông báo Surge',ins:'$notification.post(|, subtitle, body)'},
+ {label:'$request',k:'env',detKey:'det.httpReq',ins:'$request'},
+ {label:'$response',k:'env',detKey:'det.httpRes',ins:'$response'},
+ {label:'$done',k:'env',detKey:'det.endScript',ins:'$done(|)'},
+ {label:'$notify',k:'env',detKey:'det.notify',ins:'$notify(|, subtitle, body)'},
+ {label:'$notification.post',k:'env',detKey:'det.notifySurge',ins:'$notification.post(|, subtitle, body)'},
  {label:'$persistentStore.read',k:'env',det:'Surge KV',ins:'$persistentStore.read(|)'},
  {label:'$persistentStore.write',k:'env',det:'Surge KV',ins:'$persistentStore.write(val|, key)'},
  {label:'$prefs.valueForKey',k:'env',det:'QuantumultX KV',ins:'$prefs.valueForKey(|)'},
@@ -407,9 +763,9 @@ const ENV_ITEMS=[
  {label:'$httpClient.post',k:'env',det:'Surge HTTP',ins:'$httpClient.post({url, headers, body}, (error, response, data)=>{|})'},
  {label:'$task.fetch',k:'env',det:'QuantumultX HTTP',ins:'$task.fetch(|url)'},
  {label:'$environment',k:'env',det:'surge-version…',ins:'$environment'},
- {label:'$argument',k:'env',det:'tham số script',ins:'$argument'},
- {label:'$resource',k:'env',det:'tài nguyên',ins:'$resource'},
- {label:'console.log',k:'env',det:'in ra console',ins:'console.log(|)'},
+ {label:'$argument',k:'env',detKey:'det.args',ins:'$argument'},
+ {label:'$resource',k:'env',detKey:'det.res',ins:'$resource'},
+ {label:'console.log',k:'env',detKey:'det.log',ins:'console.log(|)'},
  {label:'JSON.stringify',k:'env',det:'obj → string',ins:'JSON.stringify(|)'},
  {label:'JSON.parse',k:'env',det:'string → obj',ins:'JSON.parse(|)'},
  {label:'Object.keys',k:'env',det:'',ins:'Object.keys(|)'},
@@ -449,7 +805,7 @@ async function rebuildIndex(){
 }
 function updateDictStatus(){
   const d=S.dict;
-  $('#stDict').textContent=d.wordsArr.length?('Từ điển: '+d.wordsArr.length.toLocaleString('vi-VN')+' từ · '+d.propsArr.length.toLocaleString('vi-VN')+' thuộc tính'):'';
+  $('#stDict').textContent=d.wordsArr.length?tr('st.dict',{n:d.wordsArr.length.toLocaleString('vi-VN'),m:d.propsArr.length.toLocaleString('vi-VN')}):'';
 }
 
 let preloadToken=0;
@@ -466,7 +822,7 @@ async function preloadAll(){
       else if(n.file){if(n.file.size>3*1024*1024)continue;text=await n.file.text()}
       else continue;
       S.cache.set(n.path,text);
-      if(++loaded%25===0){$('#stDict').textContent='Đang nạp '+loaded+' tệp để học từ điển…';await new Promise(r=>setTimeout(r,0))}
+      if(++loaded%25===0){$('#stDict').textContent=tr('st.loading',{n:loaded});await new Promise(r=>setTimeout(r,0))}
     }catch(e){}
   }
   if(tok===preloadToken)rebuildIndex();
@@ -559,7 +915,7 @@ function renderPopup(prefix){
     if(idx>=0&&prefix)lab=esc(it.label.slice(0,idx))+'<b>'+esc(it.label.slice(idx,idx+prefix.length))+'</b>'+esc(it.label.slice(idx+prefix.length));
     else lab=esc(it.label);
     const k={env:'ⓔ',word:'ⓦ',prop:'ⓟ',sg:'ⓢ'}[it.k]||'•';
-    return`<div class="ac-item${i===popupSel?' act':''}" data-i="${i}"><span class="k k-${it.k}">${k}</span><span class="lab">${lab}</span><span class="det">${esc(it.det||'')}</span></div>`;
+    return`<div class="ac-item${i===popupSel?' act':''}" data-i="${i}"><span class="k k-${it.k}">${k}</span><span class="lab">${lab}</span><span class="det">${esc(it.detKey?tr(it.detKey):(it.det||''))}</span></div>`;
   }).join('');
 }
 function closePopup(){popupOpen=false;popup.style.display='none'}
@@ -588,7 +944,7 @@ function renderTabs(){
   S.tabs.forEach((t,i)=>{
     const d=document.createElement('div');d.className='tab'+(i===S.active?' active':'')+(t.dirty?' dirty':'');
     const ic=ficonHTML(t.node.name);
-    d.innerHTML=ic+'<span>'+esc(t.node.name)+'</span><span class="dot">●</span><span class="x" title="Đóng">✕</span>';
+    d.innerHTML=ic+'<span>'+esc(t.node.name)+'</span><span class="dot">●</span><span class="x" title="'+tr('tab.close')+'">✕</span>';
     d.onclick=e=>{if(e.target.classList.contains('x'))closeTab(i);else activateTab(i)};
     d.onauxclick=e=>{if(e.button===1)closeTab(i)};
     bar.appendChild(d);
@@ -608,7 +964,7 @@ async function openNode(node,jumpLine){
       if(node.text!=null)text=node.text;
       else if(node.handle){const f=await node.handle.getFile();text=(await f.text()).replace(/\r\n/g,'\n')}
       else if(node.file){text=(await node.file.text()).replace(/\r\n/g,'\n')}
-    }catch(e){toast('Không đọc được tệp: '+e.message,'err');return}
+    }catch(e){toast(tr('msg.readErr',{e:e.message}),'err');return}
     S.cache.set(node.path,text);
     S.tabs.push({node,text,saved:text,dirty:false});
     idx=S.tabs.length-1;
@@ -619,6 +975,7 @@ async function openNode(node,jumpLine){
 }
 function activateTab(i){
   S.active=i;const t=S.tabs[i];if(!t)return;
+  closeSidenav();
   $('#welcome').style.display='none';
   $('#editorWrap').classList.add('on');
   ta.value=t.text;
@@ -631,7 +988,7 @@ function activateTab(i){
 }
 function closeTab(i){
   const t=S.tabs[i];if(!t)return;
-  if(t.dirty&&!confirm('“'+t.node.name+'” có thay đổi chưa lưu. Đóng và bỏ thay đổi?'))return;
+  if(t.dirty&&!confirm(tr('msg.closeDirty',{name:t.node.name})))return;
   S.tabs.splice(i,1);
   if(S.active>=S.tabs.length)S.active=S.tabs.length-1;
   if(S.tabs.length===0){S.active=-1;$('#editorWrap').classList.remove('on');$('#welcome').style.display='block';renderTabs();return}
@@ -639,20 +996,20 @@ function closeTab(i){
 }
 async function saveTab(t){
   t=t||activeTab();if(!t)return;
-  if(!t.dirty){toast('Không có thay đổi để lưu.');return}
+  if(!t.dirty){toast(tr('msg.noChange'));return}
   if(t.node.handle){
     try{
-      if(!await ensurePerm(t.node.handle)){toast('Chưa được cấp quyền ghi tệp.','err');return}
+      if(!await ensurePerm(t.node.handle)){toast(tr('msg.noPerm'),'err');return}
       const w=await t.node.handle.createWritable();
       await w.write(t.text);await w.close();
       t.saved=t.text;t.dirty=false;S.cache.set(t.node.path,t.text);
-      renderTabs();toast('Đã lưu '+t.node.name,'ok');
-      $('#stSaved').textContent='✓ đã lưu '+new Date().toLocaleTimeString('vi-VN');
+      renderTabs();toast(tr('msg.saved',{name:t.node.name}),'ok');
+      $('#stSaved').textContent=tr('st.savedAt')+' '+new Date().toLocaleTimeString(LANG==='en'?'en-GB':'vi-VN');
       scheduleIndex();lintTab(t);
-    }catch(e){toast('Lỗi khi lưu: '+e.message,'err')}
+    }catch(e){toast(tr('msg.saveErr',{e:e.message}),'err')}
   }else{
     download(t.node.name,t.text);
-    toast('Chế độ chỉ đọc — đã tải tệp về để thay thế.','ok');
+    toast(tr('msg.roSave'),'ok');
     t.saved=t.text;t.dirty=false;renderTabs();
   }
 }
@@ -776,10 +1133,10 @@ function renderGutter(){
 function updateStatus(){
   const t=activeTab();if(!t)return;
   const{line,col}=lineCol(t.text,ta.selectionStart);
-  $('#stPos').textContent='Ln '+(line+1)+', Col '+(col+1);
+  $('#stPos').textContent=tr('st.lncol',{l:line+1,c:col+1});
   const sel=ta.selectionEnd-ta.selectionStart;
-  $('#stSel').textContent=sel>1?(sel.toLocaleString('vi-VN')+' đã chọn'):'';
-  $('#stSize').textContent=t.text.length.toLocaleString('vi-VN')+' ký tự'+(t.dirty?' · ● chưa lưu':'');
+  $('#stSel').textContent=sel>1?(sel.toLocaleString('vi-VN')+' '+tr('st.selected')):'';
+  $('#stSize').textContent=t.text.length.toLocaleString('vi-VN')+' '+tr('st.chars')+(t.dirty?' · ● '+tr('st.unsaved'):'');
   $('#stPath').textContent=t.node.path;
 }
 function updateCurLine(){
@@ -880,14 +1237,14 @@ function lintJS(text){
       else if(ch===')'||ch===']'||ch==='}'){
         const top=stack[stack.length-1];
         if(top&&pairs[top.ch]===ch)stack.pop();
-        else issues.push({sev:'err',msg:'Thiếu cặp: “'+ch+'” không khớp',line1:li+1,col1:ci+1,pos:null});
+        else issues.push({sev:'err',msg:tr('lint.mismatch',{ch}),line1:li+1,col1:ci+1,pos:null});
       }
     }
     inLineCom=false;
-    if(inStr&&inStr!=='`'){issues.push({sev:'err',msg:'Chuỗi chưa đóng (dấu '+inStr+')',line1:li+1,col1:1,pos:null});inStr=null}
-    if(inBlockCom&&li===lines.length-1){issues.push({sev:'err',msg:'Chú thích /* chưa đóng',line1:li+1,col1:1,pos:null})}
+    if(inStr&&inStr!=='`'){issues.push({sev:'err',msg:tr('lint.unterminatedStr',{ch:inStr}),line1:li+1,col1:1,pos:null});inStr=null}
+    if(inBlockCom&&li===lines.length-1){issues.push({sev:'err',msg:tr('lint.unterminatedComment'),line1:li+1,col1:1,pos:null})}
   }
-  for(const s of stack)issues.push({sev:'err',msg:'Thiếu dấu đóng “'+pairs[s.ch]+'” cho “'+s.ch+'”',line1:s.li+1,col1:s.ci+1,pos:null});
+  for(const s of stack)issues.push({sev:'err',msg:tr('lint.unclosed',{close:pairs[s.ch],open:s.ch}),line1:s.li+1,col1:s.ci+1,pos:null});
   return issues;
 }
 function lintSG(text){
@@ -900,42 +1257,42 @@ function lintSG(text){
     const line=raw.replace(/\r$/,'');const t=line.trim();
     if(!t||t.startsWith('#'))return;
     if(t.startsWith('#!')){
-      if(!/^#!([a-z-]+)=/.test(t))issues.push({sev:'warn',msg:'Dòng meta lạ: '+t.split('=')[0],line1:i+1});
+      if(!/^#!([a-z-]+)=/.test(t))issues.push({sev:'warn',msg:tr('lint.metaUnknown',{k:t.split('=')[0]}),line1:i+1});
       return;
     }
     const sec=null;
     if(/^\[.*\]$/.test(t)){
       const name=t.slice(1,-1).trim();
-      if(!KNOWN.includes(name))issues.push({sev:'warn',msg:'Section không phổ biến: ['+name+']',line1:i+1});
+      if(!KNOWN.includes(name))issues.push({sev:'warn',msg:tr('lint.sectionUnknown',{name}),line1:i+1});
       if(name==='Script')seenScript=true;
       section=name;return;
     }
     if(section==='Script'){
       const eq=line.indexOf('=');
-      if(eq<0){issues.push({sev:'err',msg:'Thiếu “=” trong [Script]',line1:i+1});return}
+      if(eq<0){issues.push({sev:'err',msg:tr('lint.missingEq'),line1:i+1});return}
       const key=line.slice(0,eq).trim(),val=line.slice(eq+1);
-      if(scriptKeys.has(key))issues.push({sev:'warn',msg:'Trùng tên script: '+key,line1:i+1});
+      if(scriptKeys.has(key))issues.push({sev:'warn',msg:tr('lint.dupKey',{key}),line1:i+1});
       scriptKeys.add(key);
       const opts={};
       val.split(',').forEach(p=>{const j=p.indexOf('=');if(j>0)opts[p.slice(0,j).trim()]=p.slice(j+1).trim()});
-      if(!opts.type)issues.push({sev:'err',msg:'Thiếu type= (http-request/http-response…)',line1:i+1});
-      else if(!/^(http-request|http-response|cron|event|dns)$/.test(opts.type))issues.push({sev:'warn',msg:'type lạ: '+opts.type,line1:i+1});
-      if(!opts.pattern)issues.push({sev:'err',msg:'Thiếu pattern=',line1:i+1});
-      else{try{new RegExp(opts.pattern)}catch(e){issues.push({sev:'err',msg:'pattern không phải regex hợp lệ',line1:i+1})}}
-      if(!opts['script-path'])issues.push({sev:'err',msg:'Thiếu script-path=',line1:i+1});
-      else if(!/^https?:\/\//.test(opts['script-path'])&&!/^\.?\//.test(opts['script-path']))issues.push({sev:'warn',msg:'script-path nên là URL hoặc đường dẫn',line1:i+1});
-      if(opts['requires-body']&&!/^[01]$/.test(opts['requires-body']))issues.push({sev:'warn',msg:'requires-body phải là 0/1',line1:i+1});
+      if(!opts.type)issues.push({sev:'err',msg:tr('lint.missingType'),line1:i+1});
+      else if(!/^(http-request|http-response|cron|event|dns)$/.test(opts.type))issues.push({sev:'warn',msg:tr('lint.typeUnknown',{type:opts.type}),line1:i+1});
+      if(!opts.pattern)issues.push({sev:'err',msg:tr('lint.missingPattern'),line1:i+1});
+      else{try{new RegExp(opts.pattern)}catch(e){issues.push({sev:'err',msg:tr('lint.badRegex'),line1:i+1})}}
+      if(!opts['script-path'])issues.push({sev:'err',msg:tr('lint.missingPath'),line1:i+1});
+      else if(!/^https?:\/\//.test(opts['script-path'])&&!/^\.?\//.test(opts['script-path']))issues.push({sev:'warn',msg:tr('lint.pathFormat'),line1:i+1});
+      if(opts['requires-body']&&!/^[01]$/.test(opts['requires-body']))issues.push({sev:'warn',msg:tr('lint.requiresBody'),line1:i+1});
     }
     if(section==='MITM'){
       const m=/^\s*hostname\s*=\s*(.*)$/.exec(line);
-      if(m){hostnames=true;if(!m[1].trim())issues.push({sev:'err',msg:'hostname rỗng',line1:i+1})}
+      if(m){hostnames=true;if(!m[1].trim())issues.push({sev:'err',msg:tr('lint.emptyHostname'),line1:i+1})}
     }
     if(section==='Map Local'&&!/\sdata=|\sheader=|^\^?https?:\/\//.test(t)&&!t.startsWith('^')){
-      issues.push({sev:'warn',msg:'Dòng [Map Local] thường cần pattern + data=',line1:i+1});
+      issues.push({sev:'warn',msg:tr('lint.mapLocal'),line1:i+1});
     }
   });
   if(seenScript&&!hostnames&&lines.some(l=>l.trim().startsWith('[')))
-    issues.push({sev:'warn',msg:'Có [Script] nhưng thiếu [MITM] hostname',line1:lines.length});
+    issues.push({sev:'warn',msg:tr('lint.noMitm'),line1:lines.length});
   return issues;
 }
 function lintJSON(text){
@@ -980,8 +1337,8 @@ function renderProblems(t){
   btn.style.color=errs?'var(--red)':warns?'var(--yellow)':'';
   if(!panel.classList.contains('on'))return;
   panel.innerHTML=issues.length
-    ?issues.map((is,i)=>'<div class="p '+is.sev+'" data-i="'+i+'"><b>'+(is.sev==='err'?'✖':'▲')+'</b><span class="loc">'+(is.line1?('Dòng '+is.line1+(is.col1?':'+is.col1:'')):'—')+'</span><span>'+esc(is.msg)+'</span></div>').join('')
-    :'<div class="p"><b style="color:var(--green)">✔</b><span>Không có lỗi cú pháp.</span></div>';
+    ?issues.map((is,i)=>'<div class="p '+is.sev+'" data-i="'+i+'"><b>'+(is.sev==='err'?'✖':'▲')+'</b><span class="loc">'+(is.line1?(tr('p.line',{n:is.line1})+(is.col1?':'+is.col1:'')):'—')+'</span><span>'+esc(is.msg)+'</span></div>').join('')
+    :'<div class="p"><b style="color:var(--green)">✔</b><span>'+tr('p.none')+'</span></div>';
   panel.querySelectorAll('.p[data-i]').forEach(el=>el.onclick=()=>{
     const is=issues[+el.dataset.i];if(is&&is.pos!=null)jumpToPos(is.pos);
   });
@@ -991,7 +1348,7 @@ $('#btnProblems').onclick=()=>{const p=$('#problems');p.classList.toggle('on');r
 /* ================= tree ================= */
 function dirIconHTML(open){return'<span class="caret '+(open?'open':'')+'">▶</span>'}
 async function addRootFS(handle,persist=true){
-  if(S.roots.some(r=>r.handle&&r.handle.name===handle.name)){toast('Thư mục đã mở rồi.');return}
+  if(S.roots.some(r=>r.handle&&r.handle.name===handle.name)){toast(tr('msg.rootOpen'));return}
   const root={handle,name:handle.name,ro:false};
   S.roots.push(root);
   if(persist){
@@ -1010,10 +1367,8 @@ async function addRootRO(files){
   setMode(S.roots.some(r=>!r.ro)?'fs':'ro');
 }
 function setMode(m){
-  const chip=$('#modeChip');
-  if(m==='fs'){chip.className='chip fs';chip.textContent='ĐÃ KẾT NỐI THƯ MỤC';$('#stMode').innerHTML='<b style="color:var(--green)">Đã kết nối — ghi được vào đĩa</b>';$('#banner').classList.remove('show')}
-  else if(m==='ro'){chip.className='chip ro';chip.textContent='CHỈ ĐỌC';$('#stMode').innerHTML='<b style="color:var(--yellow)">Chỉ đọc</b> (dùng Chrome/Edge để ghi đĩa)';$('#banner').classList.remove('show')}
-  else{chip.className='chip demo';chip.textContent='DEMO';$('#stMode').innerHTML='<b style="color:var(--purple)">Demo</b>'}
+  if(m==='fs')$('#banner').classList.remove('show');
+  else if(m==='ro')$('#banner').classList.remove('show');
 }
 async function nodeFromDir(dirHandle,parentPath,depth){
   const list=[];
@@ -1030,12 +1385,12 @@ async function nodeFromDir(dirHandle,parentPath,depth){
         list.push({kind:'file',name,path,handle:h,parent:dirHandle,ext});
       }
     }
-  }catch(e){toast('Lỗi đọc thư mục '+dirHandle.name+': '+e.message,'err')}
+  }catch(e){toast(tr('msg.readDirErr',{name:dirHandle.name,e:e.message}),'err')}
   list.sort((a,b)=>(a.kind===b.kind?a.name.localeCompare(b.name):a.kind==='dir'?-1:1));
   return list;
 }
 async function refreshTree(){
-  const tree=$('#tree');tree.innerHTML='<div class="empty">Đang đọc…</div>';
+  const tree=$('#tree');tree.innerHTML='<div class="empty">'+tr('tree.reading')+'</div>';
   S.nodes=[];
   const rootNodes=[];
   for(const r of S.roots){
@@ -1043,8 +1398,6 @@ async function refreshTree(){
       rootNodes.push({kind:'dir',name:r.name,path:r.name,handle:r.handle,open:true,children:await nodeFromDir(r.handle,r.name,1)});
     }else if(r.files){
       rootNodes.push(await buildROTree(r.files,r.name));
-    }else if(r.demo){
-      rootNodes.push(r.demo);
     }
   }
   S._rootNodes=rootNodes;
@@ -1061,7 +1414,7 @@ function renderTree(){
   const tree=$('#tree');
   tree.innerHTML='';
   const rootNodes=S._rootNodes||[];
-  if(!rootNodes.length){tree.innerHTML='<div class="empty">Chưa mở thư mục nào.<br>Dùng các nút ở thanh trên.</div>';return}
+  if(!rootNodes.length){tree.innerHTML='<div class="empty">'+tr('tree.empty')+'</div>';return}
   const ul=document.createElement('ul');
   const filterFiles=(node)=>node.kind==='file'&&(!filter||node.path.toLowerCase().includes(filter));
   const hasMatch=node=>node.kind==='file'?filterFiles(node):(node.children||[]).some(hasMatch);
@@ -1103,23 +1456,23 @@ function showCtx(e,node){
   const canWrite=S.roots.length&&!S.roots.every(r=>r.ro);
   const items=[];
   if(node.kind==='file'){
-    items.push(['📖 Mở',()=>openNode(node)]);
+    items.push([tr('ctx.open'),()=>openNode(node)]);
     if(canWrite&&!node.ro){
       items.push(null);
-      items.push(['✏️ Đổi tên',()=>renameNode(node)]);
-      items.push(['⧉ Nhân bản',()=>dupNode(node)]);
-      items.push(['🗑 Xóa',()=>deleteNode(node),'danger']);
+      items.push([tr('ctx.rename'),()=>renameNode(node)]);
+      items.push([tr('ctx.dup'),()=>dupNode(node)]);
+      items.push([tr('ctx.delete'),()=>deleteNode(node),'danger']);
     }else{
       items.push(null);
-      items.push(['⬇ Tải về',()=>downloadNode(node)]);
+      items.push([tr('ctx.download'),()=>downloadNode(node)]);
     }
   }else{
     if(canWrite&&!node.ro){
-      items.push(['＋ Tệp mới',()=>newFileIn(node)]);
-      items.push(['＋ Thư mục mới',()=>newFolderIn(node)]);
+      items.push([tr('ctx.newFile'),()=>newFileIn(node)]);
+      items.push([tr('ctx.newFolder'),()=>newFolderIn(node)]);
       items.push(null);
     }
-    items.push(['🔄 Làm mới',()=>refreshTree()]);
+    items.push([tr('ctx.refresh'),()=>refreshTree()]);
   }
   ctx.innerHTML='';
   for(const it of items){
@@ -1149,30 +1502,30 @@ async function parentDirOf(node){
   return root&&root.handle;
 }
 async function newFileIn(dirNode){
-  const name=prompt('Tên tệp mới (vd: MyApp.sgmodule hoặc myapp.js):');
+  const name=prompt(tr('msg.newFileName'));
   if(!name)return;
   const dir=await parentDirOf(dirNode);
-  if(!dir){toast('Thư mục đích không hỗ trợ ghi (chế độ chỉ đọc).','err');return}
+  if(!dir){toast(tr('msg.roTarget'),'err');return}
   const h=await dir.getFileHandle(name,{create:true});
   await refreshTree();
   const node=S.nodes.find(n=>n.path===dirNode.path+'/'+name);
   if(node){node.text='';openNode(node)}
-  toast('Đã tạo '+name,'ok');
+  toast(tr('msg.created',{name}),'ok');
 }
 async function newFolderIn(dirNode){
-  const name=prompt('Tên thư mục mới:');
+  const name=prompt(tr('msg.newFolderName'));
   if(!name)return;
   const dir=await parentDirOf(dirNode);
-  if(!dir){toast('Chế độ chỉ đọc.','err');return}
+  if(!dir){toast(tr('msg.ro'),'err');return}
   await dir.getDirectoryHandle(name,{create:true});
-  await refreshTree();toast('Đã tạo thư mục '+name,'ok');
+  await refreshTree();toast(tr('msg.created',{name}),'ok');
 }
 async function renameNode(node){
-  const newName=prompt('Tên mới cho “'+node.name+'”:',node.name);
+  const newName=prompt(tr('msg.renamePrompt',{name:node.name}),node.name);
   if(!newName||newName===node.name)return;
-  if(S.tabs.some(t=>t.node.path===node.path&&t.dirty)){toast('Hãy lưu tệp trước khi đổi tên.','err');return}
+  if(S.tabs.some(x=>x.node.path===node.path&&x.dirty)){toast(tr('msg.saveFirst'),'err');return}
   const dir=await parentDirOf(node);
-  if(!dir){toast('Chế độ chỉ đọc.','err');return}
+  if(!dir){toast(tr('msg.ro'),'err');return}
   const f=await node.handle.getFile();const text=await f.text();
   const nh=await dir.getFileHandle(newName,{create:true});
   const w=await nh.createWritable();await w.write(text);await w.close();
@@ -1181,11 +1534,11 @@ async function renameNode(node){
   await refreshTree();
   const nn=S.nodes.find(n=>n.path===(dir.name+'/'+newName)||n.name===newName);
   if(nn)openNode(nn);
-  toast('Đã đổi tên thành '+newName,'ok');
+  toast(tr('msg.renamed',{name:newName}),'ok');
 }
 async function dupNode(node){
   const dir=await parentDirOf(node);
-  if(!dir){toast('Chế độ chỉ đọc.','err');return}
+  if(!dir){toast(tr('msg.ro'),'err');return}
   const m=node.name.match(/^(.*?)(\.[^.]+)?$/);
   const newName=m[1]+'-copy'+(m[2]||'');
   const f=await node.handle.getFile();const text=await f.text();
@@ -1194,18 +1547,18 @@ async function dupNode(node){
   await refreshTree();
   const nn=S.nodes.find(n=>n.name===newName);
   if(nn)openNode(nn);
-  toast('Đã nhân bản thành '+newName,'ok');
+  toast(tr('msg.dupped',{name:newName}),'ok');
 }
 async function deleteNode(node){
-  if(!confirm('Xóa vĩnh viễn “'+node.path+'”?'))return;
+  if(!confirm(tr('msg.deleteConfirm',{path:node.path})))return;
   const dir=await parentDirOf(node);
-  if(!dir){toast('Chế độ chỉ đọc.','err');return}
+  if(!dir){toast(tr('msg.ro'),'err');return}
   await dir.removeEntry(node.name);
   const ti=S.tabs.findIndex(t=>t.node.path===node.path);
   if(ti>=0){S.tabs.splice(ti,1);S.active=Math.min(S.active,S.tabs.length-1);if(S.tabs.length)activateTab(S.active);else{S.active=-1;$('#editorWrap').classList.remove('on');$('#welcome').style.display='block'}}
   S.cache.delete(node.path);
   await refreshTree();
-  toast('Đã xóa '+node.name,'ok');
+  toast(tr('msg.deleted',{name:node.name}),'ok');
 }
 async function downloadNode(node){
   let text=S.cache.get(node.path);
@@ -1215,31 +1568,31 @@ async function downloadNode(node){
       else if(node.file)text=await node.file.text();
     }catch(e){}
   }
-  if(text==null){toast('Không đọc được tệp để tải.','err');return}
+  if(text==null){toast(tr('msg.downloadErr'),'err');return}
   download(node.name,text);
 }
 
 /* ================= folder picking ================= */
 async function pickFolder(preset){
   if(!S.fsOK){
-    toast('Trình duyệt không hỗ trợ ghi đĩa — chuyển sang chế độ chỉ đọc.','err');
+    toast(tr('msg.noFS'),'err');
     pickRO();return;
   }
   try{
     const handle=await showDirectoryPicker({id:'sgstudio',mode:'readwrite'});
     await addRootFS(handle);
-    toast('Đã mở thư mục: '+handle.name,'ok');
+    toast(tr('msg.opened',{name:handle.name}),'ok');
     hideBanner();
   }catch(e){
     if(e&&e.name==='AbortError')return;
-    toast('Không mở được thư mục ('+e.name+'). Chuyển sang chỉ đọc.','err');
+    toast(tr('msg.openErr',{e:e.name}),'err');
     pickRO();
   }
 }
 function pickRO(){
   const inp=document.createElement('input');
   inp.type='file';inp.webkitdirectory=true;inp.multiple=true;
-  inp.onchange=async()=>{await addRootRO([...inp.files]);toast('Đã mở (chỉ đọc): '+inp.files[0].webkitRelativePath.split('/')[0],'ok')};
+  inp.onchange=async()=>{await addRootRO([...inp.files]);toast(tr('msg.openRO',{name:inp.files[0].webkitRelativePath.split('/')[0]}),'ok')};
   inp.click();
 }
 async function openNamed(name){
@@ -1256,7 +1609,7 @@ async function openNamed(name){
       }catch(_){}
     }
     await addRootFS(handle);
-    toast('Đã mở thư mục: '+handle.name,'ok');
+    toast(tr('msg.opened',{name:handle.name}),'ok');
   }catch(e){
     if(e&&e.name==='AbortError')return;
     pickRO();
@@ -1265,16 +1618,18 @@ async function openNamed(name){
 $('#btnOpenModules').onclick=()=>openNamed('Modules');
 $('#btnOpenScripts').onclick=()=>openNamed('Scripts');
 $('#btnOpenAny').onclick=()=>pickFolder();
-$('#btnRefresh').onclick=async()=>{await refreshTree();scheduleIndex();toast('Đã đọc lại từ đĩa.','ok')};
+document.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>pickFolder(b.dataset.pick||undefined));
+$('#tree').addEventListener('click',e=>{if(e.target.closest('.row'))closeSidenav()});
+$('#btnRefresh').onclick=async()=>{await refreshTree();scheduleIndex();toast(tr('msg.reread'),'ok')};
 $('#btnNewFile').onclick=()=>{
   const t=activeTab();
   if(t){const parts=t.node.path.split('/');parts.pop();const n=S._rootNodes&&findDir(S._rootNodes,parts.join('/'));if(n)return openCtx(newFileIn(n))}
   const first=S._rootNodes&&S._rootNodes[0];
-  if(first)openCtx(newFileIn(first));else toast('Hãy mở thư mục trước.','err');
+  if(first)openCtx(newFileIn(first));else toast(tr('msg.openFirst'),'err');
 };
 $('#btnNewFolder').onclick=()=>{
   const first=S._rootNodes&&S._rootNodes[0];
-  if(first)openCtx(newFolderIn(first));else toast('Hãy mở thư mục trước.','err');
+  if(first)openCtx(newFolderIn(first));else toast(tr('msg.openFirst'),'err');
 };
 function findDir(nodes,path){
   if(!path)return null;
@@ -1290,7 +1645,7 @@ async function ensurePerm(handle){
   try{return(await handle.requestPermission(opt))==='granted'}catch(e){return false}
 }
 
-/* ================= restore / demo ================= */
+/* ================= restore roots ================= */
 function hideBanner(){$('#banner').classList.remove('show')}
 $('#bannerClose').onclick=hideBanner;
 $('#bannerBtn').onclick=async()=>{
@@ -1325,50 +1680,12 @@ async function restoreRoots(){
   }
   S.restored=ok;await idbSet('roots',ok);
   if(S.restored.length&&!S.roots.length){
-    $('#bannerMsg').textContent='Có thư mục đã mở từ lần trước — bấm “Kết nối lại” để cấp quyền trình duyệt.';
+    $('#bannerMsg').textContent=tr('msg.reconnect');
     $('#bannerBtn').style.display='inline-block';
     $('#banner').classList.add('show');
     return true;
   }
   return S.roots.length>0;
-}
-
-function demoRoot(){
-  const sgText=[
-    '#!name=Demo Module','#!desc=Ví dụ mô-đun để thử tính năng gợi ý','#!author=SG Studio','',
-    '[Script]','',
-    'demo.request = type=http-request,pattern=^https:\\/\\/api\\.demo\\.com\\/v1\\/feed\\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/example/demo.js',
-    'demo.response = type=http-response,pattern=^https:\\/\\/api\\.demo\\.com\\/v1\\/feed\\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/example/demo.js','',
-    '[Map Local]','',
-    '^https?:\\/\\/cdn\\.demo\\.com\\/ads data="https://raw.githubusercontent.com/example/blank.txt"','',
-    '[MITM]','',
-    'hostname = %APPEND% api.demo.com, cdn.demo.com',''
-  ].join('\n');
-  const jsText=[
-    '// Demo script — gõ vài chữ để thấy gợi ý (vd: getval, $persistent, parse)',
-    '(()=>{',
-    '  const Env={name:"Demo",debug:true};',
-    '  function getval(key){return Env.getval(key)}',
-    '  function setval(key,val){Env.setval(val,key)}',
-    '  function getjson(key,def={}){const v=getval(key);return v?JSON.parse(v):def}',
-    '  function setjson(obj,key){setval(JSON.stringify(obj),key)}',
-    '  function notify(title,subtitle,body){$notify(title,subtitle,body)}',
-    '  function isQuanX(){return typeof $task!=="undefined"}',
-    '  function isSurge(){return typeof $environment!=="undefined"&&$environment["surge-version"]}',
-    '  const headers=$request.headers;',
-    '  const url=$request.url;',
-    '  let body=$response.body;',
-    '  const obj=JSON.parse(body||"{}");',
-    '  if(obj.data&&obj.data.items){obj.data.items=[]}',
-    '  body=JSON.stringify(obj);',
-    '  $done({body});',
-    '})();',''
-  ].join('\n');
-  const mk=(name,path,text)=>({kind:'file',name,path,text,ro:true});
-  return{kind:'dir',name:'demo (chỉ đọc)',path:'demo',open:true,ro:true,children:[
-    {kind:'dir',name:'Modules',path:'demo/Modules',open:true,ro:true,children:[mk('Demo.sgmodule','demo/Modules/Demo.sgmodule',sgText)]},
-    {kind:'dir',name:'Scripts',path:'demo/Scripts',open:true,ro:true,children:[mk('demo.js','demo/Scripts/demo.js',jsText)]}
-  ]};
 }
 
 /* ================= quick open ================= */
@@ -1381,7 +1698,7 @@ function fuzzyScore(q,s){
   return qi===q.length?score: -1;
 }
 function openQuickOpen(){
-  if(!S.nodes.length){toast('Chưa mở thư mục nào.','err');return}
+  if(!S.nodes.length){toast(tr('msg.noFolderQuick'),'err');return}
   $('#qoOverlay').classList.add('on');
   $('#qoInput').value='';renderQO('');
   setTimeout(()=>$('#qoInput').focus(),30);
@@ -1391,7 +1708,7 @@ function renderQO(q){
   let items=S.nodes.map(n=>({n,s:q?fuzzyScore(q,n.path):-q.length})).filter(x=>x.s>0);
   items.sort((a,b)=>b.s-a.s);
   items=items.slice(0,50);
-  list.innerHTML=items.map((x,i)=>'<div class="row'+(i===0?' active':'')+'" data-p="'+esc(x.n.path)+'">'+ficonHTML(x.n.name)+'<span class="name">'+esc(x.n.name)+'</span><span class="det">'+esc(x.n.path)+'</span></div>').join('')||'<div class="empty" style="padding:14px;color:var(--dim)">Không tìm thấy</div>';
+  list.innerHTML=items.map((x,i)=>'<div class="row'+(i===0?' active':'')+'" data-p="'+esc(x.n.path)+'">'+ficonHTML(x.n.name)+'<span class="name">'+esc(x.n.name)+'</span><span class="det">'+esc(x.n.path)+'</span></div>').join('')||'<div class="empty" style="padding:14px;color:var(--dim)">'+tr('qo.none')+'</div>';
   list.querySelectorAll('.row').forEach(r=>r.onclick=()=>{$('#qoOverlay').classList.remove('on');const n=S.nodes.find(n=>n.path===r.dataset.p);if(n)openNode(n)});
 }
 $('#qoInput').addEventListener('input',e=>renderQO(e.target.value.trim()));
@@ -1433,7 +1750,7 @@ $('#gsInput').addEventListener('input',debounce(()=>{
     if(!fileHit)files--;
   }
   const ms=Math.round(performance.now()-t0);
-  $('#gsInfo').textContent=hits+' kết quả · '+files+' tệp · '+ms+'ms';
+  $('#gsInfo').textContent=tr('gs.hits',{h:hits,f:files,ms:ms});
   let lastFile='';
   const html=out.map(r=>{
     const fileHtml=r.path!==lastFile?'<div class="gs-file" data-p="'+esc(r.path)+'">'+ficonHTML(r.path.split('/').pop())+' '+esc(r.path)+'</div>':'';
@@ -1441,7 +1758,7 @@ $('#gsInput').addEventListener('input',debounce(()=>{
     const b=esc(r.prev.slice(0,r.pos))+'<b>'+esc(r.prev.slice(r.pos,r.pos+r.q.length))+'</b>'+esc(r.prev.slice(r.pos+r.q.length));
     return fileHtml+'<div class="gs-hit" data-p="'+esc(r.path)+'" data-l="'+r.line+'"><span class="ln">'+r.line+'</span><span>'+b+'</span></div>';
   }).join('');
-  res.innerHTML=html||'<div class="empty" style="padding:20px;color:var(--dim)">Không có kết quả</div>';
+  res.innerHTML=html||'<div class="empty" style="padding:20px;color:var(--dim)">'+tr('gs.none')+'</div>';
   res.querySelectorAll('.gs-file').forEach(el=>el.onclick=()=>{const n=S.nodes.find(n=>n.path===el.dataset.p);if(n)openNode(n)});
   res.querySelectorAll('.gs-hit').forEach(el=>el.onclick=()=>{const n=S.nodes.find(n=>n.path===el.dataset.p);if(n)openNode(n,+el.dataset.l)});
 },250));
@@ -1489,7 +1806,7 @@ ta.addEventListener('keydown',e=>{
   if((e.ctrlKey||e.metaKey)&&!e.shiftKey&&!e.altKey&&e.key.toLowerCase()==='d'){e.preventDefault();dupLine();return}
   if(e.altKey&&!e.ctrlKey&&(e.key==='ArrowUp'||e.key==='ArrowDown')){e.preventDefault();moveLine(e.key==='ArrowUp'?-1:1);return}
   if((e.ctrlKey||e.metaKey)&&e.altKey&&e.key.toLowerCase()==='f'){e.preventDefault();formatSelectionJSON();return}
-  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='g'){e.preventDefault();const n=parseInt(prompt('Nhảy tới số dòng:',''),10);if(n>0)jumpToLine(n);return}
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='g'){e.preventDefault();const n=parseInt(prompt(tr('msg.jumpLine'),""),10);if(n>0)jumpToLine(n);return}
   if((e.ctrlKey||e.metaKey)&&(e.key==='='||e.key==='+')){e.preventDefault();fontZoom(1);return}
   if((e.ctrlKey||e.metaKey)&&e.key==='-'){e.preventDefault();fontZoom(-1);return}
   /* popup navigation */
@@ -1599,7 +1916,7 @@ let autoOn=false,autoTimer=null;
 function setAuto(on){
   autoOn=!!on;$('#btnAuto').classList.toggle('on',autoOn);
   try{localStorage.setItem('sgstudio.auto',autoOn?'1':'0')}catch(e){}
-  toast(autoOn?'Bật tự lưu (1.5s sau khi ngừng gõ).':'Đã tắt tự lưu.');
+  toast(autoOn?tr('msg.autosaveOn'):tr('msg.autosaveOff'));
 }
 $('#btnAuto').onclick=()=>setAuto(!autoOn);
 try{if(localStorage.getItem('sgstudio.auto')==='1'){autoOn=true;$('#btnAuto').classList.add('on')}}catch(e){}
@@ -1660,20 +1977,20 @@ function formatSelectionJSON(){
     const pretty=JSON.stringify(JSON.parse(target),null,2);
     ta.focus();ta.setSelectionRange(s,e);
     document.execCommand('insertText',false,pretty);
-    onEdited();toast('Đã format JSON','ok');
-  }catch(err){toast('JSON không hợp lệ: '+err.message,'err')}
+    onEdited();toast(tr('msg.jsonFmt'),'ok');
+  }catch(err){toast(tr('msg.jsonErr',{e:err.message}),'err')}
 }
 const TEMPLATES={
   '.sgmodule':['#!name=','#!desc=','','[Script]','','','[MITM]','','hostname = %APPEND% '],
-  '.js':['// Tên: ','// Mô tả: ','','(async () => {','  const {url,headers}=typeof $request!=="undefined"?$request:{};','  console.log(url);','  $done();','})();'],
+  '.js':[tr('tpl.name'),tr('tpl.desc'),'','(async () => {','  const {url,headers}=typeof $request!=="undefined"?$request:{};','  console.log(url);','  $done();','})();'],
   '.json':['{','  ','}']
 };
 const _newFileIn=newFileIn;
 newFileIn=async function(dirNode){
-  const name=prompt('Tên tệp mới (vd: MyApp.sgmodule hoặc myapp.js):');
+  const name=prompt(tr('msg.newFileName'));
   if(!name)return;
   const dir=await parentDirOf(dirNode);
-  if(!dir){toast('Thư mục đích không hỗ trợ ghi (chế độ chỉ đọc).','err');return}
+  if(!dir){toast(tr('msg.roTarget'),'err');return}
   const h=await dir.getFileHandle(name,{create:true});
   await refreshTree();
   const node=S.nodes.find(n=>n.path===dirNode.path+'/'+name);
@@ -1684,7 +2001,7 @@ newFileIn=async function(dirNode){
     else node.text='';
     await openNode(node);
   }
-  toast('Đã tạo '+name,'ok');
+  toast(tr('msg.created',{name}),'ok');
 };
 
 /* format JSON */
@@ -1693,9 +2010,15 @@ $('#fmtJson').onclick=()=>{
   try{const obj=JSON.parse(t.text);const pretty=JSON.stringify(obj,null,2);
     ta.setSelectionRange(0,t.text.length);
     document.execCommand('insertText',false,pretty);
-    onEdited();toast('Đã format JSON','ok');
-  }catch(e){toast('JSON không hợp lệ: '+e.message,'err')}
+    onEdited();toast(tr('msg.jsonFmt'),'ok');
+  }catch(e){toast(tr('msg.jsonErr',{e:e.message}),'err')}
 };
+
+/* ================= mobile nav drawer ================= */
+function closeSidenav(){document.body.classList.remove('sidenav')}
+function toggleSidenav(){document.body.classList.toggle('sidenav')}
+$('#btnMenu').onclick=toggleSidenav;
+$('#scrim').onclick=closeSidenav;
 
 /* ================= toolbar / shortcuts ================= */
 $('#btnSave').onclick=()=>saveTab();
@@ -1705,13 +2028,15 @@ window.addEventListener('keydown',e=>{
   if(e.altKey&&e.key.toLowerCase()==='z'){e.preventDefault();setWrap(!wrapOn());return}
   if(mod&&!e.shiftKey&&e.key.toLowerCase()==='s'){e.preventDefault();saveTab()}
   else if(mod&&e.shiftKey&&e.key.toLowerCase()==='s'){e.preventDefault();saveAll()}
-  else if(mod&&!e.shiftKey&&e.key.toLowerCase()==='p'){e.preventDefault();openQuickOpen()}
+  else  if(mod&&!e.shiftKey&&e.key.toLowerCase()==='p'){e.preventDefault();openQuickOpen()}
+  else if(mod&&e.key===','){e.preventDefault();openSettings()}
   else if(mod&&e.shiftKey&&e.key.toLowerCase()==='f'){e.preventDefault();toggleGSearch(true)}
   else if(mod&&!e.shiftKey&&e.key.toLowerCase()==='f'&&activeTab()){
     e.preventDefault();$('#findbar').classList.add('on');$('#findInput').focus();$('#findInput').select();
   }
   else if(e.key==='Escape'){
     if($('#gsearch').classList.contains('on'))toggleGSearch(false);
+    else if(document.body.classList.contains('sidenav')){closeSidenav();return}
     else if($('#qoOverlay').classList.contains('on'))$('#qoOverlay').classList.remove('on');
     else if($('#findbar').classList.contains('on'))$('#findbar').classList.remove('on');
     closePopup();ghost.style.display='none';
@@ -1734,7 +2059,7 @@ window.addEventListener('drop',async e=>{
   for(const it of items){
     if(it.kind==='file'){
       const h=it.getAsFileSystemHandle&&await it.getAsFileSystemHandle();
-      if(h&&h.kind==='directory'){await addRootFS(h);toast('Đã mở thư mục: '+h.name,'ok');return}
+      if(h&&h.kind==='directory'){await addRootFS(h);toast(tr('msg.opened',{name:h.name}),'ok');return}
     }
   }
 });
@@ -1765,18 +2090,15 @@ async function buildROTree(files,rootName){
 
 (async function boot(){
   measure();
+  loadSettings();
+  applyLang(LANG);
   document.fonts&&document.fonts.ready&&document.fonts.ready.then(measure);
   const restored=await restoreRoots();
-  if(!restored){
-    S.roots.push({name:'demo',demo:demoRoot()});
-    await refreshTree();
-    setMode('demo');
-    $('#bannerMsg').textContent='Đang ở chế độ DEMO — hãy bấm “Mở Modules” hoặc “Mở Scripts” để làm việc với tệp thật của bạn (Chrome/Edge trên Windows).';
-    $('#banner').classList.add('show');
-    const demo=S.nodes.find(n=>n.name==='demo.js');
-    if(demo)openNode(demo);
-  }else{
+  if(restored){
     setMode(S.roots.some(r=>!r.ro)?'fs':'ro');
+  }else{
+    $('#bannerMsg').textContent=tr('msg.bootEmpty');
+    $('#banner').classList.add('show');
   }
   updateDictStatus();
 })();
