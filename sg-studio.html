@@ -354,17 +354,17 @@ body.theme-light #ghost{background:rgba(9,105,218,.08)}
       <div id="tabbar"></div>
 
       <div id="welcome">
-        <h1 data-i18n-html="welcome.h1">Quản lý &amp; sửa <b>Modules</b> và <b>Scripts</b> ngay trên Windows</h1>
-        <p class="sub" data-i18n="welcome.sub">Mở trực tiếp thư mục <b>Modules</b> / <b>Scripts</b> — mọi thay đổi được ghi thẳng vào đĩa. Gợi ý code học từ toàn bộ script đã có.</p>
+        <h1 data-i18n-html="welcome.h1">Quản lý & sửa <b>Modules</b> và <b>Scripts</b> ngay trên Windows</h1>
+        <p class="sub" data-i18n-html="welcome.sub">Mở trực tiếp thư mục <b>Modules</b> / <b>Scripts</b> — mọi thay đổi được ghi thẳng vào đĩa. Gợi ý code học từ toàn bộ script đã có.</p>
         <div class="bigbtns">
           <button class="primary" style="padding:10px 20px" data-pick="Modules" data-i18n="welcome.openModules">📂 Mở thư mục Modules</button>
           <button class="primary" style="padding:10px 20px" data-pick="Scripts" data-i18n="welcome.openScripts">📄 Mở thư mục Scripts</button>
         </div>
         <button class="pickOther" data-pick="" data-i18n="welcome.pickOther">…hoặc chọn một thư mục khác</button>
         <div class="cards">
-          <div class="card"><h3 data-i18n="welcome.card1h">✏️ Sửa &amp; lưu trực tiếp</h3><p data-i18n-html="welcome.card1p">Đọc/ghi thẳng vào tệp trên đĩa qua File System Access API (Chrome / Edge trên Windows). Tạo, đổi tên, nhân bản, xóa tệp bằng chuột phải.</p></div>
-          <div class="card"><h3 data-i18n="welcome.card2h">🧠 Gợi ý thông minh</h3><p data-i18n-html="welcome.card2p">Khi gõ, ứng dụng học từ <b>tất cả</b> script &amp; module trong thư mục: tên biến, hàm, thuộc tính, hostname… Gợi ý dạng “bóng mờ” — nhấn <kbd>Tab</kbd> để nhận. <kbd>Ctrl</kbd>+<kbd>Space</kbd> mở danh sách đầy đủ.</p></div>
-          <div class="card"><h3 data-i18n="welcome.card3h">🎨 Hỗ trợ .sgmodule &amp; .js</h3><p data-i18n-html="welcome.card3p">Tô sáng cú pháp riêng cho Surge module (<b>[Script]</b>, <b>[MITM]</b>, pattern…) và JavaScript ($request, $persistentStore…), kèm gợi ý thuộc tính môi trường.</p></div>
+          <div class="card"><h3 data-i18n="welcome.card1h">✏️ Sửa & lưu trực tiếp</h3><p data-i18n-html="welcome.card1p">Đọc/ghi thẳng vào tệp trên đĩa qua File System Access API (Chrome / Edge trên Windows). Tạo, đổi tên, nhân bản, xóa tệp bằng chuột phải.</p></div>
+          <div class="card"><h3 data-i18n="welcome.card2h">🧠 Gợi ý thông minh</h3><p data-i18n-html="welcome.card2p">Khi gõ, ứng dụng học từ <b>tất cả</b> script & module trong thư mục: tên biến, hàm, thuộc tính, hostname… Gợi ý dạng “bóng mờ” — nhấn <kbd>Tab</kbd> để nhận. <kbd>Ctrl</kbd>+<kbd>Space</kbd> mở danh sách đầy đủ.</p></div>
+          <div class="card"><h3 data-i18n="welcome.card3h">🎨 Hỗ trợ .sgmodule & .js</h3><p data-i18n-html="welcome.card3p">Tô sáng cú pháp riêng cho Surge module (<b>[Script]</b>, <b>[MITM]</b>, pattern…) và JavaScript ($request, $persistentStore…), kèm gợi ý thuộc tính môi trường.</p></div>
         </div>
         <table class="shorts">
           <tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td data-i18n="sc.save">Lưu tệp</td><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td data-i18n="sc.quickOpen">Mở nhanh tệp</td><td><kbd>Ctrl</kbd>+<kbd>F</kbd></td><td data-i18n="sc.find">Tìm trong tệp</td></tr>
@@ -482,7 +482,7 @@ body.theme-light #ghost{background:rgba(9,105,218,.08)}
 'use strict';
 /* ================= helpers ================= */
 const $=s=>document.querySelector(s);
-const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&','<':'&lt;','>':'&gt;'}[c]));
 const debounce=(fn,ms)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}};
 function toast(msg,cls=''){const d=document.createElement('div');d.className='toast '+cls;d.textContent=msg;$('#toasts').appendChild(d);setTimeout(()=>{d.style.opacity='0';d.style.transition='.3s';setTimeout(()=>d.remove(),320)},2600)}
 
@@ -500,14 +500,14 @@ vi:{
  'settings.font':'Phông chữ code','settings.reset':'Đặt lại mặc định','settings.done':'Xong',
  'theme.dark':'Tối (mặc định)','theme.light':'Sáng','theme.mono':'Tối đơn sắc (Tokyo Night)','theme.candy':'Tối kẹo (Candy)','theme.solarized':'Xanh cổ vịt (Solarized Dark)','theme.paper':'Giấy (Sepia)',
  'ph.filter':'🔍 Lọc tệp…','ph.find':'Tìm trong tệp…','ph.findGlobal':'🔍 Tìm trong toàn bộ tệp của các thư mục đã mở…','ph.quickOpen':'Gõ tên tệp để mở nhanh…',
- 'welcome.h1':'Quản lý &amp; sửa <b>Modules</b> và <b>Scripts</b> ngay trên Windows',
+ 'welcome.h1':'Quản lý & sửa <b>Modules</b> và <b>Scripts</b> ngay trên Windows',
  'welcome.sub':'Mở trực tiếp thư mục <b>Modules</b> / <b>Scripts</b> — mọi thay đổi được ghi thẳng vào đĩa. Gợi ý code học từ toàn bộ script đã có.',
  'welcome.openModules':'📂 Mở thư mục Modules','welcome.openScripts':'📄 Mở thư mục Scripts','welcome.pickOther':'…hoặc chọn một thư mục khác',
- 'welcome.card1h':'✏️ Sửa &amp; lưu trực tiếp',
+ 'welcome.card1h':'✏️ Sửa & lưu trực tiếp',
  'welcome.card1p':'Đọc/ghi thẳng vào tệp trên đĩa qua File System Access API (Chrome / Edge trên Windows). Tạo, đổi tên, nhân bản, xóa tệp bằng chuột phải.',
  'welcome.card2h':'🧠 Gợi ý thông minh',
- 'welcome.card2p':'Khi gõ, ứng dụng học từ <b>tất cả</b> script &amp; module trong thư mục: tên biến, hàm, thuộc tính, hostname… Gợi ý dạng “bóng mờ” — nhấn <kbd>Tab</kbd> để nhận. <kbd>Ctrl</kbd>+<kbd>Space</kbd> mở danh sách đầy đủ.',
- 'welcome.card3h':'🎨 Hỗ trợ .sgmodule &amp; .js',
+ 'welcome.card2p':'Khi gõ, ứng dụng học từ <b>tất cả</b> script & module trong thư mục: tên biến, hàm, thuộc tính, hostname… Gợi ý dạng “bóng mờ” — nhấn <kbd>Tab</kbd> để nhận. <kbd>Ctrl</kbd>+<kbd>Space</kbd> mở danh sách đầy đủ.',
+ 'welcome.card3h':'🎨 Hỗ trợ .sgmodule & .js',
  'welcome.card3p':'Tô sáng cú pháp riêng cho Surge module (<b>[Script]</b>, <b>[MITM]</b>, pattern…) và JavaScript ($request, $persistentStore…), kèm gợi ý thuộc tính môi trường.',
  'sc.save':'Lưu tệp','sc.quickOpen':'Mở nhanh tệp','sc.find':'Tìm trong tệp','sc.findGlobal':'Tìm trong toàn bộ tệp','sc.suggest':'Gợi ý code','sc.accept':'Nhận gợi ý / thụt lề',
  'sc.comment':'Ghi chú dòng','sc.undo':'Hoàn tác','sc.goto':'Nhảy tới dòng','sc.wrap':'Bật/tắt tự xuống dòng','sc.dupLine':'Nhân bản dòng','sc.moveLine':'Di chuyển dòng',
@@ -544,14 +544,14 @@ en:{
  'settings.font':'Code font','settings.reset':'Reset to defaults','settings.done':'Done',
  'theme.dark':'Dark (default)','theme.light':'Light','theme.mono':'Dark mono (Tokyo Night)','theme.candy':'Candy dark','theme.solarized':'Solarized Dark','theme.paper':'Paper (Sepia)',
  'ph.filter':'🔍 Filter files…','ph.find':'Find in file…','ph.findGlobal':'🔍 Search across all opened folders…','ph.quickOpen':'Type a file name to quick-open…',
- 'welcome.h1':'Manage &amp; edit <b>Modules</b> and <b>Scripts</b> right on Windows',
+ 'welcome.h1':'Manage & edit <b>Modules</b> and <b>Scripts</b> right on Windows',
  'welcome.sub':'Open your <b>Modules</b> / <b>Scripts</b> folders directly — every change is written straight to disk. Code suggestions are learned from your existing scripts.',
  'welcome.openModules':'📂 Open Modules folder','welcome.openScripts':'📄 Open Scripts folder','welcome.pickOther':'…or pick another folder',
- 'welcome.card1h':'✏️ Edit &amp; save in place',
+ 'welcome.card1h':'✏️ Edit & save in place',
  'welcome.card1p':'Reads/writes files on disk via the File System Access API (Chrome / Edge on Windows). Create, rename, duplicate and delete files from the right-click menu.',
  'welcome.card2h':'🧠 Smart suggestions',
- 'welcome.card2p':'While typing, the app learns from <b>all</b> scripts &amp; modules in your folders: variables, functions, properties, hostnames… Ghost suggestions appear as you type — press <kbd>Tab</kbd> to accept. <kbd>Ctrl</kbd>+<kbd>Space</kbd> shows the full list.',
- 'welcome.card3h':'🎨 Built for .sgmodule &amp; .js',
+ 'welcome.card2p':'While typing, the app learns from <b>all</b> scripts & modules in your folders: variables, functions, properties, hostnames… Ghost suggestions appear as you type — press <kbd>Tab</kbd> to accept. <kbd>Ctrl</kbd>+<kbd>Space</kbd> shows the full list.',
+ 'welcome.card3h':'🎨 Built for .sgmodule & .js',
  'welcome.card3p':'Dedicated syntax highlighting for Surge modules (<b>[Script]</b>, <b>[MITM]</b>, patterns…) and JavaScript ($request, $persistentStore…), plus environment snippets.',
  'sc.save':'Save file','sc.quickOpen':'Quick-open file','sc.find':'Find in file','sc.findGlobal':'Search all files','sc.suggest':'Code suggestions','sc.accept':'Accept suggestion / indent',
  'sc.comment':'Toggle comment','sc.undo':'Undo','sc.goto':'Go to line','sc.wrap':'Toggle word wrap','sc.dupLine':'Duplicate line','sc.moveLine':'Move line',
