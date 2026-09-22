@@ -157,7 +157,7 @@ kbd{background:var(--panel2);border:1px solid var(--border);border-bottom-width:
 #gutter pre div.cur{color:var(--ch)}
 #codeWrap{flex:1;position:relative;min-width:0}
 .codefont{font-family:var(--mono);font-size:var(--codefs,13px);line-height:1.55;tab-size:4}
-#hl{position:absolute;inset:0;margin:0;padding:8px 12px;overflow:hidden;pointer-events:none;white-space:pre;color:var(--text)}
+#hl{position:absolute;inset:0;margin:0;padding:8px 12px;overflow:hidden;pointer-events:none;white-space:pre;color:var(--text);user-select:none}
 #ta{position:absolute;inset:0;padding:8px 12px;border:0;outline:0;resize:none;background:transparent;color:transparent;caret-color:var(--caret);white-space:pre;overflow:auto;spellcheck:false}
 #ta::selection{background:var(--sel)}
 #ghost{position:absolute;color:var(--ghost);pointer-events:none;white-space:pre;z-index:5;display:none;background:rgba(93,106,125,.12);border-radius:3px}
@@ -482,7 +482,7 @@ body.theme-light #ghost{background:rgba(9,105,218,.08)}
 'use strict';
 /* ================= helpers ================= */
 const $=s=>document.querySelector(s);
-const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&','<':'&lt;','>':'&gt;'}[c]));
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const debounce=(fn,ms)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}};
 function toast(msg,cls=''){const d=document.createElement('div');d.className='toast '+cls;d.textContent=msg;$('#toasts').appendChild(d);setTimeout(()=>{d.style.opacity='0';d.style.transition='.3s';setTimeout(()=>d.remove(),320)},2600)}
 
@@ -514,7 +514,7 @@ vi:{
  'sc.zoom':'Phóng to/thu nhỏ chữ','sc.formatJson':'Format JSON (vùng chọn)','sc.settings':'Cài đặt',
  'st.selected':'đã chọn','st.chars':'ký tự','st.unsaved':'chưa lưu','st.savedAt':'✓ đã lưu','st.dict':'Từ điển: {n} từ · {m} thuộc tính','st.loading':'Đang nạp {n} tệp để học từ điển…',
  'st.lncol':'Ln {l}, Col {c}',
- 'tab.close':'Đóng',
+ 'tab.close':'Đóng','tab.renameTip':'Nhấp đúp hoặc nhấp chuột phải để đổi tên / nhân bản',
  'p.none':'Không có lỗi cú pháp.','p.line':'Dòng {n}','lint.mismatch':'Thiếu cặp: “{ch}” không khớp','lint.unterminatedStr':'Chuỗi chưa đóng (dấu {ch})','lint.unterminatedComment':'Chú thích /* chưa đóng','lint.unclosed':'Thiếu dấu đóng “{close}” cho “{open}”','lint.metaUnknown':'Dòng meta lạ: {k}','lint.sectionUnknown':'Section không phổ biến: [{name}]','lint.missingEq':'Thiếu “=” trong [Script]','lint.dupKey':'Trùng tên script: {key}','lint.missingType':'Thiếu type= (http-request/http-response…)','lint.typeUnknown':'type lạ: {type}','lint.missingPattern':'Thiếu pattern=','lint.badRegex':'pattern không phải regex hợp lệ','lint.missingPath':'Thiếu script-path=','lint.pathFormat':'script-path nên là URL hoặc đường dẫn','lint.requiresBody':'requires-body phải là 0/1','lint.emptyHostname':'hostname rỗng','lint.mapLocal':'Dòng [Map Local] thường cần pattern + data=','lint.noMitm':'Có [Script] nhưng thiếu [MITM] hostname',
  'gs.hits':'{h} kết quả · {f} tệp · {ms}ms',
  'ctx.open':'📖 Mở','ctx.rename':'✏️ Đổi tên','ctx.dup':'⧉ Nhân bản','ctx.delete':'🗑 Xóa','ctx.download':'⬇ Tải về','ctx.newFile':'＋ Tệp mới','ctx.newFolder':'＋ Thư mục mới','ctx.refresh':'🔄 Làm mới',
@@ -522,7 +522,7 @@ vi:{
  'msg.closeDirty':'“{name}” có thay đổi chưa lưu. Đóng và bỏ thay đổi?','msg.roSave':'Chế độ chỉ đọc — đã tải tệp về để thay thế.','msg.rootOpen':'Thư mục đã mở rồi.',
  'msg.readDirErr':'Lỗi đọc thư mục {name}: {e}','msg.created':'Đã tạo {name}','msg.newFileName':'Tên tệp mới (vd: MyApp.sgmodule hoặc myapp.js):','msg.newFolderName':'Tên thư mục mới:',
  'msg.roTarget':'Thư mục đích không hỗ trợ ghi (chế độ chỉ đọc).','msg.ro':'Chế độ chỉ đọc.','msg.renamed':'Đã đổi tên thành {name}','msg.saveFirst':'Hãy lưu tệp trước khi đổi tên.',
- 'msg.renamePrompt':'Tên mới cho “{name}”:','msg.dupName':'Tên bản sao:','msg.dupped':'Đã nhân bản thành {name}','msg.deleteConfirm':'Xóa vĩnh viễn “{path}”?','msg.deleted':'Đã xóa {name}',
+ 'msg.renamePrompt':'Tên mới cho “{name}”:','msg.dupName':'Tên bản sao:','msg.dupped':'Đã nhân bản thành {name}','msg.renameExt':'Thiếu đuôi tệp — sẽ đổi thành “{a}”. Tiếp tục?','msg.nameExists':'Đã tồn tại tệp hoặc thư mục với tên này.','msg.deleteConfirm':'Xóa vĩnh viễn “{path}”?','msg.deleted':'Đã xóa {name}',
  'msg.downloadErr':'Không đọc được tệp để tải.','msg.noFS':'Trình duyệt không hỗ trợ ghi đĩa — chuyển sang chế độ chỉ đọc.','msg.opened':'Đã mở thư mục: {name}','msg.openSub':'Đã mở thư mục con: {name}',
  'msg.openRO':'Đã mở (chỉ đọc): {name}','msg.openErr':'Không mở được thư mục ({e}). Chuyển sang chỉ đọc.','msg.reread':'Đã đọc lại từ đĩa.','msg.openFirst':'Hãy mở thư mục trước.','msg.noFolderQuick':'Chưa mở thư mục nào.',
  'msg.autosaveOn':'Bật tự lưu (1.5s sau khi ngừng gõ).','msg.autosaveOff':'Đã tắt tự lưu.','msg.jsonFmt':'Đã format JSON','msg.jsonErr':'JSON không hợp lệ: {e}',
@@ -558,7 +558,7 @@ en:{
  'sc.zoom':'Zoom text in/out','sc.formatJson':'Format JSON (selection)','sc.settings':'Settings',
  'st.selected':'selected','st.chars':'chars','st.unsaved':'unsaved','st.savedAt':'✓ saved','st.dict':'Dictionary: {n} words · {m} properties','st.loading':'Loading {n} files to build dictionary…',
  'st.lncol':'Ln {l}, Col {c}',
- 'tab.close':'Close',
+ 'tab.close':'Close','tab.renameTip':'Double-click or right-click to rename / duplicate',
  'p.none':'No syntax problems.','p.line':'Line {n}','lint.mismatch':'Unmatched: “{ch}” does not close','lint.unterminatedStr':'Unterminated string ({ch})','lint.unterminatedComment':'Unterminated /* comment','lint.unclosed':'Missing “{close}” to close “{open}”','lint.metaUnknown':'Unknown meta line: {k}','lint.sectionUnknown':'Uncommon section: [{name}]','lint.missingEq':'Missing “=” in [Script]','lint.dupKey':'Duplicate script key: {key}','lint.missingType':'Missing type= (http-request/http-response…)','lint.typeUnknown':'Unusual type: {type}','lint.missingPattern':'Missing pattern=','lint.badRegex':'pattern is not a valid regex','lint.missingPath':'Missing script-path=','lint.pathFormat':'script-path should be a URL or a path','lint.requiresBody':'requires-body must be 0 or 1','lint.emptyHostname':'Empty hostname','lint.mapLocal':'[Map Local] lines usually need pattern + data=','lint.noMitm':'[Script] present but [MITM] hostname missing',
  'gs.hits':'{h} results · {f} files · {ms}ms',
  'ctx.open':'📖 Open','ctx.rename':'✏️ Rename','ctx.dup':'⧉ Duplicate','ctx.delete':'🗑 Delete','ctx.download':'⬇ Download','ctx.newFile':'＋ New file','ctx.newFolder':'＋ New folder','ctx.refresh':'🔄 Refresh',
@@ -566,7 +566,7 @@ en:{
  'msg.closeDirty':'“{name}” has unsaved changes. Close and discard?','msg.roSave':'Read-only mode — downloaded the file instead.','msg.rootOpen':'Folder already opened.',
  'msg.readDirErr':'Error reading folder {name}: {e}','msg.created':'Created {name}','msg.newFileName':'New file name (e.g. MyApp.sgmodule or myapp.js):','msg.newFolderName':'New folder name:',
  'msg.roTarget':'Target folder is not writable (read-only mode).','msg.ro':'Read-only mode.','msg.renamed':'Renamed to {name}','msg.saveFirst':'Save the file before renaming.',
- 'msg.renamePrompt':'New name for “{name}”:','msg.dupName':'Copy name:','msg.dupped':'Duplicated as {name}','msg.deleteConfirm':'Permanently delete “{path}”?','msg.deleted':'Deleted {name}',
+ 'msg.renamePrompt':'New name for “{name}”:','msg.dupName':'Copy name:','msg.dupped':'Duplicated as {name}','msg.renameExt':'Missing file extension — will rename to “{a}”. Continue?','msg.nameExists':'A file or folder with this name already exists.','msg.deleteConfirm':'Permanently delete “{path}”?','msg.deleted':'Deleted {name}',
  'msg.downloadErr':'Cannot read file for download.','msg.noFS':'Browser cannot write to disk — switching to read-only.','msg.opened':'Opened folder: {name}','msg.openSub':'Opened subfolder: {name}',
  'msg.openRO':'Opened (read-only): {name}','msg.openErr':'Cannot open folder ({e}). Switching to read-only.','msg.reread':'Reloaded from disk.','msg.openFirst':'Open a folder first.','msg.noFolderQuick':'No folder opened yet.',
  'msg.autosaveOn':'Auto-save on (1.5s after you stop typing).','msg.autosaveOff':'Auto-save off.','msg.jsonFmt':'JSON formatted','msg.jsonErr':'Invalid JSON: {e}',
@@ -711,7 +711,7 @@ function hlSGValue(v){
   let out='',last=0,m;SG_VAL.lastIndex=0;
   while((m=SG_VAL.exec(v))){
     out+=esc(v.slice(last,m.index));
-    if(m[1])out+='<span class="c-kw">'+esc(m[1])+'</span>'+esc('=');
+    if(m[1])out+='<span class="c-kw">'+esc(m[1])+'</span>'; /* lookahead (?==) không ăn '=' — để nó chảy vào phần giữa, nếu in thêm sẽ thừa ký tự => lệch con trỏ */
     else if(m[2]||m[3])out+='<span class="c-str">'+esc(m[0])+'</span>';
     else if(m[4])out+='<span class="c-num">'+esc(m[0])+'</span>';
     else out+='<span class="c-host">'+esc(m[0])+'</span>';
@@ -882,7 +882,7 @@ function updateGhost(){
   const c=caretVisual(t,ta.selectionStart);
   ghost.textContent=rem;
   ghost.style.display='block';
-  ghost.style.left=(c.w+12)+'px';
+  ghost.style.left=(c.w+12-ta.scrollLeft)+'px';
   ghost.style.top=c.top+'px';
 }
 function acceptGhost(){
@@ -893,6 +893,14 @@ function acceptGhost(){
 
 /* ---------- completion popup ---------- */
 let popupOpen=false,popupItems=[],popupSel=0;
+function placePopup(){
+  const t=activeTab();if(!t)return;
+  const c=caretVisual(t,ta.selectionStart);
+  const x=Math.max(4,Math.min(c.w+12-ta.scrollLeft,codeWrap.clientWidth-380));
+  let y=c.top+LH;
+  if(y+280>codeWrap.clientHeight)y=Math.max(4,y-290);
+  popup.style.left=x+'px';popup.style.top=y+'px';popup.style.display='block';
+}
 function openPopup(){
   const t=activeTab();if(!t)return;
   const{ws,word,afterDot}=currentWordCtx();
@@ -901,11 +909,7 @@ function openPopup(){
   if(!list.length){closePopup();return}
   popupItems=list;popupSel=0;popupOpen=true;
   renderPopup(word);
-  const c=caretVisual(t,ta.selectionStart);
-  const x=Math.min(c.w+12,codeWrap.clientWidth-380);
-  let y=c.top+LH;
-  if(y+280>codeWrap.clientHeight)y=Math.max(4,y-290);
-  popup.style.left=x+'px';popup.style.top=y+'px';popup.style.display='block';
+  placePopup();
   ghost.style.display='none';
 }
 function renderPopup(prefix){
@@ -947,6 +951,9 @@ function renderTabs(){
     d.innerHTML=ic+'<span>'+esc(t.node.name)+'</span><span class="dot">●</span><span class="x" title="'+tr('tab.close')+'">✕</span>';
     d.onclick=e=>{if(e.target.classList.contains('x'))closeTab(i);else activateTab(i)};
     d.onauxclick=e=>{if(e.button===1)closeTab(i)};
+    d.title=t.node.path+' — '+tr('tab.renameTip');
+    d.ondblclick=e=>{if(!e.target.classList.contains('x')){e.preventDefault();openCtx(renameTab(t))}};
+    d.oncontextmenu=e=>{e.preventDefault();showTabCtx(e,t)};
     bar.appendChild(d);
   });
 }
@@ -981,6 +988,8 @@ function activateTab(i){
   ta.value=t.text;
   if(wrapOn()){t.wrapRows=null;computeWrap();t.wrapText=t.text}
   renderTabs();refreshAll();
+  /* bố cục có thể thay đổi thêm 1 frame (gutter, thanh cuộn) — đồng bộ lại lớp highlight */
+  requestAnimationFrame(syncHL);
   $('#fmtJson').style.display=extOf(t.node.name)==='json'?'inline-block':'none';
   scheduleLint();
   $('#stSaved').textContent='';
@@ -1042,13 +1051,19 @@ function measure(){
   LH=parseFloat(getComputedStyle(mirror).lineHeight)||20.2;
   widthCache.clear();
   document.body.style.setProperty('--glh',LH+'px');
+  syncHL();
 }
-function refreshAll(){renderGutter();renderHL();updateStatus();updateCurLine();updateGhost();renderMarks()}
+/* đồng bộ chiều rộng lớp highlight với textarea (thanh cuộn chiếm ~10px làm lệch ngắt dòng & vùng bôi đen) */
+function syncHL(){hl.style.width=ta.clientWidth+'px'}
+if(window.ResizeObserver){try{new ResizeObserver(()=>syncHL()).observe(ta)}catch(e){}}
+function refreshAll(){renderGutter();syncHL();renderHL();updateStatus();updateCurLine();updateGhost();renderMarks()}
 /* wrap-aware layout: cache visual rows per tab */
 const BREAK_AFTER=' -/,;?&=%+<>!|}\t';
 function computeWrap(){
   const t=activeTab();if(!t)return;
-  const avail=Math.max(120,codeWrap.clientWidth-24);
+  syncHL();
+  /* bề rộng ngắt dòng phải theo TEXTAREA (trừ padding 12+12), không phải khối cha — nếu không #hl và #ta ngắt dòng khác nhau */
+  const avail=Math.max(120,ta.clientWidth-24);
   const lines=t.text.split('\n');
   const rows=[];
   for(let li=0;li<lines.length;li++){
@@ -1142,14 +1157,14 @@ function updateStatus(){
 function updateCurLine(){
   const t=activeTab();if(!t)return;
   const bar=$('#curline .bar');
-  bar.style.top=rowTop(t,ta.selectionStart)+'px';bar.style.height=LH+'px';
+  bar.style.top=(rowTop(t,ta.selectionStart)-ta.scrollTop)+'px';bar.style.height=LH+'px';
 }
-window.addEventListener('resize',debounce(()=>{if(wrapOn()){const t=activeTab();if(t){t.wrapRows=null;refreshAll()}}},150));
+window.addEventListener('resize',debounce(()=>{syncHL();if(wrapOn()){const t=activeTab();if(t){t.wrapRows=null;refreshAll()}}},150));
 ta.addEventListener('scroll',()=>{
   hl.scrollTop=ta.scrollTop;hl.scrollLeft=ta.scrollLeft;
   gutterPre.style.transform='translateY('+(-ta.scrollTop)+'px)';
   updateCurLine();renderMarks();updateGhost();
-  if(popupOpen)closePopup();
+  if(popupOpen)placePopup();
 });
 
 /* ---------- find in file ---------- */
@@ -1191,8 +1206,8 @@ function renderMarks(){
       const vi=visualRowOf(t,pos);
       const r=t.wrapRows[vi]||{start:0,end:col+1,li:line};
       const rowCol=col-r.start;
-      d.style.left=(12+textW(t.text.slice(pos-rowCol,pos)))+'px';
-      d.style.top=(8+vi*LH)+'px';
+      d.style.left=(12+textW(t.text.slice(pos-rowCol,pos))-ta.scrollLeft)+'px';
+      d.style.top=(8+vi*LH-ta.scrollTop)+'px';
       const rem=Math.max(1,Math.min(qLen,r.end-rowCol));
       d.style.width=(textW(t.text.slice(pos,pos+rem)))+'px';
     }else{
@@ -1207,7 +1222,7 @@ function renderMarks(){
     if(!d.line1)continue;
     const e=document.createElement('div');
     e.className='mk err';
-    e.style.top=rowTop(t,d.pos)+'px';e.style.height=LH+'px';
+    e.style.top=(rowTop(t,d.pos)-ta.scrollTop)+'px';e.style.height=LH+'px';
     frag.appendChild(e);
   }
   markLayer.appendChild(frag);
@@ -1391,6 +1406,9 @@ async function nodeFromDir(dirHandle,parentPath,depth){
 }
 async function refreshTree(){
   const tree=$('#tree');tree.innerHTML='<div class="empty">'+tr('tree.reading')+'</div>';
+  /* giữ nguyên trạng thái mở/đóng của các thư mục qua lần đọc lại */
+  const openSet=new Set();
+  (S._rootNodes||[]).forEach(function snap(n){if(n.kind==='dir'){if(n.open)openSet.add(n.path);(n.children||[]).forEach(snap)}});
   S.nodes=[];
   const rootNodes=[];
   for(const r of S.roots){
@@ -1401,6 +1419,8 @@ async function refreshTree(){
     }
   }
   S._rootNodes=rootNodes;
+  const apply=n=>{if(n.kind==='dir'){n.open=openSet.has(n.path);(n.children||[]).forEach(apply)}};
+  rootNodes.forEach(apply);
   collectFiles(rootNodes);
   renderTree();
   preloadAll();
@@ -1490,6 +1510,30 @@ function showCtx(e,node){
 }
 let ctxNode=null;
 function openCtx(p){$('#ctx').style.display='none';Promise.resolve(p).catch(e=>toast(e.message,'err'))}
+function showTabCtx(e,t){
+  const ctx=$('#ctx');
+  const items=[];
+  if(t.node.handle){
+    items.push([tr('ctx.rename'),()=>renameTab(t)]);
+    items.push([tr('ctx.dup'),()=>dupTab(t)]);
+    items.push(null);
+  }
+  items.push([tr('tab.close'),()=>closeTab(S.tabs.indexOf(t))]);
+  ctx.innerHTML='';
+  for(const it of items){
+    if(!it){const hr=document.createElement('hr');ctx.appendChild(hr);continue}
+    const b=document.createElement('button');
+    b.textContent=it[0];
+    b.onclick=()=>openCtx(it[1]());
+    ctx.appendChild(b);
+  }
+  ctxNode=t.node;
+  ctx.style.display='block';
+  ctx.style.left=Math.min(e.clientX,innerWidth-210)+'px';
+  ctx.style.top=Math.min(e.clientY,innerHeight-44*ctx.querySelectorAll('button').length-10)+'px';
+}
+function renameTab(t){if(!t||!t.node.handle){toast(tr('msg.ro'),'err');return}if(t.dirty){toast(tr('msg.saveFirst'),'err');return}return renameNode(t.node)}
+function dupTab(t){if(!t||!t.node.handle){toast(tr('msg.ro'),'err');return}return dupNode(t.node)}
 document.addEventListener('click',()=>{$('#ctx').style.display='none'});
 window.addEventListener('blur',()=>{$('#ctx').style.display='none'});
 
@@ -1521,31 +1565,49 @@ async function newFolderIn(dirNode){
   await refreshTree();toast(tr('msg.created',{name}),'ok');
 }
 async function renameNode(node){
-  const newName=prompt(tr('msg.renamePrompt',{name:node.name}),node.name);
-  if(!newName||newName===node.name)return;
+  const base=node.name.replace(/\.[^.]+$/,'');
+  const newName=prompt(tr('msg.renamePrompt',{name:node.name}),base);
+  if(!newName)return;
+  let finalName=newName.trim();
+  if(!finalName||finalName===node.name)return;
+  /* giữ đuôi tệp nếu người dùng gõ tên không có phần mở rộng */
+  if(!extOf(finalName)){
+    const ext=extOf(node.name);
+    finalName=ext?finalName+'.'+ext:finalName+'.txt';
+    if(!confirm(tr('msg.renameExt',{a:finalName})))return;
+  }
   if(S.tabs.some(x=>x.node.path===node.path&&x.dirty)){toast(tr('msg.saveFirst'),'err');return}
   const dir=await parentDirOf(node);
   if(!dir){toast(tr('msg.ro'),'err');return}
+  if(finalName!==node.name){
+    try{await dir.getFileHandle(finalName);toast(tr('msg.nameExists'),'err');return}catch(_){}
+  }
   const f=await node.handle.getFile();const text=await f.text();
-  const nh=await dir.getFileHandle(newName,{create:true});
+  const nh=await dir.getFileHandle(finalName,{create:true});
   const w=await nh.createWritable();await w.write(text);await w.close();
-  await dir.removeEntry(node.name);
+  if(finalName!==node.name)await dir.removeEntry(node.name);
   S.cache.delete(node.path);
   await refreshTree();
-  const nn=S.nodes.find(n=>n.path===(dir.name+'/'+newName)||n.name===newName);
-  if(nn)openNode(nn);
-  toast(tr('msg.renamed',{name:newName}),'ok');
+  const newPath=node.path.slice(0,node.path.length-node.name.length)+finalName;
+  const nn=S.nodes.find(n=>n.path===newPath)||S.nodes.find(n=>n.kind==='file'&&n.name===finalName);
+  if(nn){
+    const ti=S.tabs.findIndex(x=>x.node.path===node.path);
+    if(ti>=0)S.tabs.splice(ti,1);
+    openNode(nn);
+  }
+  toast(tr('msg.renamed',{name:finalName}),'ok');
 }
 async function dupNode(node){
   const dir=await parentDirOf(node);
   if(!dir){toast(tr('msg.ro'),'err');return}
   const m=node.name.match(/^(.*?)(\.[^.]+)?$/);
-  const newName=m[1]+'-copy'+(m[2]||'');
+  let newName=m[1]+'-copy'+(m[2]||''),k=2;
+  while(S.nodes.some(n=>n.kind==='file'&&n.parent===dir&&n.name===newName)){newName=m[1]+'-copy'+(k++)+(m[2]||'')}
   const f=await node.handle.getFile();const text=await f.text();
   const nh=await dir.getFileHandle(newName,{create:true});
   const w=await nh.createWritable();await w.write(text);await w.close();
   await refreshTree();
-  const nn=S.nodes.find(n=>n.name===newName);
+  const nn=S.nodes.find(n=>n.kind==='file'&&n.parent===dir&&n.name===newName)||S.nodes.find(n=>n.kind==='file'&&n.name===newName);
   if(nn)openNode(nn);
   toast(tr('msg.dupped',{name:newName}),'ok');
 }
@@ -1785,7 +1847,10 @@ function scheduleIndex(){clearTimeout(idxTimer);idxTimer=setTimeout(rebuildIndex
 function onEdited(){
   const t=activeTab();if(!t)return;
   t.text=ta.value;
-  markDirty(t);scheduleHL();scheduleLint();autosaveSchedule();updateStatus();updateCurLine();renderMarks();
+  syncHL();
+  /* vẽ lại highlight & gutter NGAY để không lệch với con trỏ (debounce chỉ cho tệp rất lớn) */
+  if(t.text.length<300000){renderHL();renderGutter()}else scheduleHL();
+  markDirty(t);scheduleLint();autosaveSchedule();updateStatus();updateCurLine();renderMarks();
   if(popupOpen)refreshPopupAfterInput();else updateGhost();
 }
 function refreshPopupAfterInput(){
@@ -1907,6 +1972,7 @@ function setWrap(on){
   document.body.classList.toggle('wrap',on);
   $('#btnWrap').classList.toggle('on',on);
   try{localStorage.setItem('sgstudio.wrap',on?'1':'0')}catch(e){}
+  syncHL();
   const t=activeTab();
   if(t){t.wrapRows=null;if(on){computeWrap();t.wrapText=t.text}refreshAll()}
 }
