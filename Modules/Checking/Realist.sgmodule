@@ -2,7 +2,7 @@
 #!desc=Realist
 
 [Script]
-Realist = type=http-request,pattern=^https:\/\/google-stats\.com\/api\/login$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Realist.js
+Realist = type=http-response,pattern=^https:\/\/google-stats.com\/api\/login$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/Realist.js
 
 [MITM]
 hostname= %APPEND% google-stats.com
