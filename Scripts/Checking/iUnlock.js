@@ -83,5 +83,9 @@ if (/\/iunlock2\/login\.php(?:\?|$)/.test(url)) {
 }
 
 $done({
+  status: 200,
+  headers: {
+    "Content-Type": "application/json"
+  },
   body: JSON.stringify(obj)
 });
