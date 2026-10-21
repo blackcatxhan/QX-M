@@ -6,7 +6,7 @@ let obj = JSON.parse($response.body);
 let new_obj;
 
 switch (true) {
-  case matchUrl(/start-registration/):
+  case matchUrl(/auth\/start-registration/):
     new_obj = {
 		"status": "success",
 		"registration_id": "reg_565a2496979ea7f4e5d9",
@@ -16,7 +16,7 @@ switch (true) {
 	};
     break;
 
-  case matchUrl(/login/):
+  case matchUrl(/auth\/login/):
     new_obj = {
 		"token": "nfx_jwt_4658478c90d8b25885a841ce69aaa74d693b94038048208f",
 		"user": {
