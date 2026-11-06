@@ -20,20 +20,15 @@ else {
   const mockResponse = {
     "status": "success",
     "data": {
-      "auth": {
-        "licenseKey": req.licenseKey || "SPX-PRO-9842-8812-ABCD",
-        "phoneUniqueKey": req.phoneUniqueKey || "A662DA39-E5F0-432A-9364-29AF36931048",
-        "appID": req.appId || "spirit-x-ios",
-        "userEmail": req.userEmail || "hello@gmail.com",
-        "token": "jwt_mock_token_spiritx",
-        "sessionID": "sess_891234abcd",
-        "valid": true,
-        "expiresAt": 1999999999
-      },
-      "user": {
-        "userID": "alex",
-        "email": req.userEmail || "hello@gmail.com"
-      }
+		"licenseKey": req.licenseKey || "SPX-PRO-9842-8812-ABCD",
+		"phoneUniqueKey": req.phoneUniqueKey || "A662DA39-E5F0-432A-9364-29AF36931048",
+		"appId": req.appId || "spirit-x-ios",
+		"userEmail": req.userEmail || "hello@gmail.com",
+		"token": "jwt_mock_token_spiritx",
+		"sessionID": "sess_891234abcd",
+		"sessionVersion": "1.0",
+		"valid": true,
+		"expiresAt": 1999999999
     }
   };
 
