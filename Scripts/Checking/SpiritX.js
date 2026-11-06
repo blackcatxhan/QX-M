@@ -1,25 +1,25 @@
 let req = {};
 
-// 1. Đọc và parse dữ liệu từ request body
+// Đọc thông tin từ request client gửi lên
 if (typeof $request !== "undefined" && $request.body) {
   try {
-    req = JSON.parse($request.body);
+    req = typeof $request.body === "string" ? JSON.parse($request.body) : $request.body;
   } catch (e) {
-    console.log("Parse $request.body failed: " + e);
+    console.log("Parse request error: " + e);
   }
 }
 
-// 2. Tạo body response với các giá trị khớp theo client vừa gửi
 const mockResponse = {
   "status": "success",
+  "success": true,
   "data": {
     "auth": {
-      "licenseKey": req.licenseKey || "",
+      "licenseKey": req.licenseKey || "SPX-PRO-9842-8812-ABCD",
       "phoneUniqueKey": req.phoneUniqueKey || "",
       "appID": req.appId || "spirit-x-ios",
       "userEmail": req.userEmail || "",
-      "token": "jwt_mock_token_" + (req.phoneUniqueKey || "spiritx"),
-      "sessionID": "sess_" + Math.random().toString(36).substring(2, 12),
+      "token": "jwt_mock_token_spiritx",
+      "sessionID": "sess_891234abcd",
       "valid": true,
       "expiresAt": 1999999999
     },
@@ -30,26 +30,11 @@ const mockResponse = {
   }
 };
 
-const resHeaders = {
-  "Content-Type": "application/json"
-};
-const resBody = JSON.stringify(mockResponse);
-
-// 3. Trả về response (Tương thích cả Surge, Shadowrocket, Loon, Quantumult X)
-if (typeof $response !== "undefined") {
-  // Nếu module đang đặt là type=http-response
-  $done({
-    status: 200,
-    headers: resHeaders,
-    body: resBody
-  });
-} else {
-  // Nếu module đang đặt là type=http-request (Mock response trực tiếp)
-  $done({
-    response: {
-      status: 200,
-      headers: resHeaders,
-      body: resBody
-    }
-  });
-}
+// Ghi đè mã 400 thành 200 OK và trả về body
+$done({
+  status: 200,
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(mockResponse)
+});
