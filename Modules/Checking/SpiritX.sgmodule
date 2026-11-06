@@ -1,0 +1,8 @@
+#!name=Unlock SpiritX
+#!desc=SpiritX Auto Match Request
+
+[Script]
+SpiritX = type=http-request,pattern=^https:\/\/v4cp50lhc4\.execute-api\.ap-south-1\.amazonaws\.com\/signin$,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/SpiritX.js
+
+[MITM]
+hostname = %APPEND% v4cp50lhc4.execute-api.ap-south-1.amazonaws.com
