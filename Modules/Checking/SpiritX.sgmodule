@@ -2,7 +2,11 @@
 #!desc=SpiritX
 
 [Script]
-SpiritX = type=http-response,pattern=^https:\/\/v4cp50lhc4\.execute-api\.ap-south-1\.amazonaws\.com\/signin(?:\/|\?|$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/SpiritX.js
+# Bắt request body để lưu vào $prefs
+SpiritX-Req = type=http-request,pattern=^https:\/\/v4cp50lhc4\.execute-api\.ap-south-1\.amazonaws\.com\/signin,requires-body=1,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/SpiritX.js
+
+# Bắt response để đọc $prefs và ghi đè kết quả
+SpiritX-Res = type=http-response,pattern=^https:\/\/v4cp50lhc4\.execute-api\.ap-south-1\.amazonaws\.com\/signin,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackcatxhan/QX-M/main/Scripts/Checking/SpiritX.js
 
 [MITM]
 hostname = %APPEND% v4cp50lhc4.execute-api.ap-south-1.amazonaws.com

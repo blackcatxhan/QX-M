@@ -1,40 +1,48 @@
-let req = {};
-
-// Đọc thông tin từ request client gửi lên
-if (typeof $request !== "undefined" && $request.body) {
-  try {
-    req = typeof $request.body === "string" ? JSON.parse($request.body) : $request.body;
-  } catch (e) {
-    console.log("Parse request error: " + e);
+// GIAI ĐOẠN 1: Bắt và lưu request body
+if (typeof $response === "undefined") {
+  if ($request.body) {
+    $prefs.setValueForKey($request.body, "SPIRITX_CACHED_REQ");
   }
-}
-
-const mockResponse = {
-  "status": "success",
-  "success": true,
-  "data": {
-    "auth": {
-      "licenseKey": req.licenseKey || "SPX-PRO-9842-8812-ABCD",
-      "phoneUniqueKey": req.phoneUniqueKey || "",
-      "appID": req.appId || "spirit-x-ios",
-      "userEmail": req.userEmail || "",
-      "token": "jwt_mock_token_spiritx",
-      "sessionID": "sess_891234abcd",
-      "valid": true,
-      "expiresAt": 1999999999
-    },
-    "user": {
-      "userID": "alex",
-      "email": req.userEmail || ""
+  $done({});
+} 
+// GIAI ĐOẠN 2: Khi server trả về response (kể cả server trả 400)
+else {
+  let req = {};
+  const cached = $prefs.valueForKey("SPIRITX_CACHED_REQ");
+  if (cached) {
+    try {
+      req = JSON.parse(cached);
+    } catch (e) {
+      console.log("Parse cached error: " + e);
     }
   }
-};
 
-// Ghi đè mã 400 thành 200 OK và trả về body
-$done({
-  status: 200,
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(mockResponse)
-});
+  const mockResponse = {
+    "status": "success",
+    "data": {
+      "auth": {
+        "licenseKey": req.licenseKey || "SPX-PRO-9842-8812-ABCD",
+        "phoneUniqueKey": req.phoneUniqueKey || "A662DA39-E5F0-432A-9364-29AF36931048",
+        "appID": req.appId || "spirit-x-ios",
+        "userEmail": req.userEmail || "hello@gmail.com",
+        "token": "jwt_mock_token_spiritx",
+        "sessionID": "sess_891234abcd",
+        "valid": true,
+        "expiresAt": 1999999999
+      },
+      "user": {
+        "userID": "alex",
+        "email": req.userEmail || "hello@gmail.com"
+      }
+    }
+  };
+
+  // Ép status code về 200 OK để ghi đè mã 400
+  $done({
+    status: "HTTP/1.1 200 OK",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(mockResponse)
+  });
+}
